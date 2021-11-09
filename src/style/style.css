@@ -68,6 +68,40 @@ html header #topBarContainer #navBarContainer, body header #topBarContainer #nav
           box-shadow: 0px 4px 0px #0000001e;
 }
 
+html header #topBarContainer #navBarContainer #navIcons, body header #topBarContainer #navBarContainer #navIcons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  max-width: 150px;
+  -webkit-margin-before: 0px;
+          margin-block-start: 0px;
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+  -webkit-margin-after: 0px;
+          margin-block-end: 0px;
+  padding-top: 20px;
+}
+
+html header #topBarContainer #navBarContainer #navIcons li, body header #topBarContainer #navBarContainer #navIcons li {
+  list-style: none;
+  margin: auto;
+}
+
+html header #topBarContainer #navBarContainer #navIcons li a, body header #topBarContainer #navBarContainer #navIcons li a {
+  text-decoration: none;
+  color: #000;
+}
+
+html header #topBarContainer #navBarContainer #navIcons li a svg, body header #topBarContainer #navBarContainer #navIcons li a svg {
+  width: 15px;
+  height: 15px;
+}
+
+html header #topBarContainer #navBarContainer #navIcons li a:hover svg, body header #topBarContainer #navBarContainer #navIcons li a:hover svg {
+  color: red;
+}
+
 html header #topBarContainer #brandContainer, body header #topBarContainer #brandContainer {
   height: 51px;
   width: 100%;
