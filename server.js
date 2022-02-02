@@ -7,36 +7,79 @@ const port = process.env.PORT || 8080;
 app.use(express.static('src'));
 
 app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
+  console.log(`Listening at http://localhost:${port}`)
 });
 
-app.get(`orders/`, getOrders);
+// Order
 
-app.get(`orders/:id`, getOrder);
+app.get('orders/', getOrders);
+app.get('orders/:id', getOrder(id));
+app.get('orders/:id/kits', getOrderInfo(id, kitID));
+app.get('orders/:id/bricks', getOrdersInfo(id, brickID));
 
-app.get(`orders/:id/kits`, getOrdersKit);
+function getOrders(req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get (`orders/:id/bricks`, getOrdersBrick);
+function getOrder(id, req, res) {
+  console.log("I'm just here for now.");
+}
 
+function getOrderInfo(id, searchTerm, req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get(`customers/`, getCustomers);
+// Customer
 
-app.get(`customer/:id`, getCustomer);
+app.get('customers/', getCustomers);
+app.get('customer/:id', getCustomer(id));
+app.get('customer/:id/orders', getCustomerInfo(id, orders));
+app.get('customer/:id/wishlist', getCustomerInfo(id, wishlist));
 
-app.get(`customer/:id/orders`, getCustomersOrders);
+function getCustomers(req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get(`customer/:id/wishlist`, getWishlist);
+function getCustomer(id, req, res) {
+  console.log("I'm just here for now.");
+}
 
+function getCustomerInfo(id, searchTerm, req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get(`bricks/`, getBricks);
+// Bricks
 
-app.get(`bricks/:id`, getBrickById);
+app.get('bricks/', getBricks);
+app.get('bricks/:id', getBrick(id));
+app.get('bricks/:id/stock', getBrickInfo(id, stock));
 
-app.get(`bricks/:id/stock`, getBrickStock);
+function getBricks(req, res) {
+  console.log("I'm just here for now.");
+}
 
+function getBrick(id, req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get(`kits/`, getKits);
+function getBrickInfo(id, searchTerm, req, res) {
+  console.log("I'm just here for now.");
+}
 
-app.get(`kit/:id`, getKitById);
+// Kits
 
-app.get(`kit/:id/stock`, getKitStock);
+app.get('kits/', getKits);
+app.get('kit/:id', getKit(id));
+app.get('kit/:id/stock', getKitInfo(id, stock));
+
+function getKits(req, res) {
+  console.log("I'm just here for now.");
+}
+
+function getKit(id, req, res) {
+  console.log("I'm just here for now.");
+}
+
+function getKitInfo(id, searchTerm, req, res) {
+  console.log("I'm just here for now.");
+}
