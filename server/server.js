@@ -11,7 +11,9 @@ const orders = require('./routes/orders.js');
 
 const port = process.env.PORT || 8080;
 
-app.use(express.static('src'));
+// Methods
+
+app.use(express.static('../client'));
 
 app.use('/orders', orders);
 app.use('/customers', customers);

@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Customers');
-});
+router.get('/', getCustomers);
 
-router.get('customers/', getCustomers);
-router.get('customer/:id', getCustomer);
-router.get('customer/:id/orders', getCustomerInfo);
-router.get('customer/:id/wishlist', getCustomerInfo);
+router.get('/:id', getCustomer);
+router.get('/:id/orders', getCustomerInfo);
+router.get('/:id/wishlist', getCustomerInfo);
 
 function getCustomers() {
   console.log("I'm just here for now.");

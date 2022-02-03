@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('bricks');
-});
-
 router.get('bricks/', getBricks);
-router.get('bricks/:id', getBrick);
-router.get('bricks/:id/stock', getBrickInfo);
+
+router.get('/:id', getBrick);
+router.get('/:id/stock', getBrickInfo);
 
 function getBricks() {
   console.log('Brick');
