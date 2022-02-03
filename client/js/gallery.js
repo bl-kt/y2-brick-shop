@@ -1,1 +1,0 @@
-//js for gallery - image gallery navigated by radio button
