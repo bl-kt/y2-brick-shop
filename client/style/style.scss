@@ -1,157 +1,80 @@
+$text: #000;
+$textlight: #fff;
+$textdark: #401C1B;
+$textmid: #C2C2C2;
 
-$breakpoint-tablet: 1120px;
-$breakpoint-mobile: 400px;
+$background: #fcfcfc;
 
-@mixin main(
-$text: #000, $textlight: #fff, $textdark: #401C1B, $textmid: #C2C2C2,
-$background: #fff,
-$banner1: #76323F, $banner1dark: #401C1B,
-$banner2dark: #BC9E9B, $banner2mid: #C7A9A6, $banner2light: #CCB0AD,
-$banner3: #9A5754,
-$card: #DADFE5, $carddark: #C4C4C4, $cardlight: #E2E2E2,
-$buttonmid: #C8ACAC, $buttondark: #76323F, $buttonlight: #C09A8F){
+$banner1: #76323F;
+$banner1dark: #401C1B;
+$banner2dark: #BC9E9B;
+$banner2mid: #C7A9A6;
+$banner2light: #CCB0AD;
+$banner3: #9A5754;
 
-  // Cover-all
+$card: #DADFE5;
+$carddark: #C4C4C4;
+$cardlight: #E2E2E2;
 
+$buttonmid: #C8ACAC;
+$buttondark: #76323F;
+$buttonlight: #C09A8F;
+
+body {
   background-color: $background;
-  color: $text;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  margin: auto;
-  padding: 0;
-  display: block;
-
-  // Utils
-
-  .displayNone {
-    display: none;
-  }
-
-  // Header
-  #headerContainer {
-    width: 100vw;
-    height: 10vh;
-    background: linear-gradient(to right, $banner2mid, $banner2light);
-
-    #headerContent {
-      width: 80vw;
-      margin: auto;
-      height: 10vh;
-      position: relative;
-      left: 0;
-      top: 0;
-
-      display: grid;
-      grid-template-columns: 1fr 3fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: "brand navi";
-      grid-gap: 0px;
-
-      #brandingContainer {
-        width: 100%;
-        height: 10vh;
-        background-color: $banner2mid;
-        grid-area: brand;
-        z-index: 2;
-
-        a {
-          text-decoration: none;
-          margin: auto;
-
-          #logoContainer {
-            height: 80%;
-            width: 80%;
-            margin: auto;
-            padding-top: 10px;
-
-            .column {
-              flex: 50%;
-              padding: 5px;
-            }
-
-            .row{
-              display: flex;
-            }
-
-            #logo{
-              height: 60%;
-              width: auto;
-              padding-top: 8px;
-            }
-
-            #brand {
-              height: 60%;
-              width: auto;
-            }
-          }
-        }
-      }
-
-      #navContainer {
-        width: 100%;
-        height: 10vh;
-        background-color: $banner2light;
-        grid-area: navi;
-        z-index: 1;
-        border: none;
-
-        #navSmall, #navFull {
-          display: flex;
-
-          margin: auto;
-
-          margin-block-start: 0px;
-          padding-inline-start: 0px;
-          margin-block-end: 0px;
-
-          li {
-            list-style: none;
-            margin: auto;
-
-            a {
-              text-decoration: none;
-              color: $text;
-
-              svg {
-                width: 15px;
-                height: 15px;
-              }
-            }
-
-            a:hover{
-
-              svg{
-                  color: red;
-              }
-            }
-          }
-        }
-
-      }
-    }
-  }
 }
 
-body{
-  @include main();
-  transition: all 0.5s ease;
-  overflow-x: hidden;
+#navWrapper {
+  width: 100%;
+  background: linear-gradient(to right, $banner2dark, $banner2light);
 }
 
-@media screen and (max-width:$breakpoint-tablet) {
-  #headerContent {
-    width: 100vw !important;
-  }
-
-  #brandingContainer {
-    width: auto !important;
-  }
-
-  #logoContainer {
-    margin: 0 !important;
-    width: 25vw !important;
-  }
-
+nav {
+  display: grid;
+  grid-template-columns: 0.2fr auto 1fr;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }
+
+#logo {
+  justify-self: start;
+  top: 50%;
+  width: 180px;
+  height: auto;
+  padding: 15px;
+}
+
+#navMenu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  list-style: none;
+  text-align: center;
+  width: 70%;
+  justify-self: end;
+}
+
+#navMenu li a {
+  color: $textdark;
+  text-decoration: none;
+}
+
+#navMenu li a:hover {
+  color: $textmid;
+  transition: all 0.3 ease-out;
+}
+
+#navMenu li .emp{
+  padding: 6px 15px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+#navMenu li .emp:hover{
+  padding: 5px 15px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}
+
+https://www.youtube.com/watch?v=yFWAOzwovrQ FINSISH THIS LATER

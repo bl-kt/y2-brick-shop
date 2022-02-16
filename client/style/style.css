@@ -1,145 +1,67 @@
 body {
-  background-color: #fff;
-  color: #000;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  margin: auto;
-  padding: 0;
-  display: block;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  overflow-x: hidden;
+  background-color: #fcfcfc;
 }
 
-body .displayNone {
-  display: none;
+#navWrapper {
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#BC9E9B), to(#CCB0AD));
+  background: linear-gradient(to right, #BC9E9B, #CCB0AD);
 }
 
-body #headerContainer {
-  width: 100vw;
-  height: 10vh;
-  background: -webkit-gradient(linear, left top, right top, from(#C7A9A6), to(#CCB0AD));
-  background: linear-gradient(to right, #C7A9A6, #CCB0AD);
-}
-
-body #headerContainer #headerContent {
-  width: 80vw;
-  margin: auto;
-  height: 10vh;
-  position: relative;
-  left: 0;
-  top: 0;
+nav {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 3fr;
-      grid-template-columns: 1fr 3fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas: "brand navi";
-  grid-gap: 0px;
+  -ms-grid-columns: 0.2fr auto 1fr;
+      grid-template-columns: 0.2fr auto 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
-body #headerContainer #headerContent #brandingContainer {
-  width: 100%;
-  height: 10vh;
-  background-color: #C7A9A6;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: brand;
-  z-index: 2;
+#logo {
+  -ms-grid-column-align: start;
+      justify-self: start;
+  top: 50%;
+  width: 180px;
+  height: auto;
+  padding: 15px;
 }
 
-body #headerContainer #headerContent #brandingContainer a {
-  text-decoration: none;
-  margin: auto;
-}
-
-body #headerContainer #headerContent #brandingContainer a #logoContainer {
-  height: 80%;
-  width: 80%;
-  margin: auto;
-  padding-top: 10px;
-}
-
-body #headerContainer #headerContent #brandingContainer a #logoContainer .column {
-  -webkit-box-flex: 50%;
-      -ms-flex: 50%;
-          flex: 50%;
-  padding: 5px;
-}
-
-body #headerContainer #headerContent #brandingContainer a #logoContainer .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-body #headerContainer #headerContent #brandingContainer a #logoContainer #logo {
-  height: 60%;
-  width: auto;
-  padding-top: 8px;
-}
-
-body #headerContainer #headerContent #brandingContainer a #logoContainer #brand {
-  height: 60%;
-  width: auto;
-}
-
-body #headerContainer #headerContent #navContainer {
-  width: 100%;
-  height: 10vh;
-  background-color: #CCB0AD;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: navi;
-  z-index: 1;
-  border: none;
-}
-
-body #headerContainer #headerContent #navContainer #navSmall, body #headerContainer #headerContent #navContainer #navFull {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: auto;
-  -webkit-margin-before: 0px;
-          margin-block-start: 0px;
-  -webkit-padding-start: 0px;
-          padding-inline-start: 0px;
-  -webkit-margin-after: 0px;
-          margin-block-end: 0px;
-}
-
-body #headerContainer #headerContent #navContainer #navSmall li, body #headerContainer #headerContent #navContainer #navFull li {
+#navMenu {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[5];
+      grid-template-columns: repeat(5, auto);
   list-style: none;
-  margin: auto;
+  text-align: center;
+  width: 70%;
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
-body #headerContainer #headerContent #navContainer #navSmall li a, body #headerContainer #headerContent #navContainer #navFull li a {
+#navMenu li a {
+  color: #401C1B;
   text-decoration: none;
-  color: #000;
 }
 
-body #headerContainer #headerContent #navContainer #navSmall li a svg, body #headerContainer #headerContent #navContainer #navFull li a svg {
-  width: 15px;
-  height: 15px;
+#navMenu li a:hover {
+  color: #C2C2C2;
+  -webkit-transition: all 0.3 ease-out;
+  transition: all 0.3 ease-out;
 }
 
-body #headerContainer #headerContent #navContainer #navSmall li a:hover svg, body #headerContainer #headerContent #navContainer #navFull li a:hover svg {
-  color: red;
+#navMenu li .emp {
+  padding: 6px 15px;
+  background-color: #fff;
+  border-radius: 4px;
 }
 
-@media screen and (max-width: 1120px) {
-  #headerContent {
-    width: 100vw !important;
-  }
-  #brandingContainer {
-    width: auto !important;
-  }
-  #logoContainer {
-    margin: 0 !important;
-    width: 25vw !important;
-  }
+#navMenu li .emp:hover {
+  padding: 5px 15px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
