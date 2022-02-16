@@ -22,6 +22,9 @@ $buttonlight: #C09A8F;
 
 body {
   background-color: $background;
+  margin: 0;
+  left: 0;
+  top: 0;
 }
 
 #navWrapper {
@@ -35,46 +38,86 @@ nav {
   align-items: center;
   width: 90%;
   margin: 0 auto;
+
+  #logo {
+    justify-self: start;
+    top: 50%;
+    width: 180px;
+    height: auto;
+    padding: 15px;
+  }
+
+  #navMenu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-self: end;
+
+    li {
+      a {
+        color: $textdark;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $textmid;
+        transition: all 0.3 ease-out;
+      }
+      .emp {
+        padding: 6px 15px;
+        background-color: #fff;
+        border-radius: 4px;
+      }
+      .emp:hover {
+        padding: 5px 15px;
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+      }
+    }
+  }
 }
 
-#logo {
-  justify-self: start;
-  top: 50%;
-  width: 180px;
-  height: auto;
-  padding: 15px;
-}
+@media screen and (max-width: 768px) {
+  #navWrapper {
+    position: relative;
 
-#navMenu {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
-  list-style: none;
-  text-align: center;
-  width: 70%;
-  justify-self: end;
-}
+    nav{
+      width: 100%;
 
-#navMenu li a {
-  color: $textdark;
-  text-decoration: none;
-}
+      #navMenu {
+        display: grid;
+        grid-template-columns: auto !important;
+        background: green;
+        margin: 0;
+        width: 100% !important;
+        position: absolute;
+        top: 90px;
+    /*     left: -100%;
+        opacity: 0; */
+        transition: all 0.5 ease;
 
-#navMenu li a:hover {
-  color: $textmid;
-  transition: all 0.3 ease-out;
+        li{
+          a{
+            text-align: center;
+            line-height: 45px;
+            padding:10px;
+            width: 100%;
+            display: table;
+          }
+          a:hover{
+            background-color: #fff;
+            color: #000;
+            transition: all 0.3 ease-out;
+          }
+        }
+      }
+      #navMenu:active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5 ease;
+      }
+    }
+  }
 }
-
-#navMenu li .emp{
-  padding: 6px 15px;
-  background-color: #fff;
-  border-radius: 4px;
-}
-
-#navMenu li .emp:hover{
-  padding: 5px 15px;
-  background-color: green;
-  color: white;
-  border-radius: 5px;
-}
-
-https://www.youtube.com/watch?v=yFWAOzwovrQ FINSISH THIS LATER

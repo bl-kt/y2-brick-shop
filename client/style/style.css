@@ -1,5 +1,8 @@
 body {
   background-color: #fcfcfc;
+  margin: 0;
+  left: 0;
+  top: 0;
 }
 
 #navWrapper {
@@ -20,7 +23,7 @@ nav {
   margin: 0 auto;
 }
 
-#logo {
+nav #logo {
   -ms-grid-column-align: start;
       justify-self: start;
   top: 50%;
@@ -29,7 +32,7 @@ nav {
   padding: 15px;
 }
 
-#navMenu {
+nav #navMenu {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (auto)[5];
@@ -41,27 +44,70 @@ nav {
       justify-self: end;
 }
 
-#navMenu li a {
+nav #navMenu li a {
   color: #401C1B;
   text-decoration: none;
 }
 
-#navMenu li a:hover {
+nav #navMenu li a:hover {
   color: #C2C2C2;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
 }
 
-#navMenu li .emp {
+nav #navMenu li .emp {
   padding: 6px 15px;
   background-color: #fff;
   border-radius: 4px;
 }
 
-#navMenu li .emp:hover {
+nav #navMenu li .emp:hover {
   padding: 5px 15px;
   background-color: green;
   color: white;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  #navWrapper {
+    position: relative;
+  }
+  #navWrapper nav {
+    width: 100%;
+  }
+  #navWrapper nav #navMenu {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto !important;
+        grid-template-columns: auto !important;
+    background: green;
+    margin: 0;
+    width: 100% !important;
+    position: absolute;
+    top: 90px;
+    /*     left: -100%;
+        opacity: 0; */
+    -webkit-transition: all 0.5 ease;
+    transition: all 0.5 ease;
+  }
+  #navWrapper nav #navMenu li a {
+    text-align: center;
+    line-height: 45px;
+    padding: 10px;
+    width: 100%;
+    display: table;
+  }
+  #navWrapper nav #navMenu li a:hover {
+    background-color: #fff;
+    color: #000;
+    -webkit-transition: all 0.3 ease-out;
+    transition: all 0.3 ease-out;
+  }
+  #navWrapper nav #navMenu:active {
+    left: 0;
+    opacity: 1;
+    -webkit-transition: all 0.5 ease;
+    transition: all 0.5 ease;
+  }
 }
 /*# sourceMappingURL=style.css.map */
