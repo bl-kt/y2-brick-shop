@@ -4,3 +4,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   const wrapper = document.querySelector('#navWrapper');
   wrapper.innerHTML = nav;
 });
+
+document.addEventListener((document.querySelector('menu-toggle')))
