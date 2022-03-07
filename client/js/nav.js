@@ -5,4 +5,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   wrapper.innerHTML = nav;
 });
 
-document.addEventListener((document.querySelector('menu-toggle')))
+document.addEventListener((document.querySelector('menu-toggle')));

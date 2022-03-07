@@ -113,7 +113,7 @@ nav {
           }
         }
       }
-      #navMenu:active {
+      #navMenu.active {
         left: 0;
         opacity: 1;
         transition: all 0.5 ease;
