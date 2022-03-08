@@ -1,24 +1,16 @@
+$background: #fff;
 $text: #000;
-$textlight: #fff;
-$textdark: #401C1B;
-$textmid: #C2C2C2;
 
-$background: #fcfcfc;
+$banner: #080808;
+$bannerText: #e0e0e0;
 
-$banner1: #76323F;
-$banner1dark: #401C1B;
-$banner2dark: #BC9E9B;
-$banner2mid: #C7A9A6;
-$banner2light: #CCB0AD;
-$banner3: #9A5754;
+$menu: #27272b;
+$menuText: #e0e0e0;
 
-$card: #DADFE5;
-$carddark: #C4C4C4;
-$cardlight: #E2E2E2;
-
-$buttonmid: #C8ACAC;
-$buttondark: #76323F;
-$buttonlight: #C09A8F;
+@viewport {
+  width: device-width;
+  zoom: 1.0
+}
 
 body {
   background-color: $background;
@@ -29,7 +21,7 @@ body {
 
 #navWrapper {
   width: 100%;
-  background: linear-gradient(to right, $banner2dark, $banner2light);
+  background: $banner;
 }
 
 nav {
@@ -47,33 +39,34 @@ nav {
     padding: 15px;
   }
 
+  #menuToggle {
+    opacity: 0;
+  }
+
   #navMenu {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(4, auto);
     list-style: none;
     text-align: center;
-    width: 70%;
+    width: 260px;
     justify-self: end;
+    padding-top: 6px;
 
     li {
+      padding: 2px;
+
       a {
-        color: $textdark;
+        padding: 5px;
+        color: $bannerText;
         text-decoration: none;
+        font-family: Roboto;
+        color: transparent;
+        font-size: 0;
       }
+
       a:hover {
-        color: $textmid;
+        color: $text;
         transition: all 0.3 ease-out;
-      }
-      .emp {
-        padding: 6px 15px;
-        background-color: #fff;
-        border-radius: 4px;
-      }
-      .emp:hover {
-        padding: 5px 15px;
-        background-color: green;
-        color: white;
-        border-radius: 5px;
       }
     }
   }
@@ -84,18 +77,27 @@ nav {
     position: relative;
 
     nav{
-      width: 100%;
+      width: 90%;
+
+      #menuToggle {
+        opacity: 1;
+        background:transparent;
+        border:none;
+        outline:none;
+        display:block;
+        cursor:pointer;
+      }
 
       #navMenu {
         display: grid;
         grid-template-columns: auto !important;
-        background: green;
+        background: $menu;
         margin: 0;
         width: 100% !important;
         position: absolute;
         top: 90px;
-    /*     left: -100%;
-        opacity: 0; */
+        left: -100%;
+        opacity: 0;
         transition: all 0.5 ease;
 
         li{
@@ -105,18 +107,26 @@ nav {
             padding:10px;
             width: 100%;
             display: table;
+            font-size: 16px;
+            color: $menuText;
           }
+
           a:hover{
-            background-color: #fff;
-            color: #000;
+            background-color: $banner;
+            color: $bannerText;
             transition: all 0.3 ease-out;
           }
         }
       }
+
       #navMenu.active {
-        left: 0;
+        left: -40px;
         opacity: 1;
         transition: all 0.5 ease;
+      }
+
+      #menuLinks.active {
+
       }
     }
   }

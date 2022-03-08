@@ -1,5 +1,20 @@
+@-ms-viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+@-o-viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
 body {
-  background-color: #fcfcfc;
+  background-color: #fff;
   margin: 0;
   left: 0;
   top: 0;
@@ -7,8 +22,7 @@ body {
 
 #navWrapper {
   width: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(#BC9E9B), to(#CCB0AD));
-  background: linear-gradient(to right, #BC9E9B, #CCB0AD);
+  background: #080808;
 }
 
 nav {
@@ -32,40 +46,40 @@ nav #logo {
   padding: 15px;
 }
 
+nav #menuToggle {
+  opacity: 0;
+}
+
 nav #navMenu {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
   list-style: none;
   text-align: center;
-  width: 70%;
+  width: 260px;
   -ms-grid-column-align: end;
       justify-self: end;
+  padding-top: 6px;
+}
+
+nav #navMenu li {
+  padding: 2px;
 }
 
 nav #navMenu li a {
-  color: #401C1B;
+  padding: 5px;
+  color: #e0e0e0;
   text-decoration: none;
+  font-family: Roboto;
+  color: transparent;
+  font-size: 0;
 }
 
 nav #navMenu li a:hover {
-  color: #C2C2C2;
+  color: #000;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
-}
-
-nav #navMenu li .emp {
-  padding: 6px 15px;
-  background-color: #fff;
-  border-radius: 4px;
-}
-
-nav #navMenu li .emp:hover {
-  padding: 5px 15px;
-  background-color: green;
-  color: white;
-  border-radius: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -73,20 +87,28 @@ nav #navMenu li .emp:hover {
     position: relative;
   }
   #navWrapper nav {
-    width: 100%;
+    width: 90%;
+  }
+  #navWrapper nav #menuToggle {
+    opacity: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
   }
   #navWrapper nav #navMenu {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: auto !important;
         grid-template-columns: auto !important;
-    background: green;
+    background: #27272b;
     margin: 0;
     width: 100% !important;
     position: absolute;
     top: 90px;
-    /*     left: -100%;
-        opacity: 0; */
+    left: -100%;
+    opacity: 0;
     -webkit-transition: all 0.5 ease;
     transition: all 0.5 ease;
   }
@@ -96,15 +118,17 @@ nav #navMenu li .emp:hover {
     padding: 10px;
     width: 100%;
     display: table;
+    font-size: 16px;
+    color: #e0e0e0;
   }
   #navWrapper nav #navMenu li a:hover {
-    background-color: #fff;
-    color: #000;
+    background-color: #080808;
+    color: #e0e0e0;
     -webkit-transition: all 0.3 ease-out;
     transition: all 0.3 ease-out;
   }
-  #navWrapper nav #navMenu:active {
-    left: 0;
+  #navWrapper nav #navMenu.active {
+    left: -40px;
     opacity: 1;
     -webkit-transition: all 0.5 ease;
     transition: all 0.5 ease;
