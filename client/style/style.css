@@ -25,11 +25,13 @@ body {
   background: #080808;
 }
 
-nav {
+#navWrapper nav {
+  width: 100%;
+  background: #080808;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.2fr auto 1fr;
-      grid-template-columns: 0.2fr auto 1fr;
+  -ms-grid-columns: 0.2fr auto 1fr 1fr;
+      grid-template-columns: 0.2fr auto 1fr 1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -37,7 +39,7 @@ nav {
   margin: 0 auto;
 }
 
-nav #logo {
+#navWrapper nav #logo {
   -ms-grid-column-align: start;
       justify-self: start;
   top: 50%;
@@ -46,11 +48,13 @@ nav #logo {
   padding: 15px;
 }
 
-nav #menuToggle {
+#navWrapper nav #menuToggle {
   opacity: 0;
+  width: 24px;
+  height: 24px;
 }
 
-nav #navMenu {
+#navWrapper nav #navMenu {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (auto)[5];
@@ -62,11 +66,11 @@ nav #navMenu {
       justify-self: end;
 }
 
-nav #navMenu li .navIcon {
+#navWrapper nav #navMenu li .navIcon {
   padding-top: 5px;
 }
 
-nav #navMenu li a {
+#navWrapper nav #navMenu li a {
   padding: 5px;
   color: #e0e0e0;
   text-decoration: none;
@@ -75,13 +79,13 @@ nav #navMenu li a {
   font-size: 0;
 }
 
-nav #navMenu li a:hover {
+#navWrapper nav #navMenu li a:hover {
   color: #000;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
 }
 
-nav #navMenu li #navCheckout {
+#navWrapper nav #navMenu li #navCheckout {
   color: #e0e0e0;
   background: #9a5c5b;
   font-family: Roboto;
@@ -90,10 +94,79 @@ nav #navMenu li #navCheckout {
   border: none;
 }
 
-nav #navMenu li #navCheckout:hover {
+#navWrapper nav #navMenu li #navCheckout:hover {
   background: #76323f;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
+}
+
+#queryWrapper {
+  padding-top: 10px;
+  width: 100%;
+  height: 55px;
+  background: #dbdbdb;
+}
+
+#queryWrapper .queryContent {
+  max-width: 80vw;
+  margin: auto;
+  color: #000;
+  font-family: Roboto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.5fr .5fr .5fr;
+      grid-template-columns: 1fr 1.5fr .5fr .5fr;
+      grid-template-areas: 'indicator  .  sort filter';
+}
+
+#queryWrapper .queryContent p {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: indicator;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  font-size: 16px;
+}
+
+#queryWrapper .queryContent #sort {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: sort;
+  padding-top: 2px;
+}
+
+#queryWrapper .queryContent #sort select {
+  width: 170px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+}
+
+#queryWrapper .queryContent #filter {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: filter;
+  padding-top: 2px;
+}
+
+#queryWrapper .queryContent #filter #filterBtn {
+  font-family: Roboto;
+  font-size: 14px;
+  width: 170px;
+  height: 40px;
+  margin: auto;
+  border: none;
+  background: #080808;
+  color: #e0e0e0;
+  border-radius: 4px;
+}
+
+#gridWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
+  margin: auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -125,7 +198,7 @@ nav #navMenu li #navCheckout:hover {
     margin: 0;
     position: absolute;
     top: 90px;
-    left: -100%;
+    left: -200%;
     opacity: 0;
     -webkit-transition: all 0.5 ease;
     transition: all 0.5 ease;
@@ -143,6 +216,50 @@ nav #navMenu li #navCheckout:hover {
     opacity: 0.90;
     -webkit-transition: all 0.5 ease;
     transition: all 0.5 ease;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #queryWrapper .queryContent {
+    max-width: 90%;
+    -ms-grid-columns: (auto)[2];
+        grid-template-columns: repeat(2, auto);
+        grid-template-areas: 'sort filter' !important;
+  }
+  #queryWrapper p {
+    display: none;
+  }
+  #queryWrapper #sort {
+    width: 100%;
+    margin: auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  #queryWrapper #sort select {
+    max-width: 170px;
+    max-height: 40px;
+    width: 100% !important;
+    height: 100% !important;
+    margin: auto;
+  }
+  #queryWrapper #filter {
+    width: 100%;
+    margin: auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  #queryWrapper #filter #filterBtn {
+    max-width: 170px;
+    max-height: 40px;
+    width: 100% !important;
+    height: 100% !important;
+    margin: auto;
   }
 }
 /*# sourceMappingURL=style.css.map */

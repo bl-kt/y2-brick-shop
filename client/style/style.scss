@@ -22,70 +22,132 @@ body {
 #navWrapper {
   width: 100%;
   background: $banner;
-}
 
-nav {
-  display: grid;
-  grid-template-columns: 0.2fr auto 1fr;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-
-  #logo {
-    justify-self: start;
-    top: 50%;
-    width: 180px;
-    height: auto;
-    padding: 15px;
-  }
-
-  #menuToggle {
-    opacity: 0;
-  }
-
-  #navMenu {
+  nav {
+    width: 100%;
+    background: $banner;
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    list-style: none;
-    text-align: center;
-    width: 260px;
-    justify-self: end;
-
-    li {
-
-      .navIcon{
-        padding-top: 5px;
-      }
-
-      a {
-        padding: 5px;
-        color: $bannerText;
-        text-decoration: none;
-        font-family: Roboto;
-        color: transparent;
-        font-size: 0;
-      }
-
-      a:hover {
-        color: $text;
-        transition: all 0.3 ease-out;
-      }
-
-      #navCheckout {
-        color: $menuText;
-        background: #9a5c5b;
-        font-family: Roboto;
-        padding: 9px;
-        border-radius: 4px;
-        border: none;
-      }
-
-      #navCheckout:hover {
-        background: #76323f;
-        transition: all 0.3 ease-out;
+    grid-template-columns: 0.2fr auto 1fr 1fr;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  
+    #logo {
+      justify-self: start;
+      top: 50%;
+      width: 180px;
+      height: auto;
+      padding: 15px;
+    }
+  
+    #menuToggle {
+      opacity: 0;
+      width: 24px;
+      height: 24px;
+    }
+  
+    #navMenu {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      list-style: none;
+      text-align: center;
+      width: 260px;
+      justify-self: end;
+  
+      li {
+  
+        .navIcon{
+          padding-top: 5px;
+        }
+  
+        a {
+          padding: 5px;
+          color: $bannerText;
+          text-decoration: none;
+          font-family: Roboto;
+          color: transparent;
+          font-size: 0;
+        }
+  
+        a:hover {
+          color: $text;
+          transition: all 0.3 ease-out;
+        }
+  
+        #navCheckout {
+          color: $menuText;
+          background: #9a5c5b;
+          font-family: Roboto;
+          padding: 9px;
+          border-radius: 4px;
+          border: none;
+        }
+  
+        #navCheckout:hover {
+          background: #76323f;
+          transition: all 0.3 ease-out;
+        }
       }
     }
   }
+}
+
+#queryWrapper {
+  padding-top: 10px;
+  width: 100%;
+  height: 55px;
+  background: #dbdbdb;
+
+  .queryContent {
+    max-width: 80vw;
+    margin: auto;
+    color: $text;
+    font-family: Roboto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr .5fr .5fr;
+    grid-template-areas:'indicator  .  sort filter';
+
+    
+    p {
+      grid-area: indicator;
+      align-self: flex-start;
+      font-size: 16px;
+    }
+
+    #sort {
+      grid-area: sort;
+      padding-top: 2px;
+      select {
+        width: 170px;
+        height: 40px;
+        border: none;
+        border-radius: 4px;
+      }
+    }
+
+    #filter {
+      grid-area: filter;
+      padding-top: 2px;
+      #filterBtn{
+        font-family: Roboto;
+        font-size: 14px;
+        width: 170px;
+        height: 40px;
+        margin: auto;
+        border: none;
+        background: $banner;
+        color: $menuText;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+#gridWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  margin: auto;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -116,7 +178,7 @@ nav {
         margin: 0;
         position: absolute;
         top: 90px;
-        left: -100%;
+        left: -200%;
         opacity: 0;
         transition: all 0.5 ease;
 
@@ -136,6 +198,47 @@ nav {
         left: -40px;
         opacity: 0.90;
         transition: all 0.5 ease;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:550px) {
+  #queryWrapper {
+    .queryContent {
+      max-width: 90%;
+      grid-template-columns: repeat(2, auto);
+      grid-template-areas:'sort filter' !important;
+    }
+    p {
+      display: none;
+    }
+    #sort {
+      width: 100%;
+      margin: auto;
+      align-self: center;
+      justify-self: center;
+
+      select {
+        max-width: 170px;
+        max-height: 40px;
+        width:100% !important;
+        height: 100% !important;
+        margin: auto;
+      }
+    }
+    #filter {
+      width: 100%;
+      margin: auto;
+      align-self: center;
+      justify-self: center;
+      
+      #filterBtn{
+        max-width: 170px;
+        max-height: 40px;
+        width:100% !important;
+        height: 100% !important;
+        margin: auto;
       }
     }
   }
