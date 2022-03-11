@@ -161,12 +161,29 @@ body {
   border-radius: 4px;
 }
 
-#gridWrapper {
+#gridWrapper #grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[4];
-      grid-template-columns: repeat(4, auto);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
   margin: auto;
+  max-width: 80%;
+  padding-top: 5vh;
+}
+
+#gridWrapper #grid .item {
+  width: 150px;
+  height: 300px;
+  background: grey;
+  padding: 5px;
+}
+
+#gridWrapper #grid .item .wishlistBtn {
+  background: green;
+}
+
+#gridWrapper #grid .item .basketBtn {
+  background: yellow;
 }
 
 @media screen and (max-width: 768px) {
@@ -217,6 +234,10 @@ body {
     -webkit-transition: all 0.5 ease;
     transition: all 0.5 ease;
   }
+  #gridWrapper #grid {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -260,6 +281,10 @@ body {
     width: 100% !important;
     height: 100% !important;
     margin: auto;
+  }
+  #gridWrapper #grid {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
   }
 }
 /*# sourceMappingURL=style.css.map */

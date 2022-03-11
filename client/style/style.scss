@@ -144,9 +144,31 @@ body {
 }
 
 #gridWrapper {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  margin: auto;
+
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    max-width: 80%;
+    padding-top: 5vh;
+
+    .item {
+      width: 150px;
+      height: 300px;
+      background: grey;
+      padding: 5px;
+
+      .wishlistBtn {
+        background: green;
+      }
+
+      .basketBtn {
+        background: yellow;
+      }
+    }
+
+  }
+
 
 }
 
@@ -201,6 +223,13 @@ body {
       }
     }
   }
+
+  #gridWrapper {
+
+    #grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }
 
 @media screen and (max-width:550px) {
@@ -240,6 +269,13 @@ body {
         height: 100% !important;
         margin: auto;
       }
+    }
+  }
+
+  #gridWrapper {
+
+    #grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

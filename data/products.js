@@ -1,5 +1,5 @@
-{
-  "bricks": [
+export default {
+  "bricks":[
     {"id":1,
       "name": "Name",
       "type": 1,
