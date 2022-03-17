@@ -225,7 +225,6 @@ body {
   }
 
   #gridWrapper {
-
     #grid {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -236,7 +235,7 @@ body {
   #queryWrapper {
     .queryContent {
       max-width: 90%;
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(2, 1fr);
       grid-template-areas:'sort filter' !important;
     }
     p {
@@ -273,9 +272,16 @@ body {
   }
 
   #gridWrapper {
-
     #grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #gridWrapper {
+    #grid {
+      grid-template-columns: 1fr;
     }
   }
 }

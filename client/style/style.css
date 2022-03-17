@@ -243,8 +243,8 @@ body {
 @media screen and (max-width: 550px) {
   #queryWrapper .queryContent {
     max-width: 90%;
-    -ms-grid-columns: (auto)[2];
-        grid-template-columns: repeat(2, auto);
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
         grid-template-areas: 'sort filter' !important;
   }
   #queryWrapper p {
@@ -285,6 +285,13 @@ body {
   #gridWrapper #grid {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #gridWrapper #grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 /*# sourceMappingURL=style.css.map */
