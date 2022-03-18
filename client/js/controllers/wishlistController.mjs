@@ -1,8 +1,17 @@
 // Wishlist Manipulation
 
+const WISHLIST = [];
+const localStorage = window.localStorage;
+
+
 // Add to local storage Wishlist object
-function add() {
-  console.log('Added to Wishlist');
+function add(item) {
+  WISHLIST.push({
+    product: item,
+  });
+
+  localStorage.setItem('Wishlist', (JSON.stringify(WISHLIST)));
+  console.log(`Added ${JSON.stringify(item)} to wishlist!`);
 }
 
 // Remove from local storage Wishlist object

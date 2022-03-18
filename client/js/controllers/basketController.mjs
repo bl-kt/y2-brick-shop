@@ -1,15 +1,23 @@
 // Basket Manipulation
 
+const BASKET = [];
+const localStorage = window.localStorage;
+
 // Add to local storage basket object
-function add(data) {
-  console.log('Added to basket');
-  console.log(data);
+function add(item, quantity) {
+  BASKET.push({
+    product: item,
+    quantity: 1,
+  });
+
+  localStorage.setItem('Basket', (JSON.stringify(BASKET)));
+  console.log(`Added x${quantity} ${JSON.stringify(item)} to basket!`);
 }
 
 // Remove from local storage basket object
-function remove(data) {
+function remove(product) {
   console.log('Removed from basket');
-  console.log(data);
+  console.log(product);
 }
 
 // Retrieve contents of local storage
@@ -19,7 +27,7 @@ function get() {
 
 // Clear local storage basket object
 function clear() {
-  console.log('Cleared to basket');
+  console.log('Cleared basket');
 }
 
 export { add, remove, get, clear };

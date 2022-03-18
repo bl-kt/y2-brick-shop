@@ -48,6 +48,6 @@ function createItem(i) {
   basketBtn.classList.add('basketBtn');
   itemContent.appendChild(basketBtn);
   basketBtn.addEventListener('click', () => {
-    basket.add(data.bricks[i]);
+    basket.add(data.bricks[i], 1);
   });
 }
