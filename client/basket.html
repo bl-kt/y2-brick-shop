@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <!-- Meta -->
+    <title>Code Blocks</title>
+    <link rel="icon" href="content/branding/imageLogoCB.svg">
+    <link rel="apple-touch-icon" href="content/branding/imageLogo.svg">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="icon" type="image/x-icon" href="./content/branding/imageLogo.svg">
+
+    <!-- Scripts -->
+    <script type="module" src="js/renderers/nav.js"></script>
+    <script type="module" src="js/renderers/basket.js"></script>
+  </head>
+  <body>
+    <header id="navWrapper"></header>
+    <div id="title">
+      <h1>Basket</h1>
+      <p> Your basket contains [] items, and comes to a total of £[]</p>
+      <a href="basket.html" class="Checkout">
+        <button id="navCheckout">CHECKOUT</button>
+      </a>
+    </div>
+    <main id="basketWrapper">
+      <table id="basketTable">
+        <thead>
+          <tr>
+            <th>Items</th>
+            <th>Quantity</th>
+            <th>Stock</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody id="basketContents">
+        </tbody>
+      </table>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+  </body>
+</html>

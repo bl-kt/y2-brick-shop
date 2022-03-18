@@ -79,7 +79,7 @@ body {
   font-size: 0;
 }
 
-#navWrapper nav #navMenu li a:hover {
+#navWrapper nav #navMenu li a:hover a:click {
   color: #000;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
@@ -167,7 +167,7 @@ body {
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: auto;
-  max-width: 60%;
+  max-width: 55%;
   grid-gap: 20px;
   padding-top: 40px;
   -webkit-box-pack: center;

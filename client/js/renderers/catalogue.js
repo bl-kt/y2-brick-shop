@@ -2,7 +2,7 @@ import data from '../../../data/products.js';
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
 
-const grid = document.querySelector('#grid');
+const content = document.querySelector('#grid');
 
 document.addEventListener('DOMContentLoaded', renderCatalogue);
 
@@ -18,7 +18,7 @@ function createItem(i) {
   const wrapper = document.createElement('div');
   wrapper.id = (`item${data.bricks[i].id}`);
   wrapper.classList.add('item');
-  grid.appendChild(wrapper);
+  content.appendChild(wrapper);
 
   const itemContent = document.createElement('div');
   itemContent.classList.add('itemContent');

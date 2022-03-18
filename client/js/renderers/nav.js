@@ -1,9 +1,11 @@
 // Renders Nav Bar
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', renderNav);
+
+async function renderNav() {
   const res = await fetch('./components/nav.html');
   const nav = await res.text();
-  const wrapper = document.querySelector('#navWrapper');
-  wrapper.innerHTML = nav;
+  const content = document.querySelector('#navWrapper');
+  content.innerHTML = nav;
 
   const menuToggle = document.querySelector('#menuToggle');
   const navMenu = document.querySelector('#navMenu');
@@ -12,6 +14,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
-    console.log('Menu');
   });
-});
+}

@@ -74,7 +74,7 @@ body {
           font-size: 0;
         }
   
-        a:hover {
+        a:hover a:click{
           color: $text;
           transition: all 0.3 ease-out;
         }
@@ -154,7 +154,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: auto;
-    max-width: 60%;
+    max-width: 55%;
     grid-gap: 20px;
     padding-top: 40px;
 
