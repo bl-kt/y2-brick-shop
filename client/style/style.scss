@@ -7,6 +7,9 @@ $bannerText: #e0e0e0;
 $menu: #27272b;
 $menuText: #e0e0e0;
 
+$item: #e0e0e0;
+
+
 @viewport {
   width: device-width;
   zoom: 1.0
@@ -147,23 +150,81 @@ body {
 
   #grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: auto;
-    max-width: 80%;
-    padding-top: 5vh;
+    max-width: 60%;
+    grid-gap: 20px;
+    padding-top: 40px;
+
+    justify-content: center;
+    align-content: center;
 
     .item {
       width: 150px;
-      height: 300px;
-      background: grey;
-      padding: 5px;
+      height: 250px;
+      background: $item;
+      padding: 10px;
+      margin: auto;
+
+      .itemImg {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 30px;
+      }
+
+      .itemName {
+        font-family: Roboto;
+        text-align: left;
+        color: $text;
+        font-size: 15px;
+        font-weight: 600;
+
+        text-decoration: none;
+      }
+      
+      .itemName:hover {
+        color: #414141;
+      }
+      .itemPrice {
+        font-family: Roboto;
+        text-align: left;
+        color: $text;
+        font-size: 12px;
+        font-weight: 300;
+      }
 
       .wishlistBtn {
-        background: green;
+        padding: 5px;
+        position: relative;
+        top: -115px;
+        left: 115px;
+        img {
+          width: 25px;
+          height: 25px;
+          filter: invert(1);
+        }
+      }
+      .wishlistBtn:hover {
+        img {
+          filter: none;
+        }
       }
 
       .basketBtn {
-        background: yellow;
+        padding: 5px;
+        position: relative;
+        top: -29px;
+        left: 78px;
+        img {
+          width: 25px;
+          height: 25px;
+          filter: invert(1);
+        }
+      }
+      .basketBtn:hover {
+        img {
+          filter: none;
+        }
       }
     }
 
@@ -172,7 +233,7 @@ body {
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   #navWrapper {
     position: relative;
 
@@ -231,7 +292,7 @@ body {
   }
 }
 
-@media screen and (max-width:550px) {
+@media screen and (max-width:650px) {
   #queryWrapper {
     .queryContent {
       max-width: 90%;

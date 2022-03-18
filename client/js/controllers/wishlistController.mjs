@@ -26,7 +26,7 @@ function get() {
 
 // Clear local storage Wishlist object
 function clear() {
-  console.log('Cleared to Wishlist');
+  console.log('Cleared Wishlist');
 }
 
 export { add, remove, get, clear };

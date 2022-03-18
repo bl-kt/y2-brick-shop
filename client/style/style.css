@@ -164,29 +164,93 @@ body {
 #gridWrapper #grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: auto;
-  max-width: 80%;
-  padding-top: 5vh;
+  max-width: 60%;
+  grid-gap: 20px;
+  padding-top: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 #gridWrapper #grid .item {
   width: 150px;
-  height: 300px;
-  background: grey;
-  padding: 5px;
+  height: 250px;
+  background: #e0e0e0;
+  padding: 10px;
+  margin: auto;
+}
+
+#gridWrapper #grid .item .itemImg {
+  width: 150px;
+  height: 150px;
+  padding-bottom: 30px;
+}
+
+#gridWrapper #grid .item .itemName {
+  font-family: Roboto;
+  text-align: left;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#gridWrapper #grid .item .itemName:hover {
+  color: #414141;
+}
+
+#gridWrapper #grid .item .itemPrice {
+  font-family: Roboto;
+  text-align: left;
+  color: #000;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 #gridWrapper #grid .item .wishlistBtn {
-  background: green;
+  padding: 5px;
+  position: relative;
+  top: -115px;
+  left: 115px;
+}
+
+#gridWrapper #grid .item .wishlistBtn img {
+  width: 25px;
+  height: 25px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+#gridWrapper #grid .item .wishlistBtn:hover img {
+  -webkit-filter: none;
+          filter: none;
 }
 
 #gridWrapper #grid .item .basketBtn {
-  background: yellow;
+  padding: 5px;
+  position: relative;
+  top: -29px;
+  left: 78px;
 }
 
-@media screen and (max-width: 768px) {
+#gridWrapper #grid .item .basketBtn img {
+  width: 25px;
+  height: 25px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+#gridWrapper #grid .item .basketBtn:hover img {
+  -webkit-filter: none;
+          filter: none;
+}
+
+@media screen and (max-width: 800px) {
   #navWrapper {
     position: relative;
   }
@@ -240,7 +304,7 @@ body {
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
   #queryWrapper .queryContent {
     max-width: 90%;
     -ms-grid-columns: (1fr)[2];

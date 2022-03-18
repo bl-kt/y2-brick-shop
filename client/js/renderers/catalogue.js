@@ -4,13 +4,16 @@ import * as basket from '../controllers/basketController.mjs';
 
 const grid = document.querySelector('#grid');
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', renderCatalogue);
+
+// Renders Catalogue
+function renderCatalogue() {
   for (let i = 0; i < data.bricks.length; i++) {
     createItem(i);
   }
-});
+}
 
-// Renders catalogue item
+// Renders individual items to append to catalogue
 function createItem(i) {
   const wrapper = document.createElement('div');
   wrapper.id = (`item${data.bricks[i].id}`);
@@ -32,21 +35,31 @@ function createItem(i) {
   itemContent.appendChild(itemName);
 
   const itemPrice = document.createElement('p');
-  itemPrice.textContent = `${data.bricks[i].price}`;
+  itemPrice.textContent = `£ ${data.bricks[i].price}`;
   itemPrice.classList.add('itemPrice');
   itemContent.appendChild(itemPrice);
 
-  const wishlistBtn = document.createElement('button');
+  const wishlistBtn = document.createElement('a');
   wishlistBtn.value = `${data.bricks[i].id}`;
   wishlistBtn.classList.add('wishlistBtn');
   itemContent.appendChild(wishlistBtn);
+
+  const heartIcon = document.createElement('img');
+  heartIcon.src = '/client/content/icons/heart.svg';
+  wishlistBtn.appendChild(heartIcon);
+
   wishlistBtn.addEventListener('click', () => {
     wishlist.add(data.bricks[i]);
   });
 
-  const basketBtn = document.createElement('button');
+  const basketBtn = document.createElement('a');
   basketBtn.classList.add('basketBtn');
   itemContent.appendChild(basketBtn);
+
+  const cartIcon = document.createElement('img');
+  cartIcon.src = '/client/content/icons/cart.svg';
+  basketBtn.appendChild(cartIcon);
+
   basketBtn.addEventListener('click', () => {
     basket.add(data.bricks[i], 1);
   });
