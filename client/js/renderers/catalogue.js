@@ -52,13 +52,10 @@ function createItem(i) {
     wishlist.add(data.bricks[i]);
   });
 
-  const basketBtn = document.createElement('a');
+  const basketBtn = document.createElement('button');
   basketBtn.classList.add('basketBtn');
+  basketBtn.textContent = '+ Basket';
   itemContent.appendChild(basketBtn);
-
-  const cartIcon = document.createElement('img');
-  cartIcon.src = '/client/content/icons/cart.svg';
-  basketBtn.appendChild(cartIcon);
 
   basketBtn.addEventListener('click', () => {
     basket.add(data.bricks[i], 1);
