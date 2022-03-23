@@ -23,7 +23,7 @@ function createItem(i) {
   createAndAppend('a', itemContent, undefined, 'itemName', `${data.bricks[i].name}`, `/products/${data.bricks[i].id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.bricks[i].price}`);
 
-  const wishlistBtn = createAndAppend('a', itemContent, undefined, 'wishlistBtn', undefined, undefined, `${data.bricks[i].id}`);
+  const wishlistBtn = createAndAppend('a', itemContent, undefined, 'wishlistBtn', undefined, undefined);
   createAndAppend('img', wishlistBtn, undefined, undefined, undefined, undefined, undefined, '/client/content/icons/heart.svg');
   wishlistBtn.addEventListener('click', () => {
     wishlist.add(data.bricks[i]);

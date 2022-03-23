@@ -15,9 +15,9 @@ function add(item, quantity) {
 }
 
 // Remove from local storage basket object
-function remove(product) {
+function remove(item) {
   console.log('Removed from basket');
-  console.log(product);
+  console.log(item);
 }
 
 // Retrieve contents of local storage
