@@ -1,5 +1,3 @@
-import * as wishlist from '../controllers/wishlistController.mjs';
-import * as basket from '../controllers/basketController.mjs';
 import { createAndAppend } from '../helpers.js';
 
 const localStorage = window.localStorage;
