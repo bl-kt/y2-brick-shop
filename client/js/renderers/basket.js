@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', renderBasket);
 
 function renderBasket() {
   const basketContent = JSON.parse(localStorage.getItem('Basket'));
-  console.log(basketContent);
-  // parse stringified json from local localStorage
-  // loop basket
-  // generate items
   for (let i = 0; i < basketContent.length; i++) {
     renderItem(basketContent, i);
   }
