@@ -12,6 +12,7 @@ const port = process.env.PORT || 8080;
 // Methods
 
 app.use(express.static('../client'));
+app.use(express.static('../data'));
 
 app.use('/order', order);
 app.use('/customer', customer);

@@ -1,4 +1,9 @@
+// go live
 import data from '../../../data/products.js';
+
+// npm start
+// import data from '/products.js';
+
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
 import { createAndAppend } from '../helpers.js';

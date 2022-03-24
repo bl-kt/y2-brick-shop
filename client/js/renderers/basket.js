@@ -1,4 +1,5 @@
 import { createAndAppend } from '../helpers.js';
+import { remove } from '../controllers/basketController.mjs';
 
 const localStorage = window.localStorage;
 const wrapper = document.querySelector('#basketContents');
@@ -20,6 +21,10 @@ function renderItem(basketContent, i) {
   createAndAppend('td', tr, undefined, 'itemQuantity', `${basketContent[i].quantity}`);
   createAndAppend('td', tr, undefined, 'itemStock', `${basketContent[i].product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${basketContent[i].product.price}`);
+  const removeBtn = createAndAppend('button', tr, undefined, 'remove');
+  removeBtn.addEventListener('click', () => {
+    remove(basketContent[i]);
+  });
 }
 
 function updateBasketHeader(basketHeader) {
