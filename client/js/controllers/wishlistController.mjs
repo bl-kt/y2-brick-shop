@@ -15,8 +15,13 @@ function add(item) {
 }
 
 // Remove from local storage Wishlist object
-function remove() {
-  console.log('Removed from Wishlist');
+function remove(item) {
+  const currentWishlist = (JSON.parse(localStorage.getItem('Wishlist')));
+  const newWishlist = currentWishlist.filter(comparison => comparison.product.id !== item.product.id);
+  localStorage.setItem('Wishlist', (JSON.stringify(newWishlist)));
+  console.log(`Remove ${item} from wishlist!`);
+  location.reload();
+  // currently removes all items with id,  not just selected
 }
 
 // Retrieve contents of local storage

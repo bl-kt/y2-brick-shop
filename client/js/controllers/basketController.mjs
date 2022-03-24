@@ -16,10 +16,13 @@ function add(item, quantity) {
 
 // Remove from local storage basket object
 function remove(item) {
-  console.log('Removed from basket');
-  console.log(item);
+  const currentBasket = (JSON.parse(localStorage.getItem('Basket')));
+  const newBasket = currentBasket.filter(comparison => comparison.product.id !== item.product.id);
+  localStorage.setItem('Basket', (JSON.stringify(newBasket)));
+  console.log(`Remove ${item} from Basket!`);
+  location.reload();
+  // currently removes all items with id,  not just selected
 }
-
 // Retrieve contents of local storage
 function get() {
   console.log('Retrieved basket');
