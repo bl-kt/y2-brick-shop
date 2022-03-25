@@ -8,6 +8,7 @@ async function renderNav() {
   content.innerHTML = nav;
 
   const menuToggle = document.querySelector('#menuToggle');
+  const checkoutBtn = document.querySelector('#navCheckout')
   const navMenu = document.querySelector('#navMenu');
 
   // Toggles Hamburger Menu
@@ -15,4 +16,6 @@ async function renderNav() {
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
   });
+
+
 }

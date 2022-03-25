@@ -1,11 +1,17 @@
 import { createAndAppend } from '../helpers.js';
 import { remove } from '../controllers/basketController.mjs';
+import { checkout } from '../controllers/checkoutController.mjs'
 
 const localStorage = window.localStorage;
 const wrapper = document.querySelector('#basketContents');
 const basketHeader = document.querySelector('#basketHeader');
+const checkoutBtn = document.querySelector('#checkoutBtn');
 
-document.addEventListener('DOMContentLoaded', renderBasket);
+document.addEventListener('DOMContentLoaded', () => {
+  renderBasket();
+});
+
+checkoutBtn.addEventListener('click', checkout());
 
 function renderBasket() {
   const basketContent = JSON.parse(localStorage.getItem('Basket'));

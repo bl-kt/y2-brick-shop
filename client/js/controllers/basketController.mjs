@@ -5,6 +5,8 @@ const localStorage = window.localStorage;
 
 // Add to local storage basket object
 function add(item, quantity) {
+
+  // if id doesn't exist:
   BASKET.push({
     product: item,
     quantity: 1,
