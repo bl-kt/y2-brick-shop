@@ -32,7 +32,7 @@ function renderItem(basketContent, i) {
   createAndAppend('td', tr, undefined, 'itemStock', `${basketContent[i].product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${basketContent[i].product.price}`);
 
-  const removeBtn = createAndAppend('button', tr, undefined, 'remove');
+  const removeBtn = createAndAppend('button', tr, undefined, 'remove', 'X');
   removeBtn.addEventListener('click', () => {
     remove(basketContent[i]);
   });

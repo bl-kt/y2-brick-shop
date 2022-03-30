@@ -1,4 +1,4 @@
-import { remove } from '../controllers/wishlistController.mjs';
+import { moveToBasket, remove } from '../controllers/wishlistController.mjs';
 import { createAndAppend } from '../helpers.js';
 
 const localStorage = window.localStorage;
@@ -25,15 +25,16 @@ function renderItem(wishlistContent, i) {
   createAndAppend('td', tr, undefined, 'itemStock', `${wishlistContent[i].product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${wishlistContent[i].product.price}`);
 
-  const removeBtn = createAndAppend('button', tr, undefined, 'removeBtn');
+  const removeBtn = createAndAppend('button', tr, undefined, 'removeBtn', 'X');
   removeBtn.addEventListener('click', () => {
     remove(wishlistContent[i]);
   });
 
-  const basketBtn = createAndAppend('button', tr, undefined, 'basketBtn');
+  const basketBtn = createAndAppend('button', tr, undefined, 'basketBtn', '+ Basket');
   basketBtn.addEventListener('click', () => {
     // TO DO: remove from wishlist, add to basket
     console.log('add to basket');
+    moveToBasket(wishlistContent[i], 1);
   });
 }
 

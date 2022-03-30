@@ -1,8 +1,8 @@
 // Wishlist Manipulation
+import { add as basketAdd } from './basketController.mjs';
 
 const WISHLIST = [];
 const localStorage = window.localStorage;
-
 
 // FUNCTION: Add [item] to local storage Wishlist object
 function add(item) {
@@ -30,4 +30,11 @@ function clear() {
   localStorage.setItem('Wishlist', emptyWishlist);
 }
 
-export { add, remove, clear };
+// FUNCTION: Add to basket, from wishlist
+function moveToBasket(item) {
+  basketAdd(item);
+  remove(item);
+  // window.location.href = './basket.html';
+}
+
+export { add, remove, clear, moveToBasket };
