@@ -1,6 +1,6 @@
 import { createAndAppend } from '../helpers.js';
 import { remove } from '../controllers/basketController.mjs';
-import { checkout } from '../controllers/checkoutController.mjs'
+import { checkout } from '../controllers/checkoutController.mjs';
 
 const localStorage = window.localStorage;
 const wrapper = document.querySelector('#basketContents');

@@ -25,12 +25,12 @@ function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefP
   return element;
 }
 
-export { createAndAppend };
-
 function isInBasket(id) {
-  return BASKET.filter( item=> item.id === id).length;
+  return BASKET.filter(item => item.id === id).length;
 }
 
 function inBasket(id) {
-  return BASKET.filter( item => item.id === id);
+  return BASKET.filter(item => item.id === id);
 }
+
+export { createAndAppend, isInBasket, inBasket };
