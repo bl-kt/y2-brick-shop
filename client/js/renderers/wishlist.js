@@ -7,6 +7,7 @@ const wishlistHeader = document.querySelector('#wishlistHeader');
 
 document.addEventListener('DOMContentLoaded', renderwishlist);
 
+// FUNCTION: For items in wishlist object, renders items, then updates the wishlist header to reflect basket content.
 function renderwishlist() {
   const wishlistContent = JSON.parse(localStorage.getItem('Wishlist'));
 
@@ -16,6 +17,7 @@ function renderwishlist() {
   updatewishlistHeader(wishlistHeader);
 }
 
+// FUNCTION: Generates an item for the wishlist page.
 function renderItem(wishlistContent, i) {
   const tr = createAndAppend('tr', wrapper, `${wishlistContent[i].product.id}`, 'item');
 
@@ -30,15 +32,17 @@ function renderItem(wishlistContent, i) {
 
   const basketBtn = createAndAppend('button', tr, undefined, 'basketBtn');
   basketBtn.addEventListener('click', () => {
-    // remove from wishlist, add to basket
+    // TO DO: remove from wishlist, add to basket
     console.log('add to basket');
   });
 }
 
+// FUNCTION: Updates the basket header to reflect wishlist content
 function updatewishlistHeader(wishlistHeader) {
   wishlistHeader.innerText = `Your wishlist contains ${sumQuantity()} items, and comes to a total of £${sumCost()}.`;
 }
 
+// FUNCTION: Sums the quantity of items within the wishlist
 function sumQuantity() {
   const items = document.querySelectorAll('.item');
 
@@ -49,6 +53,7 @@ function sumQuantity() {
   return iSum;
 }
 
+// FUNCTION: Sums the cost of items within the wishlist
 function sumCost() {
   const prices = document.querySelectorAll('.itemPrice');
 

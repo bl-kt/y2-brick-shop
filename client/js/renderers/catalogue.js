@@ -1,25 +1,21 @@
-// go live
 import data from '../../../data/products.js';
-
-// npm start
-// import data from '/products.js';
 
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
-import { createAndAppend } from '../helpers.mjs';
+import { createAndAppend } from '../helpers.js';
 
 const content = document.querySelector('#grid');
 
 document.addEventListener('DOMContentLoaded', renderCatalogue);
 
-// Renders Catalogue
+// FUNCTION: Renders Catalogue
 function renderCatalogue() {
   for (let i = 0; i < data.bricks.length; i++) {
     createItem(i);
   }
 }
 
-// Renders individual items to append to catalogue
+// FUNCTION: Renders individual items to append to catalogue
 function createItem(i) {
   const wrapper = createAndAppend('div', content, `item${data.bricks[i].id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');

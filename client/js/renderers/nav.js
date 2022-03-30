@@ -1,6 +1,6 @@
-// Renders Nav Bar
 document.addEventListener('DOMContentLoaded', renderNav);
 
+// FUNCTION: Renders nav bar
 async function renderNav() {
   const res = await fetch('./components/nav.html');
   const nav = await res.text();
@@ -15,6 +15,4 @@ async function renderNav() {
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
   });
-
-
 }

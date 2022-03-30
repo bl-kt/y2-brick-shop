@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 checkoutBtn.addEventListener('click', checkout);
 
+// FUNCTION: For items in basket object, renders items, then updates the basket header to reflect basket content.
 function renderBasket() {
   const basketContent = JSON.parse(localStorage.getItem('Basket'));
   for (let i = 0; i < basketContent.length; i++) {
@@ -21,6 +22,7 @@ function renderBasket() {
   updateBasketHeader(basketHeader);
 }
 
+// FUNCTION: Generates an item for the basket page.
 function renderItem(basketContent, i) {
   const tr = createAndAppend('tr', wrapper, `${basketContent[i].product.id}`, 'item');
   createAndAppend('td', tr, undefined, 'itemName', `${basketContent[i].product.name}`);
@@ -34,10 +36,12 @@ function renderItem(basketContent, i) {
   });
 }
 
+// FUNCTION: Updates the basket header to reflect basket content
 function updateBasketHeader(basketHeader) {
   basketHeader.innerText = `Your basket contains ${sumQuantity()} items, and comes to a total of £${sumCost()}.`;
 }
 
+// FUNCTION: Sums the quantity of items within the basket
 function sumQuantity() {
   const quantities = document.querySelectorAll('.itemQuantity');
   let qSum = 0;
@@ -47,6 +51,7 @@ function sumQuantity() {
   return qSum;
 }
 
+// FUNCTION: Sums the cost of items within the basket
 function sumCost() {
   const prices = document.querySelectorAll('.itemPrice');
   const quantities = document.querySelectorAll('.itemQuantity');
