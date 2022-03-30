@@ -45,7 +45,6 @@ function updatewishlistHeader(wishlistHeader) {
 // FUNCTION: Sums the quantity of items within the wishlist
 function sumQuantity() {
   const items = document.querySelectorAll('.item');
-
   let iSum = 0;
   for (let i = 0; i < items.length; i++) {
     iSum++;
@@ -56,10 +55,9 @@ function sumQuantity() {
 // FUNCTION: Sums the cost of items within the wishlist
 function sumCost() {
   const prices = document.querySelectorAll('.itemPrice');
-
   let pSum = 0;
   for (let i = 0; i < prices.length; i++) {
     pSum += (parseFloat(prices[i].innerText));
   }
-  return pSum;
+  return pSum.toFixed(2);
 }

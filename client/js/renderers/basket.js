@@ -16,8 +16,10 @@ checkoutBtn.addEventListener('click', checkout);
 // FUNCTION: For items in basket object, renders items, then updates the basket header to reflect basket content.
 function renderBasket() {
   const basketContent = JSON.parse(localStorage.getItem('Basket'));
-  for (let i = 0; i < basketContent.length; i++) {
-    renderItem(basketContent, i);
+  if (basketContent.length > 0) {
+    for (let i = 0; i < basketContent.length; i++) {
+      renderItem(basketContent, i);
+    }
   }
   updateBasketHeader(basketHeader);
 }
@@ -48,7 +50,11 @@ function sumQuantity() {
   for (let i = 0; i < quantities.length; i++) {
     qSum += parseInt(quantities[i].innerText);
   }
-  return qSum;
+  if (qSum > 0) {
+    return qSum;
+  } else {
+    return 'no';
+  }
 }
 
 // FUNCTION: Sums the cost of items within the basket
@@ -59,5 +65,5 @@ function sumCost() {
   for (let i = 0; i < prices.length; i++) {
     pSum += (parseFloat(prices[i].innerText) * parseInt(quantities[i].innerText));
   }
-  return pSum;
+  return pSum.toFixed(2);
 }

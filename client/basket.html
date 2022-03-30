@@ -17,22 +17,27 @@
   </head>
   <body>
     <header id="navWrapper"></header>
-    <div id="title">
-      <h1>Basket</h1>
-      <p id="basketHeader"></p>
-      <a href="basket.html" class="Checkout">
-      </a>
-        <button id="checkoutBtn">CHECKOUT</button>
-    </div>
+    <h1 class="navBanner">Basket</h1>
     <main id="basketWrapper">
+      <div id="basketTitle">
+        <p id="orderValue">Order Value</p>
+        <p id="basketHeader"></p>
+        <p id="shipping">*Excluding standard UK delivery <br>
+          Free pick-up from store
+        </p>
+        <div id="basketNav">
+          <a href="#">< Shop More</a>
+          <button id="checkoutBtn">CHECKOUT</button>
+        </div>
+      </div>
       <table id="basketTable">
         <thead>
           <tr>
-            <th>Items</th>
-            <th>Quantity</th>
-            <th>Stock</th>
-            <th>Price</th>
-            <th></th>
+            <th id="itemColumn">Items</th>
+            <th id="quantityColumn">Quantity</th>
+            <th id="stockColumn">Stock</th>
+            <th id="priceColumn">Price</th>
+            <th class="hideColumn"></th>
           </tr>
         </thead>
         <tbody id="basketContents">
