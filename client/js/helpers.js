@@ -1,3 +1,5 @@
+const BASKET = localStorage.getItem('Basket');
+
 function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefParam, valueParam, srcParam) {
   const element = document.createElement(eleParam);
 
@@ -24,3 +26,11 @@ function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefP
 }
 
 export { createAndAppend };
+
+function isInBasket(id) {
+  return BASKET.filter( item=> item.id === id).length;
+}
+
+function inBasket(id) {
+  return BASKET.filter( item => item.id === id);
+}

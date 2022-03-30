@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBasket();
 });
 
-checkoutBtn.addEventListener('click', checkout());
+checkoutBtn.addEventListener('click', checkout);
 
 function renderBasket() {
   const basketContent = JSON.parse(localStorage.getItem('Basket'));
@@ -27,6 +27,7 @@ function renderItem(basketContent, i) {
   createAndAppend('td', tr, undefined, 'itemQuantity', `${basketContent[i].quantity}`);
   createAndAppend('td', tr, undefined, 'itemStock', `${basketContent[i].product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${basketContent[i].product.price}`);
+
   const removeBtn = createAndAppend('button', tr, undefined, 'remove');
   removeBtn.addEventListener('click', () => {
     remove(basketContent[i]);
