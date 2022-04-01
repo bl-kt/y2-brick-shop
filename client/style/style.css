@@ -21,6 +21,21 @@ body {
   overflow-x: hidden;
 }
 
+.btn {
+  color: #e0e0e0;
+  background: #9a5c5b;
+  font-family: Roboto;
+  padding: 9px;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn:hover {
+  background: #76323f;
+  -webkit-transition: all 0.3 ease-out;
+  transition: all 0.3 ease-out;
+}
+
 .navBanner {
   background: #9a5c5b;
   width: 100%;
@@ -80,21 +95,6 @@ body {
   font-family: Roboto;
   color: transparent;
   font-size: 0;
-}
-
-#frontWrapper #promoText a #browseBtn {
-  color: #e0e0e0;
-  background: #9a5c5b;
-  font-family: Roboto;
-  padding: 9px;
-  border-radius: 4px;
-  border: none;
-}
-
-#frontWrapper #promoText a #browseBtn:hover {
-  background: #76323f;
-  -webkit-transition: all 0.3 ease-out;
-  transition: all 0.3 ease-out;
 }
 
 #frontWrapper #promoText h2 {
@@ -430,15 +430,6 @@ body {
   padding: 5px;
 }
 
-#basketWrapper #basketTitle #basketNav #checkoutBtn {
-  color: #e0e0e0;
-  background: #9a5c5b;
-  font-family: Roboto;
-  padding: 9px;
-  border-radius: 4px;
-  border: none;
-}
-
 #basketWrapper #basketTitle #basketNav a {
   color: #000;
   font-family: Arial;
@@ -531,15 +522,6 @@ body {
 
 #wishlistWrapper #wishlistTitle #wishlistNav {
   padding: 5px;
-}
-
-#wishlistWrapper #wishlistTitle #wishlistNav #checkoutBtn {
-  color: #e0e0e0;
-  background: #9a5c5b;
-  font-family: Roboto;
-  padding: 9px;
-  border-radius: 4px;
-  border: none;
 }
 
 #wishlistWrapper #wishlistTitle #wishlistNav a {

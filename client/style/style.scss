@@ -25,6 +25,20 @@ body {
   overflow-x: hidden;
 }
 
+.btn {
+  color: $menuText;
+  background: $button;
+  font-family: Roboto;
+  padding: 9px;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn:hover{
+  background: $buttonHighlight;
+  transition: all 0.3 ease-out;
+}
+
 .navBanner {
   background: $button;
   width: 100%;
@@ -73,20 +87,6 @@ body {
       font-family: Roboto;
       color: transparent;
       font-size: 0;
-
-      #browseBtn {
-        color: $menuText;
-        background: $button;
-        font-family: Roboto;
-        padding: 9px;
-        border-radius: 4px;
-        border: none;
-      }
-
-      #browseBtn:hover {
-        background: $buttonHighlight;
-        transition: all 0.3 ease-out;
-      }
     }
 
     h2 {
@@ -396,14 +396,6 @@ body {
 
     #basketNav {
       padding: 5px;
-      #checkoutBtn {
-        color: $menuText;
-        background: $button;
-        font-family: Roboto;
-        padding: 9px;
-        border-radius: 4px;
-        border: none;
-      }
       a {
         color: $text;
         font-family: Arial;
@@ -492,14 +484,6 @@ body {
 
     #wishlistNav {
       padding: 5px;
-      #checkoutBtn {
-        color: $menuText;
-        background: $button;
-        font-family: Roboto;
-        padding: 9px;
-        border-radius: 4px;
-        border: none;
-      }
       a {
         color: $text;
         font-family: Arial;
