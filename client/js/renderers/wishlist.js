@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', renderwishlist);
 // FUNCTION: For items in wishlist object, renders items, then updates the wishlist header to reflect basket content.
 function renderwishlist() {
   const wishlistContent = JSON.parse(localStorage.getItem('Wishlist'));
-
   for (let i = 0; i < wishlistContent.length; i++) {
     renderItem(wishlistContent, i);
   }
@@ -20,7 +19,6 @@ function renderwishlist() {
 // FUNCTION: Generates an item for the wishlist page.
 function renderItem(wishlistContent, i) {
   const tr = createAndAppend('tr', wrapper, `${wishlistContent[i].product.id}`, 'item');
-
   createAndAppend('td', tr, undefined, 'itemName', `${wishlistContent[i].product.name}`);
   createAndAppend('td', tr, undefined, 'itemStock', `${wishlistContent[i].product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${wishlistContent[i].product.price}`);

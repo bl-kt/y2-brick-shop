@@ -4,11 +4,12 @@ const BASKET = [];
 const localStorage = window.localStorage;
 
 // FUNCTION: Add [quantity] of [item] to the basket
+// overwrites current content
 function add(item, quantity) {
   // if id doesn't exist:
   BASKET.push({
     product: item,
-    quantity: 1,
+    quantity: quantity,
   });
 
   localStorage.setItem('Basket', (JSON.stringify(BASKET)));

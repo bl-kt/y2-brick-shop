@@ -45,6 +45,81 @@ body {
   color: $bannerText;
 }
 
+#frontWrapper {
+  position: relative;
+  background: $item;
+  top: 100px;
+
+  #promoWrapper {
+    max-width: 60%;
+    margin: auto;
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "image text";
+  }
+  img {
+    grid-area: "image";
+  }
+  #promoText {
+    padding-top: 50px;
+    grid-area: "text";
+
+    a{
+      padding: 5px;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-family: Roboto;
+      color: transparent;
+      font-size: 0;
+
+      #browseBtn {
+        color: $menuText;
+        background: $button;
+        font-family: Roboto;
+        padding: 9px;
+        border-radius: 4px;
+        border: none;
+      }
+
+      #browseBtn:hover {
+        background: $buttonHighlight;
+        transition: all 0.3 ease-out;
+      }
+    }
+
+    h2 {
+      font-family: 'Roboto';
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 26px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #000;
+    }
+
+    p {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 100;
+      font-size: 14px;
+      line-height: 15px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #000;
+    }
+  }
+}
+
 #navWrapper {
   width: 100%;
   background: $banner;
@@ -269,6 +344,12 @@ body {
   margin: auto;
   padding-top: 50px;
 
+  .Line {
+    width: 100%;
+    height: 47px;
+    border-bottom: 1px solid black;
+  }
+
   #basketTitle {
     width: 100%;
 
@@ -359,6 +440,12 @@ body {
   margin: auto;
   padding-top: 50px;
 
+  .Line {
+    width: 100%;
+    height: 47px;
+    border-bottom: 1px solid black;
+  }
+
   #wishlistTitle {
     width: 100%;
 
@@ -444,6 +531,15 @@ body {
   }
 }
 
+#footerWrapper {
+  position: absolute;
+  top: 100vh;
+  background-color: $banner;
+  height: 100px;
+  width: 100%;
+}
+
+
 @media screen and (max-width: 800px) {
   #navWrapper {
     position: relative;
@@ -511,6 +607,10 @@ body {
     max-width: 70%;
     margin: auto;
   }
+
+  #frontWrapper {
+    max-width: 70%;
+  }
 }
 
 @media screen and (max-width:650px) {
@@ -558,6 +658,10 @@ body {
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  #frontWrapper {
+    max-width: 80%;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -575,5 +679,9 @@ body {
   #wishlistWrapper {
     max-width: 90%;
     margin: auto;
+  }
+
+  #frontWrapper {
+    max-width: 90%;
   }
 }

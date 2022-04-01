@@ -32,7 +32,7 @@ function clear() {
 
 // FUNCTION: Add to basket, from wishlist
 function moveToBasket(item) {
-  basketAdd(item);
+  basketAdd(item.product, 1);
   remove(item);
   // window.location.href = './basket.html';
 }
