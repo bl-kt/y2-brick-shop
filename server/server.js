@@ -1,23 +1,36 @@
 const express = require('express');
 const app = express();
-// const path = require('path');
+const port = 8080;
+
+// DB
+function initDB() {
+  const { Client } = require('pg');
+  const db = new Client({
+    host: 'localhost',
+    user: 'brickshop_superuser',
+    password: 'strongerPassword',
+    port: 5432,
+    database: 'brickshop',
+  });
+  return db;
+}
+
+const db = initDB();
+db.connect();
 
 // Routers
-
 const order = require('./routes/order.js');
 const customer = require('./routes/customer.js');
 const product = require('./routes/product.js');
-const port = process.env.PORT || 8080;
 
 // Methods
 
 app.use(express.static('../client'));
-app.use(express.static('../data'));
+app.use('api/order', order);
+app.use('api/customer', customer);
+app.use('api/product', product);
 
-app.use('/order', order);
-app.use('/customer', customer);
-app.use('/product', product);
-
+// Listeners
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
