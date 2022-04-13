@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', getCustomers);
+router.get('all/', getCustomers);
 
 router.get('/:id', getCustomer);
 router.get('/:id/orders', getCustomerInfo);

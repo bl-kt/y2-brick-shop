@@ -20,7 +20,8 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "pg-promise": "^10.11.1"
   },
   "devDependencies": {
     "eslint": "^8.8.0",

@@ -3,7 +3,7 @@ const router = express.Router();
 
 // bricks
 
-router.get('bricks/', getBricks);
+router.get('all/', getBricks);
 
 router.get('/:id', getBrick);
 router.get('/:id/stock', getBrickInfo);
@@ -13,7 +13,10 @@ function getBricks() {
 }
 
 function getBrick() {
-  console.log('Brick');
+// ​app​.​get​(​'/brick/:id'​,​ ​(​req​,​ ​res​,​ ​next​)​ ​=>​ ​{
+//   ​  ​res​.​redirect​(​'/generated.html?id='​ ​+​ ​req​.​params​.​id);
+//   ​  ​next​(​)​;
+//   ​}​)​;
 }
 
 function getBrickInfo() {

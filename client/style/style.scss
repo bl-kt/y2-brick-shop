@@ -132,7 +132,7 @@ body {
     align-items: center;
     width: 90%;
     margin: 0 auto;
-  
+
     #logo {
       justify-self: start;
       top: 50%;
@@ -140,13 +140,13 @@ body {
       height: auto;
       padding: 15px;
     }
-  
+
     #menuToggle {
       opacity: 0;
       width: 24px;
       height: 24px;
     }
-  
+
     #navMenu {
       display: grid;
       grid-template-columns: repeat(5, auto);
@@ -154,13 +154,13 @@ body {
       text-align: center;
       width: 260px;
       justify-self: end;
-  
+
       li {
-  
+
         .navIcon{
           padding-top: 5px;
         }
-  
+
         a {
           padding: 5px;
           color: $bannerText;
@@ -169,12 +169,12 @@ body {
           color: transparent;
           font-size: 0;
         }
-  
+
         a:hover a:click{
           color: $text;
           transition: all 0.3 ease-out;
         }
-  
+
         #navCheckout {
           color: $menuText;
           background: $button;
@@ -183,7 +183,7 @@ body {
           border-radius: 4px;
           border: none;
         }
-  
+
         #navCheckout:hover {
           background: $buttonHighlight;
           transition: all 0.3 ease-out;
@@ -208,7 +208,7 @@ body {
     grid-template-columns: 1fr 1.5fr .5fr .5fr;
     grid-template-areas:'indicator  .  sort filter';
 
-    
+
     p {
       grid-area: indicator;
       align-self: flex-start;
@@ -423,7 +423,6 @@ body {
         border: none;
       }
     }
-    
   }
 }
 
@@ -511,7 +510,6 @@ body {
         border: none;
       }
     }
-    
   }
 }
 
@@ -626,7 +624,7 @@ body {
       margin: auto;
       align-self: center;
       justify-self: center;
-      
+
       #filterBtn{
         max-width: 170px;
         max-height: 40px;
