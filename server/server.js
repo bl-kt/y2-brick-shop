@@ -1,23 +1,9 @@
 const express = require('express');
+const db = require('../database/db.js');
 const app = express();
 const port = 8080;
 
-// // DB
-// function initDB() {
-//   const { Client } = require('pg');
-//   const db = new Client({
-//     host: 'localhost',
-//     user: 'brickshop_superuser',
-//     password: 'strongerPassword',
-//     port: 5432,
-//     database: 'brickshop',
-//   });
-//   return db;
-// }
-
-// const db = initDB();
-// db.connect();
-
+db.startDB();
 
 // Routers
 const order = require('./routes/order.js');
@@ -28,9 +14,9 @@ const product = require('./routes/product.js');
 
 app.use(express.static('../client'));
 
-app.use('api/order', order);
-app.use('api/customer', customer);
-app.use('api/product', product);
+app.use('/api/order', order);
+app.use('/api/customer', customer);
+app.use('/api/product', product);
 
 // Listeners
 app.listen(port, () => {

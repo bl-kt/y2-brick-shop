@@ -7,7 +7,7 @@ const wrapper = document.querySelector('#basketContents');
 const basketHeader = document.querySelector('#basketHeader');
 const checkoutBtn = document.querySelector('#checkoutBtn');
 
-document.addEventListener('DOMContentLoaded',renderBasket );
+document.addEventListener('DOMContentLoaded', renderBasket);
 
 checkoutBtn.addEventListener('click', checkout);
 

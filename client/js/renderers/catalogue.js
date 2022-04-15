@@ -1,7 +1,6 @@
-import data from '../../../data/products.js';
-
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
+import * as product from '../controllers/productController.mjs';
 import { createAndAppend } from '../helpers.js';
 
 const content = document.querySelector('#grid');
@@ -9,29 +8,36 @@ const content = document.querySelector('#grid');
 document.addEventListener('DOMContentLoaded', renderCatalogue);
 
 // FUNCTION: Renders Catalogue
-function renderCatalogue() {
-  for (let i = 0; i < data.bricks.length; i++) {
-    createItem(i);
+async function renderCatalogue() {
+  const data = await product.getCatalogue();
+
+  for (const item of data) {
+    createItem(item);
   }
 }
 
 // FUNCTION: Renders individual items to append to catalogue
-function createItem(i) {
-  const wrapper = createAndAppend('div', content, `item${data.bricks[i].id}`, 'item');
+function createItem(data) {
+  const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
   createAndAppend('img', itemContent, undefined, 'itemImg');
-  createAndAppend('a', itemContent, undefined, 'itemName', `${data.bricks[i].name}`, `/products/${data.bricks[i].id}`);
-  createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.bricks[i].price}`);
+  createAndAppend('a', itemContent, undefined, 'itemName', `${data.name}`, `/products/${data.id}`);
+  createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
 
   const wishlistBtn = createAndAppend('a', itemContent, undefined, 'wishlistBtn', undefined, undefined);
   createAndAppend('img', wishlistBtn, undefined, undefined, undefined, undefined, undefined, '/client/content/icons/heart.svg');
   wishlistBtn.addEventListener('click', () => {
-    wishlist.add(data.bricks[i]);
+    wishlist.add(data);
   });
 
   const basketBtn = createAndAppend('button', itemContent, undefined, 'basketBtn', '+ Basket');
   basketBtn.addEventListener('click', () => {
-    basket.add(data.bricks[i], 1);
+    basket.add(data, 1);
   });
 }
+
+// importnat
+(async () => {
+  await renderCatalogue();
+})();

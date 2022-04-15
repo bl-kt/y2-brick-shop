@@ -1,43 +1,34 @@
+const db = require('../../database/db.js');
 const express = require('express');
 const router = express.Router();
 
-// bricks
+// get all products
+router.get('/all', async (req, res, next) => {
+  try {
+    const result = await db.query('SELECT * FROM test');
+    res.send(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+  next();
+});
 
-router.get('all/', getBricks);
+// get product by id
+router.get('/:id', async (req, res, next) => {
+  try {
+    const qRes = await db.query('query goes here');
+    res.redirect('/product.html?id=' + req.params.id);
+    console.log(qRes.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+  next();
+});
 
-router.get('/:id', getBrick);
-router.get('/:id/stock', getBrickInfo);
+// get stock of product by id
+router.get('/:id/stock');
 
-function getBricks() {
-  console.log('Brick');
-}
-
-function getBrick() {
-// ​app​.​get​(​'/brick/:id'​,​ ​(​req​,​ ​res​,​ ​next​)​ ​=>​ ​{
-//   ​  ​res​.​redirect​(​'/generated.html?id='​ ​+​ ​req​.​params​.​id);
-//   ​  ​next​(​)​;
-//   ​}​)​;
-}
-
-function getBrickInfo() {
-  console.log('Brick');
-}
-
-// kits
-
-router.get('/', getKits);
-
-router.get('/id', getKits);
-router.get('/id/stock', getKitInfo);
-
-function getKits(req, res) {
-  console.log("I'm just here for now.");
-  res.send('It worked uwu');
-}
-
-function getKitInfo(req, res) {
-  console.log("I'm just here for now.");
-  res.send('Multipath boy');
-}
 
 module.exports = router;

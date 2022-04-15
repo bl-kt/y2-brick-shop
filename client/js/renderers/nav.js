@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', renderNav);
 
 // FUNCTION: Renders nav bar
 async function renderNav() {
-  const res = await fetch('./components/nav.html');
+  const res = await fetch('components/nav.html');
   const nav = await res.text();
   const content = document.querySelector('#navWrapper');
   content.innerHTML = nav;
