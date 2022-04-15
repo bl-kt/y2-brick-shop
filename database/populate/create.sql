@@ -32,11 +32,15 @@ CREATE TABLE brick (
   FOREIGN KEY (fk_colour_id) REFERENCES colour (id)
 )
 
-CREATE TABLE kit (
+-- Populated
+CREATE TABLE kits (
   id SERIAL PRIMARY KEY,
-  bricks [] -- uses brick_id
-  stock INT,
-  price DECIMAL,
+  kit_name TEXT,
+  kit_cat TEXT,
+  kit_bricks JSON,
+  kit_pieces INT, -- uses brick_id
+  kit_stock INT,
+  kit_price DECIMAL
 )
 
 CREATE TABLE product (

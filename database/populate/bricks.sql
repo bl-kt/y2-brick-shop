@@ -1,4 +1,4 @@
-INSERT INTO brick (id, fk_colour_id, fk_shape_id, stock, price) VALUES
+INSERT INTO bricks (id, fk_colour_id, fk_shape_id, stock, price) VALUES
 (1, 1, 1, 4024, 0.06),
 (2, 1, 2, 6571, 0.03),
 (3, 1, 3, 5860, 0.04),
