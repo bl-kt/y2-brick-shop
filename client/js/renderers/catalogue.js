@@ -21,7 +21,11 @@ function createItem(data) {
   const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
-  createAndAppend('img', itemContent, undefined, 'itemImg');
+  const img = createAndAppend('img', itemContent, undefined, 'itemImg');
+  img.addEventListener('click', () => {
+
+  });
+
   createAndAppend('a', itemContent, undefined, 'itemName', `${data.name}`, `/products/${data.id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
 
@@ -37,7 +41,7 @@ function createItem(data) {
   });
 }
 
-// importnat
+// Allows use of async function in non-async context
 (async () => {
   await renderCatalogue();
 })();

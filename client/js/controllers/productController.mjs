@@ -1,7 +1,7 @@
 async function getCatalogue() {
   let response;
   try {
-    response = await fetch('/api/product/all');
+    response = await fetch('/api/product/cat');
   } catch (error) {
     console.error(error);
     return;
@@ -10,4 +10,4 @@ async function getCatalogue() {
   return data;
 }
 
-module.exports = { getCatalogue };
+export { getCatalogue };
