@@ -21,16 +21,16 @@ function createItem(data) {
   const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
-  const img = createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `content/products/${data.shape_id}.png`);
+  const img = createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.shape_id}.png`);
   img.addEventListener('click', () => {
 
   });
 
-  createAndAppend('a', itemContent, undefined, 'itemName', `${data.name}`, `/products/${data.id}`);
+  createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/products/${data.id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
 
   const wishlistBtn = createAndAppend('a', itemContent, undefined, 'wishlistBtn', undefined, undefined);
-  createAndAppend('img', wishlistBtn, undefined, undefined, undefined, undefined, undefined, 'content/icons/heart.svg');
+  createAndAppend('img', wishlistBtn, undefined, undefined, undefined, undefined, undefined, '/content/icons/heart.svg');
   wishlistBtn.addEventListener('click', () => {
     wishlist.add(data);
   });
