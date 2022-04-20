@@ -18,6 +18,7 @@ router.get('/cat', async (req, res, next) => {
   try {
     const result = await db.query(`SELECT DISTINCT on(s.shape_name)
     s.shape_name AS "name",
+    s.id AS "shape_id",
     b.price AS "price",
     b.stock AS "stock",
     b.id AS "id"
