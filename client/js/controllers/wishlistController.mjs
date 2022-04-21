@@ -1,17 +1,30 @@
 // Wishlist Manipulation
+
 import { add as basketAdd } from './basketController.mjs';
+import { isInArr } from '../helpers.js';
 
 const WISHLIST = [];
 const localStorage = window.localStorage;
 
 // FUNCTION: Add [item] to local storage Wishlist object
-function add(item) {
-  WISHLIST.push({
-    product: item,
-  });
+function add(item, amount) {
+  const isMatch = isInArr(WISHLIST, item);
 
-  localStorage.setItem('Wishlist', (JSON.stringify(WISHLIST)));
-  console.log(`Added ${JSON.stringify(item)} to wishlist!`);
+  if (isMatch) {
+    for (const entry of WISHLIST) {
+      if (item === entry.product) {
+        entry.quantity++;
+        console.log(entry.quantity);
+      }
+    }
+  } else {
+    WISHLIST.push({
+      product: item,
+      quantity: amount,
+    });
+    localStorage.setItem('Basket', (JSON.stringify(WISHLIST)));
+    console.log(`Added x${amount} ${JSON.stringify(item)} to basket!`);
+  }
 }
 
 // FUNCTION: Remove [item] from local storage Wishlist object
