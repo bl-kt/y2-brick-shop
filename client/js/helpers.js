@@ -1,5 +1,3 @@
-const BASKET = localStorage.getItem('Basket');
-
 // FUNCTION: Creates an element, depending on entered parameters, and appends to a parent element.
 function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefParam, valueParam, srcParam) {
   const element = document.createElement(eleParam);
@@ -27,13 +25,14 @@ function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefP
 }
 
 // FUNCTION: Filter to check if within basket - boolean
-function isInBasket(id) {
-  return BASKET.filter(item => item.id === id).length;
+function isInArr(arr, product) {
+  return arr.filter(item => product === item.product).length;
 }
 
 // FUNCTION: Filter to check if within basket - array
-function inBasket(id) {
-  return BASKET.filter(item => item.id === id);
+function inArr(arr, product) {
+  return arr.filter(item => product === item.product).length;
 }
 
-export { createAndAppend, isInBasket, inBasket };
+
+export { createAndAppend, isInArr, inArr };

@@ -1,3 +1,5 @@
+import { isInArr } from '../helpers.js';
+
 // Basket Manipulation
 
 const BASKET = [];
@@ -5,15 +7,25 @@ const localStorage = window.localStorage;
 
 // FUNCTION: Add [quantity] of [item] to the basket
 // overwrites current content
-function add(item, quantity) {
+function add(item, amount) {
   // if id doesn't exist:
-  BASKET.push({
-    product: item,
-    quantity: quantity,
-  });
+  const isMatch = isInArr(BASKET, item);
 
-  localStorage.setItem('Basket', (JSON.stringify(BASKET)));
-  console.log(`Added x${quantity} ${JSON.stringify(item)} to basket!`);
+  if (isMatch) {
+    for (const entry of BASKET) {
+      if (item === entry.product) {
+        entry.quantity++;
+        console.log(entry.quantity);
+      }
+    }
+  } else {
+    BASKET.push({
+      product: item,
+      quantity: amount,
+    });
+    localStorage.setItem('Basket', (JSON.stringify(BASKET)));
+    console.log(`Added x${amount} ${JSON.stringify(item)} to basket!`);
+  }
 }
 
 // FUNCTION: Remove [item] from basket
