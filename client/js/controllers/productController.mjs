@@ -1,7 +1,7 @@
-async function getCatalogue() {
+async function getCatalogue(sort, page) {
   let response;
   try {
-    response = await fetch('/api/product/cat');
+    response = await fetch(`/api/catalogue/all/${sort}`);
   } catch (error) {
     console.error(error);
     return;

@@ -9,6 +9,7 @@ db.startDB();
 const order = require('./routes/order.js');
 const customer = require('./routes/customer.js');
 const product = require('./routes/product.js');
+const catalogue = require('./routes/catalogue.js');
 
 // Methods
 
@@ -17,6 +18,7 @@ app.use(express.static('../client'));
 app.use('/api/order', order);
 app.use('/api/customer', customer);
 app.use('/api/product', product);
+app.use('/api/catalogue', catalogue);
 
 // Listeners
 app.listen(port, () => {

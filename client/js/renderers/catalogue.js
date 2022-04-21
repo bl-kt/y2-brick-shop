@@ -6,10 +6,12 @@ import { createAndAppend } from '../helpers.js';
 const content = document.querySelector('#grid');
 
 document.addEventListener('DOMContentLoaded', renderCatalogue);
+document.addEventListener('DOMContentLoaded', renderSortFilter);
+
 
 // FUNCTION: Renders Catalogue
 async function renderCatalogue() {
-  const data = await product.getCatalogue();
+  const data = await product.getCatalogue('ABC');
 
   for (const item of data) {
     createItem(item);
@@ -21,7 +23,7 @@ function createItem(data) {
   const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
-  const img = createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.shape_id}.png`);
+  createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.shape_id}.png`);
 
   createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/products/${data.id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
@@ -42,6 +44,14 @@ function createItem(data) {
       basketBtn.classList.remove('active');
     }, 1000);
   });
+}
+
+// FUNCTION: Render Sort/Filter Bar
+async function renderSortFilter() {
+  const res = await fetch('./components/sortFilter.html');
+  const querybar = await res.text();
+  const wrapper = document.querySelector('#queryWrapper');
+  wrapper.innerHTML = querybar;
 }
 
 // Allows use of async function in non-async context
