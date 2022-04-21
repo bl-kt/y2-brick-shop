@@ -22,9 +22,6 @@ function createItem(data) {
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
   const img = createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.shape_id}.png`);
-  img.addEventListener('click', () => {
-
-  });
 
   createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/products/${data.id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
@@ -38,6 +35,12 @@ function createItem(data) {
   const basketBtn = createAndAppend('button', itemContent, undefined, 'basketBtn', '+ Basket');
   basketBtn.addEventListener('click', () => {
     basket.add(data, 1);
+    basketBtn.textContent = 'Added 1!';
+    basketBtn.classList.add('active');
+    setTimeout(() => {
+      basketBtn.textContent = '+ Basket';
+      basketBtn.classList.remove('active');
+    }, 1000);
   });
 }
 
