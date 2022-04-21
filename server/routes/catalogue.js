@@ -48,6 +48,7 @@ router.get('/all/:sort', async (req, res, next) => {
       sorter = ' ORDER BY price DESC;';
       break;
     case 'CASC':
+      query = otherQuery;
       sorter = ' ORDER BY shape_cat ASC;';
       break;
     case 'CDESC':

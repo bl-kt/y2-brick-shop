@@ -1,6 +1,6 @@
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
-import * as product from '../controllers/productController.mjs';
+import * as cat from '../controllers/catalogueController.mjs';
 import { createAndAppend } from '../helpers.js';
 
 const content = document.querySelector('#grid');
@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', renderSortFilter);
 
 
 // FUNCTION: Renders Catalogue
-async function renderCatalogue() {
-  const data = await product.getCatalogue('ABC');
+async function renderCatalogue(sort = 'ABC') {
+  const data = await cat.getCatalogue(sort);
 
   for (const item of data) {
     createItem(item);
@@ -52,6 +52,19 @@ async function renderSortFilter() {
   const querybar = await res.text();
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
+
+  const sortDropdown = document.querySelector('#sortDropdown');
+  sortDropdown.addEventListener('change', () => {
+    clearCatalogue();
+    renderCatalogue(sortDropdown.value);
+  });
+}
+
+function clearCatalogue() {
+  const grid = document.querySelector('#grid');
+  while (grid.lastElementChild) {
+    grid.removeChild(grid.lastElementChild);
+  }
 }
 
 // Allows use of async function in non-async context
