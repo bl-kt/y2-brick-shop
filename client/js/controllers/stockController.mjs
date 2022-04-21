@@ -1,4 +1,3 @@
-import data from '../../../data/products.js';
 // import { writeProducts, readProducts } from '../helpers.mjs';
 
 // FUNCTION: Read from the 'database', remove the stock, re-write the data.
