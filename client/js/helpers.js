@@ -29,10 +29,4 @@ function isInArr(arr, product) {
   return arr.filter(item => product === item.product).length;
 }
 
-// FUNCTION: Filter to check if within basket - array
-function inArr(arr, product) {
-  return arr.filter(item => product === item.product).length;
-}
-
-
-export { createAndAppend, isInArr, inArr };
+export { createAndAppend, isInArr };

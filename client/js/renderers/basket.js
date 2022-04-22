@@ -28,7 +28,7 @@ function renderItem(basketContent, i) {
   createAndAppend('td', tr, undefined, 'itemName', `${basketContent[i].product.name}`);
   createAndAppend('td', tr, undefined, 'itemQuantity', `${basketContent[i].quantity}`);
   createAndAppend('td', tr, undefined, 'itemStock', `${basketContent[i].product.stock}`);
-  createAndAppend('td', tr, undefined, 'itemPrice', `${basketContent[i].product.price}`);
+  createAndAppend('td', tr, undefined, 'itemPrice', `${parseFloat((basketContent[i].product.price) * (basketContent[i].product.quantity))}`);
 
   const removeBtn = createAndAppend('button', tr, undefined, 'remove', 'X');
   removeBtn.addEventListener('click', () => {

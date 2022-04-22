@@ -2,28 +2,25 @@
 
 import { isInArr } from '../helpers.js';
 
-const BASKET = [];
+let BASKET = [];
 const localStorage = window.localStorage;
 
 // FUNCTION: Add [quantity] of [item] to the basket
-// overwrites current content
+// resets on reload due to making basket as a fresh array on load of file
+// Stacks to 2, then makes another, then stacks again. weird. Related to isInArr function?
 function add(item, amount) {
-  const isMatch = isInArr(BASKET, item);
-
-  if (isMatch) {
-    for (const entry of BASKET) {
-      if (item === entry.product) {
-        amount++;
-        console.log(amount);
-      }
-    }
+  if (isInArr(BASKET, item)) {
+    const currentBasket = (JSON.parse(localStorage.getItem('Basket')));
+    const index = currentBasket.findIndex(element => JSON.stringify(element.product) === JSON.stringify(item));
+    currentBasket[index].quantity += amount;
+    BASKET = currentBasket;
+  } else {
+    BASKET.push({
+      product: item,
+      quantity: amount,
+    });
   }
-  BASKET.push({
-    product: item,
-    quantity: amount,
-  });
   localStorage.setItem('Basket', (JSON.stringify(BASKET)));
-  console.log(`Added x${amount} ${JSON.stringify(item)} to basket!`);
 }
 
 // FUNCTION: Remove [item] from basket
