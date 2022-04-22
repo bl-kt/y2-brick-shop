@@ -7,6 +7,7 @@ router.get('/all/:sort', async (req, res, next) => {
   let query = '';
 
   const shapeQuery = `SELECT DISTINCT on(s.shape_name)
+  b.id AS "id",
   s.shape_name AS "name",
   s.id AS "shape_id",
   s.shape_cat AS "shape_cat",
@@ -18,6 +19,7 @@ router.get('/all/:sort', async (req, res, next) => {
 
   const otherQuery = `SELECT * FROM (
     SELECT DISTINCT on(s.shape_name)
+      b.id AS "id",
       s.shape_name AS "name",
       s.id AS "shape_id",
       s.shape_cat AS "shape_cat",

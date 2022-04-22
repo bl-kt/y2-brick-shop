@@ -13,18 +13,17 @@ function add(item, amount) {
   if (isMatch) {
     for (const entry of BASKET) {
       if (item === entry.product) {
-        entry.quantity++;
-        console.log(entry.quantity);
+        amount++;
+        console.log(amount);
       }
     }
-  } else {
-    BASKET.push({
-      product: item,
-      quantity: amount,
-    });
-    localStorage.setItem('Basket', (JSON.stringify(BASKET)));
-    console.log(`Added x${amount} ${JSON.stringify(item)} to basket!`);
   }
+  BASKET.push({
+    product: item,
+    quantity: amount,
+  });
+  localStorage.setItem('Basket', (JSON.stringify(BASKET)));
+  console.log(`Added x${amount} ${JSON.stringify(item)} to basket!`);
 }
 
 // FUNCTION: Remove [item] from basket
