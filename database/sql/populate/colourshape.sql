@@ -14,7 +14,7 @@ INSERT INTO colour (id, colour_name, colour_hex) VALUES
   (12, 'Transparent', '#808080');
 
 -- Shapes/Types
-INSERT INTO shape (id, shape_name, shape_cat, shape_x, shape_y, shape_z, shape_mod) VALUES
+INSERT INTO shape (id, shape_name, shape_cat, shape_x, shape_y, shape_z) VALUES
   -- Bricks
   (1, 'Brick 1x1x1', 'Brick', 1, 1, 1),
   (2, 'Brick 1x2x1', 'Brick', 1, 2, 1),

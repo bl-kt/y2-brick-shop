@@ -26,7 +26,7 @@ function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefP
 
 // FUNCTION: Filter to check if within basket - boolean
 function isInArr(arr, product) {
-  return arr.filter(item => product === item.product).length;
+  return arr.filter(item => product.id === item.product.id).length;
 }
 
 export { createAndAppend, isInArr };
