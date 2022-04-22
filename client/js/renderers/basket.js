@@ -1,8 +1,7 @@
 import { createAndAppend } from '../helpers.js';
-import { remove } from '../controllers/basketController.mjs';
+import { remove, get } from '../controllers/basketController.mjs';
 import { checkout } from '../controllers/checkoutController.mjs';
 
-const localStorage = window.localStorage;
 const wrapper = document.querySelector('#basketContents');
 const basketHeader = document.querySelector('#basketHeader');
 const checkoutBtn = document.querySelector('#checkoutBtn');
@@ -13,26 +12,23 @@ checkoutBtn.addEventListener('click', checkout);
 
 // FUNCTION: For items in basket object, renders items, then updates the basket header to reflect basket content.
 function renderBasket() {
-  const basketContent = JSON.parse(localStorage.getItem('Basket'));
-  if (basketContent.length > 0) {
-    for (let i = 0; i < basketContent.length; i++) {
-      renderItem(basketContent, i);
-    }
+  const data = get();
+  for (const item of data) {
+    renderItem(item);
   }
   updateBasketHeader(basketHeader);
 }
 
 // FUNCTION: Generates an item for the basket page.
-function renderItem(basketContent, i) {
-  const tr = createAndAppend('tr', wrapper, `${basketContent[i].product.id}`, 'item');
-  createAndAppend('td', tr, undefined, 'itemName', `${basketContent[i].product.name}`);
-  createAndAppend('td', tr, undefined, 'itemQuantity', `${basketContent[i].quantity}`);
-  createAndAppend('td', tr, undefined, 'itemStock', `${basketContent[i].product.stock}`);
-  createAndAppend('td', tr, undefined, 'itemPrice', `${parseFloat((basketContent[i].product.price) * (basketContent[i].product.quantity))}`);
-
+function renderItem(data) {
+  const tr = createAndAppend('tr', wrapper, `${data.product.id}`, 'item');
+  createAndAppend('td', tr, undefined, 'itemName', `${data.product.name}`);
+  createAndAppend('td', tr, undefined, 'itemQuantity', `${data.quantity}`);
+  createAndAppend('td', tr, undefined, 'itemStock', `${data.product.stock}`);
+  createAndAppend('td', tr, undefined, 'itemPrice', `${parseFloat(data.product.price) * data.quantity}`);
   const removeBtn = createAndAppend('button', tr, undefined, 'remove', 'X');
   removeBtn.addEventListener('click', () => {
-    remove(basketContent[i]);
+    remove(data);
   });
 }
 

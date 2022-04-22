@@ -43,6 +43,10 @@ function clear() {
   localStorage.setItem('Wishlist', emptyWishlist);
 }
 
+function get() {
+  return JSON.parse(localStorage.getItem('Basket'));
+}
+
 // FUNCTION: Add to basket, from wishlist
 function moveToBasket(item) {
   basketAdd(item.product, 1);
@@ -50,4 +54,4 @@ function moveToBasket(item) {
   // window.location.href = './basket.html';
 }
 
-export { add, remove, clear, moveToBasket };
+export { add, remove, clear, moveToBasket, get };

@@ -26,7 +26,7 @@ function add(item, amount) {
 // FUNCTION: Remove [item] from basket
 // currently removes all items with id,  not just selected
 function remove(item) {
-  const currentBasket = get()
+  const currentBasket = get();
   const newBasket = currentBasket.filter(comparison => comparison.product.id !== item.product.id);
   localStorage.setItem('Basket', (JSON.stringify(newBasket)));
   console.log(`Remove ${item} from Basket!`);
@@ -43,4 +43,4 @@ function get() {
   return JSON.parse(localStorage.getItem('Basket'));
 }
 
-export { add, remove, clear };
+export { add, remove, clear, get };
