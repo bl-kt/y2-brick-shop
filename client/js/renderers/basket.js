@@ -1,5 +1,5 @@
-import { createAndAppend } from '../helpers.js';
-import { remove, get } from '../controllers/basketController.mjs';
+import { createAndAppend, getLS } from '../helpers.js';
+import { remove } from '../controllers/basketController.mjs';
 import { checkout } from '../controllers/checkoutController.mjs';
 
 const wrapper = document.querySelector('#basketContents');
@@ -12,7 +12,7 @@ checkoutBtn.addEventListener('click', checkout);
 
 // FUNCTION: For items in basket object, renders items, then updates the basket header to reflect basket content.
 function renderBasket() {
-  const data = get();
+  const data = getLS('Basket');
   for (const item of data) {
     renderItem(item);
   }

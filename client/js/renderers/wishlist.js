@@ -1,5 +1,5 @@
-import { moveToBasket, remove, get } from '../controllers/wishlistController.mjs';
-import { createAndAppend } from '../helpers.js';
+import { moveToBasket, remove } from '../controllers/wishlistController.mjs';
+import { createAndAppend, getLS } from '../helpers.js';
 
 const wrapper = document.querySelector('#wishlistContents');
 const wishlistHeader = document.querySelector('#wishlistHeader');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', renderwishlist);
 
 // FUNCTION: For items in wishlist object, renders items, then updates the wishlist header to reflect basket content.
 function renderwishlist() {
-  const data = get();
+  const data = getLS('Wishlist');
   for (const item of data) {
     renderItem(item);
   }
@@ -31,7 +31,7 @@ function renderItem(data) {
   basketBtn.addEventListener('click', () => {
     // TO DO: remove from wishlist, add to basket
     console.log('add to basket');
-    moveToBasket(data, 1);
+    moveToBasket(data.product, data.amount);
   });
 }
 

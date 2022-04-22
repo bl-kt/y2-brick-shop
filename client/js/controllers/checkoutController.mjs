@@ -1,6 +1,6 @@
 import { createOrder } from './ordersController.mjs';
 import { removeAndSave } from './stockController.mjs';
-import { clear } from './basketController.mjs';
+// import { clear } from './basketController.mjs';
 // import { removeStock } from './stockController.mjs';
 
 // FUNCTION: Update stock of items within basket, create an order object, clears the basket
@@ -11,7 +11,7 @@ function checkout() {
   } else {
     updateStock(basket);
     createOrder(basket);
-    clear();
+    // clear();
     window.location.href = 'confirmed.html';
   }
 }
