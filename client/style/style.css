@@ -183,7 +183,7 @@ body {
   left: 1px;
 }
 
-#navWrapper nav #navMenu #BasketCounter {
+#navWrapper nav #navMenu #basketCounterWrapper {
   justify-items: center;
   padding: 5px;
   color: #e0e0e0;
@@ -194,7 +194,7 @@ body {
   height: 24px;
 }
 
-#navWrapper nav #navMenu #BasketCounter p {
+#navWrapper nav #navMenu #basketCounterWrapper p {
   position: relative;
   -webkit-margin-before: 0px;
           margin-block-start: 0px;

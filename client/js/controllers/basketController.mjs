@@ -17,6 +17,7 @@ function add(item, amount) {
     });
   }
   localStorage.setItem('Basket', (JSON.stringify(currentBasket)));
+  updateBasketCounter();
 }
 
 // FUNCTION: Remove [item] from basket
@@ -26,7 +27,18 @@ function remove(item) {
   const newBasket = currentBasket.filter(comparison => comparison.product.id !== item.product.id);
   localStorage.setItem('Basket', (JSON.stringify(newBasket)));
   console.log(`Remove ${item} from Basket!`);
+  updateBasketCounter();
   location.reload();
 }
 
-export { add, remove };
+function updateBasketCounter() {
+  const basket = getLS('Basket');
+  const basketCounter = document.querySelector('#basketCounter');
+  let counter = 0;
+  for (const item of basket) {
+    counter += item.quantity;
+  }
+  basketCounter.textContent = counter;
+}
+
+export { add, remove, updateBasketCounter };
