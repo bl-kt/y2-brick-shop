@@ -33,7 +33,7 @@ router.get('/all/:sort', async (req, res, next) => {
 
 
   switch (req.params.sort) {
-    case 'ABC' || undefined:
+    case 'ABC' || undefined || 'sort':
       query = shapeQuery;
       sorter = ' ORDER BY s.shape_name ASC;';
       break;

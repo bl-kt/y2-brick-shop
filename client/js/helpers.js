@@ -29,4 +29,13 @@ function isInArr(arr, product) {
   return arr.filter(item => product.id === item.product.id).length;
 }
 
-export { createAndAppend, isInArr };
+// FUNCTION: Clear local storage basket object
+function clearLS(item) {
+  localStorage.setItem(`${item}`, JSON.stringify([]));
+}
+
+function getLS(item) {
+  return JSON.parse(localStorage.getItem(`${item}`));
+}
+
+export { createAndAppend, isInArr, clearLS, getLS };

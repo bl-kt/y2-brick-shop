@@ -1,7 +1,6 @@
 import { moveToBasket, remove } from '../controllers/wishlistController.mjs';
-import { createAndAppend } from '../helpers.js';
+import { createAndAppend, getLS } from '../helpers.js';
 
-const localStorage = window.localStorage;
 const wrapper = document.querySelector('#wishlistContents');
 const wishlistHeader = document.querySelector('#wishlistHeader');
 
@@ -9,35 +8,35 @@ document.addEventListener('DOMContentLoaded', renderwishlist);
 
 // FUNCTION: For items in wishlist object, renders items, then updates the wishlist header to reflect basket content.
 function renderwishlist() {
-  const wishlistContent = JSON.parse(localStorage.getItem('Wishlist'));
-  for (let i = 0; i < wishlistContent.length; i++) {
-    renderItem(wishlistContent, i);
+  const data = getLS('Wishlist');
+  for (const item of data) {
+    renderItem(item);
   }
-  updatewishlistHeader(wishlistHeader);
+  updateWishlistHeader(wishlistHeader);
 }
 
 // FUNCTION: Generates an item for the wishlist page.
-function renderItem(wishlistContent, i) {
-  const tr = createAndAppend('tr', wrapper, `${wishlistContent[i].product.id}`, 'item');
-  createAndAppend('td', tr, undefined, 'itemName', `${wishlistContent[i].product.name}`);
-  createAndAppend('td', tr, undefined, 'itemStock', `${wishlistContent[i].product.stock}`);
-  createAndAppend('td', tr, undefined, 'itemPrice', `${wishlistContent[i].product.price}`);
+function renderItem(data) {
+  const tr = createAndAppend('tr', wrapper, `${data.product.id}`, 'item');
+  createAndAppend('td', tr, undefined, 'itemName', `${data.product.name}`);
+  createAndAppend('td', tr, undefined, 'itemStock', `${data.product.stock}`);
+  createAndAppend('td', tr, undefined, 'itemPrice', `${data.product.price}`);
 
   const removeBtn = createAndAppend('button', tr, undefined, 'removeBtn', 'X');
   removeBtn.addEventListener('click', () => {
-    remove(wishlistContent[i]);
+    remove(data);
   });
 
   const basketBtn = createAndAppend('button', tr, undefined, 'basketBtn', '+ Basket');
   basketBtn.addEventListener('click', () => {
     // TO DO: remove from wishlist, add to basket
     console.log('add to basket');
-    moveToBasket(wishlistContent[i], 1);
+    moveToBasket(data.product, data.amount);
   });
 }
 
 // FUNCTION: Updates the basket header to reflect wishlist content
-function updatewishlistHeader(wishlistHeader) {
+function updateWishlistHeader(wishlistHeader) {
   wishlistHeader.innerText = `Your wishlist contains ${sumQuantity()} items, and comes to a total of £${sumCost()}.`;
 }
 

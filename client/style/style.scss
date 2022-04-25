@@ -149,11 +149,38 @@ body {
 
     #navMenu {
       display: grid;
-      grid-template-columns: repeat(5, auto);
+      grid-template-columns: repeat(6, auto);
       list-style: none;
       text-align: center;
       width: 260px;
       justify-self: end;
+      padding-inline-start: 0px;
+
+      #Basket::after {
+        content: "0";
+        color: white;
+        position: relative;
+        top: -7px;
+        font-family: "Roboto";
+        left: 1px;
+      }
+
+      #basketCounterWrapper {
+        justify-items: center;
+        padding: 5px;
+        color: $bannerText;
+        font-family: "Roboto";
+        font-size: 18px;
+        line-height: 9px;
+        width: 24px;
+        height: 24px;
+        p {
+          position: relative;
+          margin-block-start: 0px;
+          margin-block-end: 0px;
+          top: 8px;
+        }
+      }
 
       li {
 
