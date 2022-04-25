@@ -5,8 +5,6 @@ import { isInArr } from '../helpers.js';
 const localStorage = window.localStorage;
 
 // FUNCTION: Add [quantity] of [item] to the basket
-// resets on reload due to making basket as a fresh array on load of file
-// Stacks to 2, then makes another, then stacks again. weird. Related to isInArr function?
 function add(item, amount) {
   const currentBasket = get();
 
@@ -39,6 +37,7 @@ function clear() {
   localStorage.setItem('Basket', JSON.stringify([]));
 }
 
+// FUNCTION: Get local storage basket object
 function get() {
   return JSON.parse(localStorage.getItem('Basket'));
 }
