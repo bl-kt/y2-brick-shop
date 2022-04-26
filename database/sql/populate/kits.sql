@@ -1,4 +1,4 @@
-INSERT INTO kits (id, kit_name, kit_cat, kit_pieces, kit_stock, kit_price) VALUES
+INSERT INTO kit (id, kit_name, kit_cat, kit_pieces, kit_stock, kit_price) VALUES
 (2, 'Birds of Paradise', 'Creator Expert', 1173, 67, 89.99),
 (3, 'Succulents', 'Creator Expert', 771, 42, 44.99),
 (4, 'Flower Bouquet', 'Creator Expert', 756, 78, 44.99),
@@ -15,7 +15,7 @@ INSERT INTO kits (id, kit_name, kit_cat, kit_pieces, kit_stock, kit_price) VALUE
 (15, 'Pirate Ship', 'Creator 3-in-1', 1264, 8, 104.99),
 (16, 'Crocodile', 'Creator 3-in-1', 454, 63, 24.99);
 
-INSERT INTO kits (id, kit_name, kit_cat, kit_bricks, kit_pieces, kit_stock, kit_price) VALUES
+INSERT INTO kit (id, kit_name, kit_cat, kit_bricks, kit_pieces, kit_stock, kit_price) VALUES
 (1, 'Bonsai Tree', 'Creator Expert',
 '{ "bricks":
   [{"id" : 58,"colour":"black","qty":2},

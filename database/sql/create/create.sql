@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS colours;
 DROP TABLE IF EXISTS shape;
 DROP TABLE IF EXISTS variation;
-DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS brick;
+DROP TABLE IF EXISTS kits;
 
 -- Populated
 CREATE TABLE colour (
@@ -22,6 +24,14 @@ CREATE TABLE shape (
 );
 
 -- Populated
+CREATE TABLE product (
+  id SERIAL PRIMARY KEY,
+  fk_brick_id INT,
+  fk_kit_id INT,
+  FOREIGN KEY (fk_brick_id) REFERENCES brick (id),
+  FOREIGN KEY (fk_kit_id) REFERENCES kit (id)
+);
+
 CREATE TABLE brick (
   id SERIAL PRIMARY KEY,
   fk_shape_id   INT NOT NULL, -- fk_shape_id: 1
@@ -30,10 +40,10 @@ CREATE TABLE brick (
   price DECIMAL, -- price: 0.02
   FOREIGN KEY (fk_shape_id) REFERENCES shape (id),
   FOREIGN KEY (fk_colour_id) REFERENCES colour (id)
-)
+);
 
 -- Populated
-CREATE TABLE kits (
+CREATE TABLE kit (
   id SERIAL PRIMARY KEY,
   kit_name TEXT,
   kit_cat TEXT,
@@ -41,11 +51,7 @@ CREATE TABLE kits (
   kit_pieces INT, -- uses brick_id
   kit_stock INT,
   kit_price DECIMAL
-)
-
-CREATE TABLE product (
-
-)
+);
 
 CREATE TABLE customers (
 
