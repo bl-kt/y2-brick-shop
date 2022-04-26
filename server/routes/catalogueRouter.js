@@ -157,7 +157,7 @@ router.get('/product/all/:sort', async (req, res, next) => {
         k.kit_cat as "cat",
         k.kit_stock as "stock",
         k.kit_price as "price"
-        from kit as k)`;
+        from kit as k)) as "table"`;
 
   switch (req.params.sort) {
     case 'ABC' || undefined || 'sort':

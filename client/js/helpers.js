@@ -1,4 +1,7 @@
 // FUNCTION: Creates an element, depending on entered parameters, and appends to a parent element.
+// Params, in order: [0]Element, [1]parent element, [2]id attribute,
+//                   [3]class attribute,[4]text content, [5]href attribute,
+//                   [6]value attribute, [7]src attribute.
 function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefParam, valueParam, srcParam) {
   const element = document.createElement(eleParam);
 
@@ -34,6 +37,7 @@ function clearLS(item) {
   localStorage.setItem(`${item}`, JSON.stringify([]));
 }
 
+// FUNCTION: Get local storage item
 function getLS(item) {
   return JSON.parse(localStorage.getItem(`${item}`));
 }

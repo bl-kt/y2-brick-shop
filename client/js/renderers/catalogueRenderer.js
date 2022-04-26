@@ -3,12 +3,14 @@ import * as basket from '../controllers/basketController.mjs';
 import * as cat from '../controllers/catalogueController.mjs';
 import { createAndAppend } from '../helpers.js';
 
-const content = document.querySelector('#grid');
+const pageContent = document.querySelector('#grid');
 
+// Used to determine items to render
 const USP = new URLSearchParams(window.location.search);
 const category = USP.get('cat');
 const page = USP.get('page');
 
+// On-load, render defaults
 document.addEventListener('DOMContentLoaded', renderCatalogue('ABC', category, page));
 document.addEventListener('DOMContentLoaded', renderSortFilter);
 
@@ -18,13 +20,13 @@ async function renderCatalogue(sort = 'ABC', category, page) {
   const data = await cat.getCatalogue(sort, category, page);
 
   for (const item of data) {
-    createItem(item);
+    renderItem(item);
   }
 }
 
 // FUNCTION: Renders individual items to append to catalogue
-function createItem(data) {
-  const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
+function renderItem(data) {
+  const wrapper = createAndAppend('div', pageContent, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
   createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.img_id}.png`);
@@ -67,6 +69,7 @@ async function renderSortFilter() {
   status.textContent = `All ${category}s`;
 }
 
+// FUNCTION: Clear catalogue
 function clearCatalogue() {
   const grid = document.querySelector('#grid');
   while (grid.lastElementChild) {
