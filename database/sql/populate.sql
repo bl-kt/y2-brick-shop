@@ -1825,24 +1825,24 @@ INSERT INTO shape (id, shape_name, shape_cat, shape_x, shape_y, shape_z, shape_m
   (136, 'Turntable 4 x 4 Square Base, Locking', 'Turntable', 4,4,1, '');
 
 INSERT INTO kit (id, kit_name, kit_cat, kit_pieces, kit_stock, kit_price) VALUES
-(2, 'Birds of Paradise', 'Creator Expert', 1173, 67, 89.99),
-(3, 'Succulents', 'Creator Expert', 771, 42, 44.99),
-(4, 'Flower Bouquet', 'Creator Expert', 756, 78, 44.99),
-(5, 'The Globe', 'Ideas', 2585, 9, 174.99),
-(6, 'Fender Stratocaster', 'Ideas', 1074, 23, 89.99),
-(7, 'Nasa Apollo Saturn V', 'Ideas', 1969, 3, 104.99),
-(8, 'Lunar Research Base', 'City', 786, 53, 89.99),
-(9, 'Fire Station Headquarters', 'City', 908, 27, 89.99),
-(10, 'Cargo Train', 'City', 1226, 13, 169.99),
-(11, 'Medium Creative Brick Box', 'Classic', 484, 57, 24.99),
-(12, 'Large Creative Brick Box', 'Classic', 1405, 41, 67.99),
-(13, 'Small Creative Brick Box', 'Classic', 213, 79, 17.99),
-(14, 'Majestic Tiger', 'Creator 3-in-1', 755, 32, 44.99),
-(15, 'Pirate Ship', 'Creator 3-in-1', 1264, 8, 104.99),
-(16, 'Crocodile', 'Creator 3-in-1', 454, 63, 24.99);
+(1602, 'Birds of Paradise', 'Creator Expert', 1173, 67, 89.99),
+(1603, 'Succulents', 'Creator Expert', 771, 42, 44.99),
+(1604, 'Flower Bouquet', 'Creator Expert', 756, 78, 44.99),
+(1605, 'The Globe', 'Ideas', 2585, 9, 174.99),
+(1606, 'Fender Stratocaster', 'Ideas', 1074, 23, 89.99),
+(1607, 'Nasa Apollo Saturn V', 'Ideas', 1969, 3, 104.99),
+(1608, 'Lunar Research Base', 'City', 786, 53, 89.99),
+(1609, 'Fire Station Headquarters', 'City', 908, 27, 89.99),
+(1610, 'Cargo Train', 'City', 1226, 13, 169.99),
+(1611, 'Medium Creative Brick Box', 'Classic', 484, 57, 24.99),
+(1612, 'Large Creative Brick Box', 'Classic', 1405, 41, 67.99),
+(1613, 'Small Creative Brick Box', 'Classic', 213, 79, 17.99),
+(1614, 'Majestic Tiger', 'Creator 3-in-1', 755, 32, 44.99),
+(1615, 'Pirate Ship', 'Creator 3-in-1', 1264, 8, 104.99),
+(1616, 'Crocodile', 'Creator 3-in-1', 454, 63, 24.99);
 
 INSERT INTO kit (id, kit_name, kit_cat, kit_bricks, kit_pieces, kit_stock, kit_price) VALUES
-(1, 'Bonsai Tree', 'Creator Expert',
+(1601, 'Bonsai Tree', 'Creator Expert',
 '{ "bricks":
   [{"id" : 58,"colour":"black","qty":2},
     {"id" : 59, "colour":"black", "qty":1},

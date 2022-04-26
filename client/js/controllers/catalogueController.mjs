@@ -1,3 +1,4 @@
+// FUNCTION: Fetch Catalogue based on params
 async function getCatalogue(sort, category, page) {
   let response;
   try {
