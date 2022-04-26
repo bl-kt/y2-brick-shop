@@ -10,7 +10,7 @@ router.get('/brick/all/:sort', async (req, res, next) => {
     `SELECT DISTINCT on(s.shape_name)
     b.id AS "id",
     s.shape_name AS "name",
-    s.id AS "shape_id",
+    s.id AS "img_id",
     s.shape_cat AS "shape_cat",
     b.price AS "price",
     b.stock AS "stock",
@@ -23,7 +23,7 @@ router.get('/brick/all/:sort', async (req, res, next) => {
       SELECT DISTINCT on(s.shape_name)
         b.id AS "id",
         s.shape_name AS "name",
-        s.id AS "shape_id",
+        s.id AS "img_id",
         s.shape_cat AS "shape_cat",
         b.price AS "price",
         b.stock AS "stock",
@@ -76,6 +76,7 @@ router.get('/kit/all/:sort', async (req, res, next) => {
   const query = `SELECT
   k.id as "id",
   k.kit_name as "name",
+  k.id as "img_id",
   k.kit_cat as "cat",
   k.kit_stock as "stock",
   k.kit_price as "price"
@@ -113,7 +114,7 @@ router.get('/kit/all/:sort', async (req, res, next) => {
   next();
 });
 
-router.get('/all/:sort', async (req, res, next) => {
+router.get('/product/all/:sort', async (req, res, next) => {
   let sorter = '';
   let query = '';
 

@@ -5,13 +5,17 @@ import { createAndAppend } from '../helpers.js';
 
 const content = document.querySelector('#grid');
 
-document.addEventListener('DOMContentLoaded', renderCatalogue);
+const USP = new URLSearchParams(window.location.search);
+const category = USP.get('cat');
+const page = USP.get('page');
+
+document.addEventListener('DOMContentLoaded', renderCatalogue('ABC', category, page));
 document.addEventListener('DOMContentLoaded', renderSortFilter);
 
 
 // FUNCTION: Renders Catalogue
-async function renderCatalogue(sort = 'ABC') {
-  const data = await cat.getCatalogue(sort);
+async function renderCatalogue(sort = 'ABC', category, page) {
+  const data = await cat.getCatalogue(sort, category, page);
 
   for (const item of data) {
     createItem(item);
@@ -56,8 +60,11 @@ async function renderSortFilter() {
   const sortDropdown = document.querySelector('#sortDropdown');
   sortDropdown.addEventListener('change', () => {
     clearCatalogue();
-    renderCatalogue(sortDropdown.value);
+    renderCatalogue(sortDropdown.value, category, page);
   });
+
+  const status = document.querySelector('#status');
+  status.textContent = `All ${category}s`;
 }
 
 function clearCatalogue() {
@@ -69,5 +76,5 @@ function clearCatalogue() {
 
 // Allows use of async function in non-async context
 (async () => {
-  await renderCatalogue();
+  await renderCatalogue('ABC', category, page);
 })();
