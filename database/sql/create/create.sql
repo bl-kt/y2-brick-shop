@@ -23,15 +23,7 @@ CREATE TABLE shape (
   shape_mod TEXT
 );
 
--- Populated
-CREATE TABLE product (
-  id SERIAL PRIMARY KEY,
-  fk_brick_id INT,
-  fk_kit_id INT,
-  FOREIGN KEY (fk_brick_id) REFERENCES brick (id),
-  FOREIGN KEY (fk_kit_id) REFERENCES kit (id)
-);
-
+-- Populatated
 CREATE TABLE brick (
   id SERIAL PRIMARY KEY,
   fk_shape_id   INT NOT NULL, -- fk_shape_id: 1

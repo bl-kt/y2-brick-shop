@@ -128,7 +128,8 @@ body {
     width: 100%;
     background: $banner;
     display: grid;
-    grid-template-columns: 0.2fr auto 1fr 1fr;
+    // grid-template-columns: 0.2fr auto 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
     width: 90%;
     margin: 0 auto;
@@ -149,7 +150,8 @@ body {
 
     #navMenu {
       display: grid;
-      grid-template-columns: repeat(6, auto);
+      // grid-template-columns: repeat(6, auto);
+      grid-template-columns: repeat(5, auto);
       list-style: none;
       text-align: center;
       width: 260px;

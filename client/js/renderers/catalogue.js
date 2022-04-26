@@ -23,7 +23,7 @@ function createItem(data) {
   const wrapper = createAndAppend('div', content, `item${data.id}`, 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'itemContent');
 
-  createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.shape_id}.png`);
+  createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.img_id}.png`);
 
   createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/products/${data.id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);

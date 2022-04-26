@@ -160,7 +160,4 @@ INSERT INTO shape (id, shape_name, shape_cat, shape_x, shape_y, shape_z, shape_m
   (135, 'Tile, Modified Facet 2 x 2', 'Tile', 2,2,1, ''),
   (136, 'Turntable 4 x 4 Square Base, Locking', 'Turntable', 4,4,1, '');
 
-
-
-
 -- Bricks (Colour and Shape Combo)
