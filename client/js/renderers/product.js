@@ -1,1 +1,1 @@
-const productID = Number(urlsearchparams.get('id'));
+const product = window.location.search;
