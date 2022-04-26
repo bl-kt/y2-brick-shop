@@ -256,9 +256,15 @@ body {
     color: $text;
     font-family: Roboto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr .5fr .5fr;
-    grid-template-areas:'indicator  .  sort filter';
+    grid-template-columns: 1fr 1fr 2fr .5fr .5fr;
+    grid-template-areas:'indicator search .  sort filter';
 
+    #searchBar{
+      height: 40px;
+      border-radius: 4px;
+      border: none;
+      box-shadow: none;
+    }
 
     p {
       grid-area: indicator;

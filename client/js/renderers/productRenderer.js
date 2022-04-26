@@ -17,6 +17,7 @@ async function renderProductPage() {
   renderItem(data);
 }
 
+// FUNCTION: Fetch colours for select
 // async function getAllColours() {
 //   const colours = await getColours();
 //   return colours;
@@ -41,6 +42,7 @@ function renderItem(data) {
   createAndAppend('input', itemContent, 'addAmount', undefined, undefined, undefined, undefined, undefined, 'number');
 
   const colourPicker = createAndAppend('select', itemContent, 'colourPicker');
+  // Aware this is terrible, work on this another time
   createAndAppend('option', colourPicker, undefined, undefined, 'Pink', undefined, 1);
   createAndAppend('option', colourPicker, undefined, undefined, 'Red', undefined, 2);
   createAndAppend('option', colourPicker, undefined, undefined, 'Orange', undefined, 3);
@@ -53,6 +55,7 @@ function renderItem(data) {
   createAndAppend('option', colourPicker, undefined, undefined, 'Black', undefined, 10);
   createAndAppend('option', colourPicker, undefined, undefined, 'Grey', undefined, 11);
   createAndAppend('option', colourPicker, undefined, undefined, 'Transparent', undefined, 12);
+
   // const colours = getAllColours();
   // console.log(colours);
 
