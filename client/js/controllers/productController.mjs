@@ -11,4 +11,16 @@ async function getProductByID(id) {
   return data;
 }
 
-export { getProductByID };
+async function getColours() {
+  let response;
+  try {
+    response = await fetch('/api/product/colour/all');
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+  const data = await response.json();
+  return data;
+}
+
+export { getProductByID, getColours };

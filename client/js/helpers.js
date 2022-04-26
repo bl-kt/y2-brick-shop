@@ -1,8 +1,8 @@
 // FUNCTION: Creates an element, depending on entered parameters, and appends to a parent element.
 // Params, in order: [0]Element, [1]parent element, [2]id attribute,
 //                   [3]class attribute,[4]text content, [5]href attribute,
-//                   [6]value attribute, [7]src attribute.
-function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefParam, valueParam, srcParam) {
+//                   [6]value attribute, [7]src attribute, [8] type attribute
+function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefParam, valueParam, srcParam, typeParam) {
   const element = document.createElement(eleParam);
 
   if (idParam !== undefined) {
@@ -22,6 +22,9 @@ function createAndAppend(eleParam, parent, idParam, classParam, textParam, hrefP
   }
   if (srcParam !== undefined) {
     element.src = srcParam;
+  }
+  if (typeParam !== undefined) {
+    element.type = typeParam;
   }
   parent.appendChild(element);
   return element;
