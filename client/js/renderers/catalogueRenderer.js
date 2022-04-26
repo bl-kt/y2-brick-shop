@@ -29,7 +29,7 @@ function createItem(data) {
 
   createAndAppend('img', itemContent, undefined, 'itemImg', undefined, undefined, undefined, `/content/products/${data.img_id}.png`);
 
-  createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/products/${data.id}`);
+  createAndAppend('a', itemContent, undefined, 'itemName', `${(data.name).substring(0, 40)}...`, `/product.html?id=${data.img_id}`);
   createAndAppend('p', itemContent, undefined, 'itemPrice', `£ ${data.price}`);
 
   const wishlistBtn = createAndAppend('a', itemContent, undefined, 'wishlistBtn', undefined, undefined);

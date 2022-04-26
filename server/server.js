@@ -6,10 +6,10 @@ const port = 8080;
 db.startDB();
 
 // Routers
-const order = require('./routes/order.js');
-const customer = require('./routes/customer.js');
-const product = require('./routes/product.js');
-const catalogue = require('./routes/catalogue.js');
+const order = require('./routes/orderRouter.js');
+const customer = require('./routes/customerRouter.js');
+const product = require('./routes/productRouter.js');
+const catalogue = require('./routes/catalogueRouter.js');
 
 // Methods
 
