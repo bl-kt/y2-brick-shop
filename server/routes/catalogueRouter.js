@@ -2,29 +2,28 @@ const db = require('../../database/db.js');
 const express = require('express');
 const router = express.Router();
 
-router.get('/brick/all/:sort', async (req, res, next) => {
-  let sorter = '';
+router.get('/:category/all/', async (req, res, next) => {
+  let sort = '';
   let query = '';
+  const filter = ` WHERE lower(${req.query.searchCat}) = lower('${req.query.search}')`;
 
-  const shapeQuery =
-    `SELECT DISTINCT on(s.shape_name)
-    b.id AS "id",
-    s.shape_name AS "name",
-    s.id AS "img_id",
-    s.shape_cat AS "shape_cat",
-    b.price AS "price",
-    b.stock AS "stock",
-    b.id AS "id"
-    FROM brick AS b
-    JOIN shape AS s ON b.fk_shape_id = s.id`;
-
-  const otherQuery =
-    `SELECT * FROM (
+  if (req.params.category === 'kit') {
+    query = `SELECT
+    k.id as "id",
+    k.kit_name as "name",
+    k.id as "img_id",
+    k.kit_cat as "cat",
+    k.kit_stock as "stock",
+    k.kit_price as "price"
+    FROM kit as k`;
+  }
+  if (req.params.category === 'brick') {
+    query = `SELECT * FROM (
       SELECT DISTINCT on(s.shape_name)
         b.id AS "id",
         s.shape_name AS "name",
         s.id AS "img_id",
-        s.shape_cat AS "shape_cat",
+        s.shape_cat AS "cat",
         b.price AS "price",
         b.stock AS "stock",
         b.id AS "id"
@@ -32,114 +31,9 @@ router.get('/brick/all/:sort', async (req, res, next) => {
         JOIN shape AS s ON b.fk_shape_id = s.id
     ORDER BY s.shape_name ASC
     ) AS "table"`;
-
-  switch (req.params.sort) {
-    case 'ABC' || undefined || 'sort':
-      query = shapeQuery;
-      sorter = ' ORDER BY s.shape_name ASC;';
-      break;
-    case 'CBA':
-      query = shapeQuery;
-      sorter = ' ORDER BY s.shape_name DESC;';
-      break;
-    case 'PASC':
-      query = otherQuery;
-      sorter = ' ORDER BY price ASC;';
-      break;
-    case 'PDES':
-      query = otherQuery;
-      sorter = ' ORDER BY price DESC;';
-      break;
-    case 'CASC':
-      query = otherQuery;
-      sorter = ' ORDER BY shape_cat ASC;';
-      break;
-    case 'CDESC':
-      query = otherQuery;
-      sorter = ' ORDER BY shape_cat DESC;';
-      break;
   }
-
-  try {
-    const result = await db.query(
-    `${query}` + `${sorter}`);
-    res.send(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send();
-  }
-  next();
-});
-
-router.get('/kit/all/:sort', async (req, res, next) => {
-  let sorter = '';
-  const query = `SELECT
-  k.id as "id",
-  k.kit_name as "name",
-  k.id as "img_id",
-  k.kit_cat as "cat",
-  k.kit_stock as "stock",
-  k.kit_price as "price"
-  FROM kit as k`;
-
-  switch (req.params.sort) {
-    case 'ABC' || undefined || 'sort':
-      sorter = ' ORDER BY k.kit_name ASC;';
-      break;
-    case 'CBA':
-      sorter = ' ORDER BY k.kit_name DESC;';
-      break;
-    case 'PASC':
-      sorter = ' ORDER BY k.kit_price ASC;';
-      break;
-    case 'PDES':
-      sorter = ' ORDER BY k.kit_price DESC;';
-      break;
-    case 'CASC':
-      sorter = ' ORDER BY k.kit_cat ASC;';
-      break;
-    case 'CDESC':
-      sorter = ' ORDER BY k.kit_cat DESC;';
-      break;
-  }
-
-  try {
-    const result = await db.query(
-    `${query}` + `${sorter}`);
-    res.send(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send();
-  }
-  next();
-});
-
-router.get('/product/all/:sort', async (req, res, next) => {
-  let sorter = '';
-  let query = '';
-
-  const shapeQuery =
-    `(SELECT DISTINCT ON (s.shape_name)
-    b.id as "id",
-    s.shape_name as "name",
-    s.id as "img_id",
-    s.shape_cat as "cat",
-    stock as "stock",
-    price as "price"
-    FROM brick as b
-   JOIN shape as s on b.fk_shape_id = s.id
-   ) UNION (
-    SELECT
-    k.id as "id",
-    k.kit_name as "name",
-    k.id as "img_id",
-    k.kit_cat as "cat",
-    k.kit_stock as "stock",
-    k.kit_price as "price"
-    from kit as k)`;
-
-  const otherQuery =
-    `SELECT * FROM (
+  if (req.params.category === 'product') {
+    query = `SELECT * FROM (
       (SELECT DISTINCT ON (s.shape_name)
        b.id as "id",
        s.shape_name as "name",
@@ -158,43 +52,52 @@ router.get('/product/all/:sort', async (req, res, next) => {
         k.kit_stock as "stock",
         k.kit_price as "price"
         from kit as k)) as "table"`;
+  }
 
-  switch (req.params.sort) {
+  switch (req.query.sort) {
     case 'ABC' || undefined || 'sort':
-      query = shapeQuery;
-      sorter = ' ORDER BY name ASC;';
+      sort = ' ORDER BY name ASC;';
       break;
     case 'CBA':
-      query = shapeQuery;
-      sorter = ' ORDER BY name DESC;';
+      sort = ' ORDER BY name DESC;';
       break;
     case 'PASC':
-      query = otherQuery;
-      sorter = ' ORDER BY price ASC;';
+      sort = ' ORDER BY price ASC;';
       break;
     case 'PDES':
-      query = otherQuery;
-      sorter = ' ORDER BY price DESC;';
+      sort = ' ORDER BY price DESC;';
       break;
     case 'CASC':
-      query = otherQuery;
-      sorter = ' ORDER BY cat ASC;';
+      sort = ' ORDER BY cat ASC;';
       break;
     case 'CDESC':
-      query = otherQuery;
-      sorter = ' ORDER BY cat DESC;';
+      sort = ' ORDER BY cat DESC;';
       break;
   }
 
-  try {
-    const result = await db.query(
-    `${query}` + `${sorter}`);
-    res.send(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send();
+  if (!req.query.search) {
+    console.log("ran w/o query");
+    try {
+      const result = await db.query(
+      `${query}` + `${sort}`);
+      res.send(result.rows);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send();
+    }
+    next();
+  } else {
+    console.log("ran w/ query");
+    try {
+      const result = await db.query(
+      `${query}` + `${filter}` + `${sort}`);
+      res.send(result.rows);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send();
+    }
+    next();
   }
-  next();
 });
 
 module.exports = router;

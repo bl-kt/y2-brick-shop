@@ -9,21 +9,20 @@ const pageContent = document.querySelector('#grid');
 // Used to determine items to render
 const USP = new URLSearchParams(window.location.search);
 const category = USP.get('cat');
-const page = USP.get('page');
 
 // On-load, render defaults
-document.addEventListener('DOMContentLoaded', renderPage(category, page));
+document.addEventListener('DOMContentLoaded', renderPage(category));
 
 function renderPage(category) {
-  renderCatalogue('ABC', category, undefined, undefined, undefined);
+  // renderCatalogue('ABC', category);
   renderQueryBar();
   renderSortFilterMenu(category);
 }
 
 // FUNCTION: Renders Catalogue
-async function renderCatalogue(sort = 'ABC', category, filter, filter2, filter3) {
+async function renderCatalogue(sort = 'ABC', category, search, searchCategory) {
   clearCatalogue();
-  const data = await cat.getCatalogue(sort, category, filter, filter2, filter3);
+  const data = await cat.getCatalogue(sort, category, search, searchCategory);
 
   for (const item of data) {
     renderItem(item);
@@ -65,12 +64,6 @@ async function renderQueryBar() {
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
 
-  // const sortDropdown = document.querySelector('#sortDropdown');
-  // sortDropdown.addEventListener('change', () => {
-  //   clearCatalogue();
-  //   renderCatalogue(sortDropdown.value, category, page);
-  // });
-
   const toggle = document.querySelector('#openSortFilter');
   const menu = document.querySelector('#sortFilterWrapper');
   toggle.addEventListener('click', () => {
@@ -85,6 +78,7 @@ async function renderQueryBar() {
   breadcrumb.textContent = ` Catalogue / All ${category}s`;
 }
 
+// FUNCTION: Render the sort/filter menu/sidebar
 async function renderSortFilterMenu() {
   const filters = [];
   const brickColours = await filter.getBrickColours();
@@ -101,9 +95,9 @@ async function renderSortFilterMenu() {
 
   switch (category) {
     case 'product':
-      filters.push({ name: 'brickColours', options: brickColours });
-      filters.push({ name: 'brickCategories', options: brickCategories });
-      filters.push({ name: 'kitCategories', options: getKitCategories });
+      // filters.push({ name: 'brickColours', options: brickColours });
+      // filters.push({ name: 'brickCategories', options: brickCategories });
+      // filters.push({ name: 'kitCategories', options: getKitCategories });
       break;
     case 'brick':
       filters.push({ name: 'brickColours', options: brickColours });
@@ -135,13 +129,30 @@ async function renderSortFilterMenu() {
   }
 }
 
-function renderCategory(parent, category) {
-  const wrapper = createAndAppend('div', parent, `${category.name}Wrapper`);
-  const content = createAndAppend('div', wrapper, `${category.name}Content`);
-  createAndAppend('h1', content, undefined, undefined, `${category.name}`);
-  for (const item of category.options) {
-    createAndAppend('input', content, `${category.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${category.name}`);
+// FUNCTION: Render a category for the dynamic filter population
+function renderCategory(parent, group) {
+  const wrapper = createAndAppend('div', parent, `${group.name}Wrapper`);
+  const content = createAndAppend('div', wrapper, `${group.name}Content`);
+  createAndAppend('h1', content, undefined, undefined, `${group.name}`);
+  for (const item of group.options) {
+    const radio = createAndAppend('input', content, `${group.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${group.name}`);
     createAndAppend('label', content, undefined, 'label', `${item.value}`);
+    radio.addEventListener('click', () => {
+      let searchCat = '';
+      switch (group.name) {
+        case 'brickCategories':
+          searchCat = 'cat';
+          break;
+        case 'kitCategories':
+          searchCat = 'cat';
+          break;
+        case 'brickColours':
+          searchCat = 'colour';
+          break;
+      }
+      console.log(searchCat);
+      renderCatalogue('ABC', category, item.value, searchCat);
+    });
   }
 }
 
@@ -155,5 +166,5 @@ function clearCatalogue() {
 
 // Allows use of async function in non-async context
 (async () => {
-  await renderCatalogue('ABC', category, page);
+  await renderCatalogue('ABC', category);
 })();

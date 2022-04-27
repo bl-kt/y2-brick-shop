@@ -1,8 +1,13 @@
 // FUNCTION: Fetch Catalogue based on params
-async function getCatalogue(sort, category, page) {
+async function getCatalogue(sort, category, search, searchCat) {
   let response;
   try {
-    response = await fetch(`/api/catalogue/${category}/all/${sort}`);
+    const url = new URL(`/api/catalogue/${category}/all`, document.location.origin);
+    url.searchParams.set('category', category);
+    url.searchParams.set('sort', sort ?? '');
+    url.searchParams.set('search', search ?? '');
+    url.searchParams.set('searchCat', searchCat ?? '');
+    response = await fetch(url.href);
   } catch (error) {
     console.error(error);
     return;

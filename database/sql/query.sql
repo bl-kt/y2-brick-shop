@@ -73,3 +73,24 @@ SELECT * FROM (
        kit_stock as "stock",
        kit_price as "price"
        from kit)) as "table"
+
+-- SEARCH ALL
+SELECT * FROM (
+      (SELECT DISTINCT ON (s.shape_name)
+       b.id as "id",
+       s.shape_name as "name",
+       s.id as "img_id",
+       s.shape_cat as "cat",
+       stock as "stock",
+       price as "price"
+       FROM brick as b
+       JOIN shape as s on b.fk_shape_id = s.id
+      ) UNION (
+        SELECT
+        k.id as "id",
+        k.kit_name as "name",
+        k.id as "img_id",
+        k.kit_cat as "cat",
+        k.kit_stock as "stock",
+        k.kit_price as "price"
+        from kit as k)) as "table" where position('arch'  in  lower(name))>0;
