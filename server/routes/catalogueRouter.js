@@ -8,14 +8,14 @@ router.get('/:category/all/', async (req, res, next) => {
   const filter = ` WHERE lower(${req.query.searchCat}) = lower('${req.query.search}')`;
 
   if (req.params.category === 'kit') {
-    query = `SELECT
+    query = `SELECT * FROM (SELECT
     k.id as "id",
     k.kit_name as "name",
     k.id as "img_id",
     k.kit_cat as "cat",
     k.kit_stock as "stock",
     k.kit_price as "price"
-    FROM kit as k`;
+    FROM kit as k) AS "table"`;
   }
   if (req.params.category === 'brick') {
     query = `SELECT * FROM (
