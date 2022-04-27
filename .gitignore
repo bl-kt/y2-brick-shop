@@ -2,3 +2,6 @@
 /
 .env
 /data-LEGACY
+
+.scss
+.css.map
