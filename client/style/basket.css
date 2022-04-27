@@ -1,0 +1,108 @@
+#basketWrapper {
+  max-width: 60%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+#basketWrapper .Line {
+  width: 100%;
+  height: 47px;
+  border-bottom: 1px solid black;
+}
+
+#basketWrapper #basketTitle {
+  width: 100%;
+}
+
+#basketWrapper #basketTitle #orderValue {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+}
+
+#basketWrapper #basketTitle #basketHeader {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+}
+
+#basketWrapper #basketTitle #shipping {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 58%;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  color: #000;
+}
+
+#basketWrapper #basketTitle #basketNav {
+  padding: 5px;
+}
+
+#basketWrapper #basketTitle #basketNav a {
+  color: #000;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+#basketWrapper #basketTable {
+  width: 100%;
+  margin: auto;
+  padding: 30px 0px;
+}
+
+#basketWrapper #basketTable th {
+  background: #e0e0e0;
+  font-size: 13px;
+}
+
+#basketWrapper #basketTable tr {
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+
+#basketWrapper #basketTable tr button {
+  background: none;
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  #basketWrapper {
+    max-width: 70%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #basketWrapper {
+    max-width: 90%;
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=basket.css.map */

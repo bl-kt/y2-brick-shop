@@ -1,0 +1,108 @@
+#wishlistWrapper {
+  max-width: 60%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+#wishlistWrapper .Line {
+  width: 100%;
+  height: 47px;
+  border-bottom: 1px solid black;
+}
+
+#wishlistWrapper #wishlistTitle {
+  width: 100%;
+}
+
+#wishlistWrapper #wishlistTitle #orderValue {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+}
+
+#wishlistWrapper #wishlistTitle #wishlistHeader {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+}
+
+#wishlistWrapper #wishlistTitle #shipping {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  left: 58%;
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  color: #000;
+}
+
+#wishlistWrapper #wishlistTitle #wishlistNav {
+  padding: 5px;
+}
+
+#wishlistWrapper #wishlistTitle #wishlistNav a {
+  color: #000;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+#wishlistWrapper #wishlistTable {
+  width: 100%;
+  margin: auto;
+  padding: 30px 0px;
+}
+
+#wishlistWrapper #wishlistTable th {
+  background: #e0e0e0;
+  font-size: 13px;
+}
+
+#wishlistWrapper #wishlistTable tr {
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+
+#wishlistWrapper #wishlistTable tr button {
+  background: none;
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  #wishlistWrapper {
+    max-width: 70%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #wishlistWrapper {
+    max-width: 90%;
+    margin: auto;
+  }
+}
+/*# sourceMappingURL=wishlist.css.map */

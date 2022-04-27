@@ -65,8 +65,8 @@ async function renderSortFilter() {
     renderCatalogue(sortDropdown.value, category, page);
   });
 
-  const status = document.querySelector('#status');
-  status.textContent = `All ${category}s`;
+  const breadcrumb = document.querySelector('#breadcrumb');
+  breadcrumb.textContent = ` Catalogue / All ${category}s`;
 }
 
 // FUNCTION: Clear catalogue

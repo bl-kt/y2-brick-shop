@@ -1,0 +1,84 @@
+#frontWrapper {
+  position: relative;
+  background: #e0e0e0;
+  top: 100px;
+}
+
+#frontWrapper #promoWrapper {
+  max-width: 60%;
+  margin: auto;
+  padding: 50px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "image text";
+}
+
+#frontWrapper img {
+  grid-area: "image";
+}
+
+#frontWrapper #promoText {
+  padding-top: 50px;
+  grid-area: "text";
+}
+
+#frontWrapper #promoText a {
+  padding: 5px;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-family: Roboto;
+  color: transparent;
+  font-size: 0;
+}
+
+#frontWrapper #promoText h2 {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #000;
+}
+
+#frontWrapper #promoText p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #000;
+}
+
+@media screen and (max-width: 800px) {
+  #frontWrapper {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #frontWrapper {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #frontWrapper {
+    max-width: 90%;
+  }
+}
+/*# sourceMappingURL=front.css.map */

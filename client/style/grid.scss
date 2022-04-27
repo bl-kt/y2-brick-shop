@@ -1,0 +1,129 @@
+$background: #fff;
+$text: #000;
+
+$banner: #080808;
+$bannerText: #e0e0e0;
+
+$menu: #27272b;
+$menuText: #e0e0e0;
+
+$item: #e0e0e0;
+
+$button: #9a5c5b;
+$buttonHighlight: #76323f;
+
+#gridWrapper {
+  #grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    max-width: 55%;
+    grid-gap: 20px;
+    padding-top: 40px;
+
+    justify-content: center;
+    align-content: center;
+
+    .item {
+      width: 150px;
+      height: 250px;
+      background: $item;
+      padding: 10px;
+      margin: auto;
+
+      .itemImg {
+        width: 150px;
+        height: 150px;
+        padding-bottom: 25px;
+      }
+
+      .itemName {
+        font-family: Roboto;
+        text-align: left;
+        color: $text;
+        font-size: 15px;
+        font-weight: 600;
+
+        text-decoration: none;
+      }
+      .itemName:hover {
+        color: #414141;
+      }
+
+      .itemPrice {
+        font-family: Roboto;
+        text-align: left;
+        color: $text;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 20px;
+      }
+      .itemPrice:hover {
+        color: #414141;
+      }
+
+      .wishlistBtn {
+        padding: 5px;
+        position: relative;
+        top: -35px;
+        left: 46px;
+        img {
+          width: 25px;
+          height: 25px;
+          filter: invert(1);
+        }
+      }
+      .wishlistBtn:hover {
+        img {
+          filter: none;
+        }
+      }
+
+      .basketBtn {
+        position: relative;
+        top: -42px;
+        left: 54px;
+
+        color: $menuText;
+        background: #9a5c5b;
+        font-family: Roboto;
+        padding: 5px;
+        border-radius: 4px;
+        border: none;
+      }
+      .basketBtn:hover, .basketBtn:active {
+        background: $buttonHighlight
+      }
+
+    }
+
+    .item:hover {
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #gridWrapper {
+    #grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width:650px) {
+
+  #gridWrapper {
+    #grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #gridWrapper {
+    #grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
