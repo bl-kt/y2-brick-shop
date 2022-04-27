@@ -14,15 +14,15 @@ const page = USP.get('page');
 // On-load, render defaults
 document.addEventListener('DOMContentLoaded', renderPage(category, page));
 
-function renderPage(category, page) {
-  renderCatalogue('ABC', category, page);
+function renderPage(category) {
+  renderCatalogue('ABC', category, undefined, undefined, undefined);
   renderQueryBar();
   renderSortFilterMenu(category);
 }
 
 // FUNCTION: Renders Catalogue
-async function renderCatalogue(sort = 'ABC', category, page) {
-  const data = await cat.getCatalogue(sort, category, page);
+async function renderCatalogue(sort = 'ABC', category, filter, filter2, filter3) {
+  const data = await cat.getCatalogue(sort, category, filter, filter2, filter3);
 
   for (const item of data) {
     renderItem(item);
@@ -89,6 +89,14 @@ async function renderSortFilterMenu() {
   const brickColours = await filter.getBrickColours();
   const brickCategories = await filter.getBrickCategories();
   const getKitCategories = await filter.getKitCategories();
+  const sorts = [
+    { name: 'Alphabetical', value: 'ABC' },
+    { name: 'Reverse Alphabetical', value: 'CBA' },
+    { name: 'Price: Low to High', value: 'PASC' },
+    { name: 'Price: High to Low', value: 'PDES' },
+    { name: 'Category, A-Z', value: 'CASC' },
+    { name: 'Category, Z-A', value: 'CDES' },
+  ];
 
   switch (category) {
     case 'product':
@@ -108,17 +116,27 @@ async function renderSortFilterMenu() {
   const wrapper = document.querySelector('#sortFilterWrapper');
   const content = createAndAppend('div', wrapper, undefined, 'content');
 
+  // Sort
+  const sortWrapper = createAndAppend('div', content, 'sortWrapper');
+  const sortContent = createAndAppend('div', sortWrapper, 'sortContent');
+  createAndAppend('h1', sortContent, undefined, undefined, 'Sort');
+  for (const sort of sorts) {
+    createAndAppend('input', sortContent, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
+    createAndAppend('label', sortContent, undefined, 'label', `${sort.name}`);
+  }
+
+  // Filter
   for (const option of filters) {
     renderCategory(content, option);
   }
 }
 
-function renderCategory(parent, optionCategory) {
-  const wrapper = createAndAppend('div', parent, `${optionCategory.name}Wrapper`);
-  const content = createAndAppend('div', wrapper, `${optionCategory.name}Content`);
-  createAndAppend('h1', content, undefined, undefined, `${optionCategory.name}`);
-  for (const item of optionCategory.options) {
-    createAndAppend('input', content, `${optionCategory.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${optionCategory.name}`);
+function renderCategory(parent, category) {
+  const wrapper = createAndAppend('div', parent, `${category.name}Wrapper`);
+  const content = createAndAppend('div', wrapper, `${category.name}Content`);
+  createAndAppend('h1', content, undefined, undefined, `${category.name}`);
+  for (const item of category.options) {
+    createAndAppend('input', content, `${category.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${category.name}`);
     createAndAppend('label', content, undefined, 'label', `${item.value}`);
   }
 }
