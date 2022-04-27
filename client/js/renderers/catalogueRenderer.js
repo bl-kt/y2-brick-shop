@@ -1,4 +1,5 @@
 import * as wishlist from '../controllers/wishlistController.mjs';
+import * as filter from '../controllers/filterController.mjs';
 import * as basket from '../controllers/basketController.mjs';
 import * as cat from '../controllers/catalogueController.mjs';
 import { createAndAppend } from '../helpers.js';
@@ -11,9 +12,13 @@ const category = USP.get('cat');
 const page = USP.get('page');
 
 // On-load, render defaults
-document.addEventListener('DOMContentLoaded', renderCatalogue('ABC', category, page));
-document.addEventListener('DOMContentLoaded', renderSortFilter);
+document.addEventListener('DOMContentLoaded', renderPage(category, page));
 
+function renderPage(category, page) {
+  renderCatalogue('ABC', category, page);
+  renderQueryBar();
+  renderSortFilterMenu(category);
+}
 
 // FUNCTION: Renders Catalogue
 async function renderCatalogue(sort = 'ABC', category, page) {
@@ -53,29 +58,78 @@ function renderItem(data) {
 }
 
 // FUNCTION: Render Sort/Filter Bar
-async function renderSortFilter() {
+async function renderQueryBar() {
   const res = await fetch('./components/sortFilter.html');
   const querybar = await res.text();
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
 
-  const sortDropdown = document.querySelector('#sortDropdown');
-  sortDropdown.addEventListener('change', () => {
-    clearCatalogue();
-    renderCatalogue(sortDropdown.value, category, page);
+  // const sortDropdown = document.querySelector('#sortDropdown');
+  // sortDropdown.addEventListener('change', () => {
+  //   clearCatalogue();
+  //   renderCatalogue(sortDropdown.value, category, page);
+  // });
+
+  const toggle = document.querySelector('#openSortFilter');
+  const menu = document.querySelector('#sortFilterWrapper');
+  toggle.addEventListener('click', () => {
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open');
+    } else {
+      menu.classList.add('open');
+    }
   });
 
   const breadcrumb = document.querySelector('#breadcrumb');
   breadcrumb.textContent = ` Catalogue / All ${category}s`;
 }
 
-// FUNCTION: Clear catalogue
-function clearCatalogue() {
-  const grid = document.querySelector('#grid');
-  while (grid.lastElementChild) {
-    grid.removeChild(grid.lastElementChild);
+async function renderSortFilterMenu() {
+  const filters = [];
+  const brickColours = await filter.getBrickColours();
+  const brickCategories = await filter.getBrickCategories();
+  const getKitCategories = await filter.getKitCategories();
+
+  switch (category) {
+    case 'product':
+      filters.push({ name: 'brickColours', options: brickColours });
+      filters.push({ name: 'brickCategories', options: brickCategories });
+      filters.push({ name: 'kitCategories', options: getKitCategories });
+      break;
+    case 'brick':
+      filters.push({ name: 'brickColours', options: brickColours });
+      filters.push({ name: 'brickCategories', options: brickCategories });
+      break;
+    case 'kit':
+      filters.push({ name: 'kitCategories', options: getKitCategories });
+      break;
+  }
+
+  const wrapper = document.querySelector('#sortFilterWrapper');
+  const content = createAndAppend('div', wrapper, undefined, 'content');
+
+  for (const option of filters) {
+    renderCategory(content, option);
   }
 }
+
+function renderCategory(parent, optionCategory) {
+  const wrapper = createAndAppend('div', parent, `${optionCategory.name}Wrapper`);
+  const content = createAndAppend('div', wrapper, `${optionCategory.name}Content`);
+  createAndAppend('h1', content, undefined, undefined, `${optionCategory.name}`);
+  for (const item of optionCategory.options) {
+    createAndAppend('input', content, `${optionCategory.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${optionCategory.name}`);
+    createAndAppend('label', content, undefined, 'label', `${item.value}`);
+  }
+}
+
+// FUNCTION: Clear catalogue
+// function clearCatalogue() {
+//   const grid = document.querySelector('#grid');
+//   while (grid.lastElementChild) {
+//     grid.removeChild(grid.lastElementChild);
+//   }
+// }
 
 // Allows use of async function in non-async context
 (async () => {

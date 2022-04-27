@@ -103,6 +103,19 @@ $buttonHighlight: #76323f;
   }
 }
 
+#sortFilterWrapper {
+  display: none;
+}
+
+#sortFilterWrapper.open{
+  display: block;
+  background: red;
+  width: 25%;
+  height: 50px;
+  float: right;
+  padding-top: 40px;
+}
+
 @media screen and (max-width: 800px) {
   #gridWrapper {
     #grid {

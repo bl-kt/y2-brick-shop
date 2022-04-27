@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/brick/colour/all', async (req, res, next) => {
   try {
-    const result = await db.query('SELECT * FROM colour;');
+    const result = await db.query('SELECT c.colour_name as "value" FROM colour as c;');
     res.send(result.rows);
   } catch (error) {
     console.error(error);
@@ -17,7 +17,7 @@ router.get('/brick/colour/all', async (req, res, next) => {
 
 router.get('/brick/shape/all', async (req, res, next) => {
   try {
-    const result = await db.query('SELECT * FROM shape as s;');
+    const result = await db.query('SELECT s.shape_name as "value" FROM shape as s;');
     res.send(result.rows);
   } catch (error) {
     console.error(error);
@@ -28,7 +28,7 @@ router.get('/brick/shape/all', async (req, res, next) => {
 
 router.get('/brick/category/all', async (req, res, next) => {
   try {
-    const result = await db.query('SELECT DISTINCT s.shape_cat FROM shape as s;');
+    const result = await db.query('SELECT DISTINCT s.shape_cat as "value" FROM shape as s;');
     res.send(result.rows);
   } catch (error) {
     console.error(error);
@@ -41,7 +41,7 @@ router.get('/brick/category/all', async (req, res, next) => {
 
 router.get('/kit/category/all', async (req, res, next) => {
   try {
-    const result = await db.query('SELECT DISTINCT k.kit_cat FROM kit as k;');
+    const result = await db.query('SELECT DISTINCT k.kit_cat as "value" FROM kit as k;');
     res.send(result.rows);
   } catch (error) {
     console.error(error);
