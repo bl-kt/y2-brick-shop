@@ -34,15 +34,4 @@ router.get('/:id', async (req, res, next) => {
   next();
 });
 
-router.get('/colour/all', async (req, res, next) => {
-  try {
-    const result = await db.query('SELECT * FROM colour;');
-    res.send(result.rows);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send();
-  }
-  next();
-});
-
 module.exports = router;
