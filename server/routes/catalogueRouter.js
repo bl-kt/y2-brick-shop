@@ -24,11 +24,12 @@ router.get('/:category/all/', async (req, res, next) => {
         s.shape_name AS "name",
         s.id AS "img_id",
         s.shape_cat AS "cat",
+        c.colour_name as "colour",
         b.price AS "price",
-        b.stock AS "stock",
-        b.id AS "id"
+        b.stock AS "stock"
         FROM brick AS b
         JOIN shape AS s ON b.fk_shape_id = s.id
+        JOIN colour AS c on b.fk_colour_id = c.id
     ORDER BY s.shape_name ASC
     ) AS "table"`;
   }
@@ -39,19 +40,23 @@ router.get('/:category/all/', async (req, res, next) => {
        s.shape_name as "name",
        s.id as "img_id",
        s.shape_cat as "cat",
+       c.colour_name as "colour",
        stock as "stock",
        price as "price"
        FROM brick as b
        JOIN shape as s on b.fk_shape_id = s.id
+       JOIN colour AS c on b.fk_colour_id = c.id
       ) UNION (
-        SELECT
-        k.id as "id",
-        k.kit_name as "name",
-        k.id as "img_id",
-        k.kit_cat as "cat",
-        k.kit_stock as "stock",
-        k.kit_price as "price"
-        from kit as k)) as "table"`;
+       SELECT
+       id as "id",
+       kit_name as "name",
+       id as "img_id",
+       kit_cat as "cat",
+       kit_name as "colour",
+       kit_stock as "stock",
+       kit_price as "price"
+       from kit)
+      ) as "table"`;
   }
 
   switch (req.query.sort) {
@@ -76,7 +81,7 @@ router.get('/:category/all/', async (req, res, next) => {
   }
 
   if (!req.query.search) {
-    console.log("ran w/o query");
+    console.log('ran w/o query');
     try {
       const result = await db.query(
       `${query}` + `${sort}`);
@@ -87,7 +92,7 @@ router.get('/:category/all/', async (req, res, next) => {
     }
     next();
   } else {
-    console.log("ran w/ query");
+    console.log('ran w/ query');
     try {
       const result = await db.query(
       `${query}` + `${filter}` + `${sort}`);
