@@ -22,6 +22,7 @@ function renderPage(category) {
 
 // FUNCTION: Renders Catalogue
 async function renderCatalogue(sort = 'ABC', category, filter, filter2, filter3) {
+  clearCatalogue();
   const data = await cat.getCatalogue(sort, category, filter, filter2, filter3);
 
   for (const item of data) {
@@ -95,7 +96,7 @@ async function renderSortFilterMenu() {
     { name: 'Price: Low to High', value: 'PASC' },
     { name: 'Price: High to Low', value: 'PDES' },
     { name: 'Category, A-Z', value: 'CASC' },
-    { name: 'Category, Z-A', value: 'CDES' },
+    { name: 'Category, Z-A', value: 'CDESC' },
   ];
 
   switch (category) {
@@ -121,7 +122,10 @@ async function renderSortFilterMenu() {
   const sortContent = createAndAppend('div', sortWrapper, 'sortContent');
   createAndAppend('h1', sortContent, undefined, undefined, 'Sort');
   for (const sort of sorts) {
-    createAndAppend('input', sortContent, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
+    const radio = createAndAppend('input', sortContent, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
+    radio.addEventListener('click', () => {
+      renderCatalogue(radio.value, category);
+    });
     createAndAppend('label', sortContent, undefined, 'label', `${sort.name}`);
   }
 
@@ -142,12 +146,12 @@ function renderCategory(parent, category) {
 }
 
 // FUNCTION: Clear catalogue
-// function clearCatalogue() {
-//   const grid = document.querySelector('#grid');
-//   while (grid.lastElementChild) {
-//     grid.removeChild(grid.lastElementChild);
-//   }
-// }
+function clearCatalogue() {
+  const grid = document.querySelector('#grid');
+  while (grid.lastElementChild) {
+    grid.removeChild(grid.lastElementChild);
+  }
+}
 
 // Allows use of async function in non-async context
 (async () => {
