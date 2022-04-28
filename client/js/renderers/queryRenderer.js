@@ -13,8 +13,9 @@ async function renderQueryBar(category) {
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
 
+  // or change?
   const searchBar = document.querySelector('#searchBar');
-  searchBar.addEventListener('change', () => {
+  searchBar.addEventListener('input', () => {
     console.log(searchBar.value);
     cat.renderCatalogue(sortRadio = 'ABC', category, searchBar.value, 'name');
   });
