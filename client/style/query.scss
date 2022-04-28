@@ -81,10 +81,14 @@ $buttonHighlight: #76323f;
       position: sticky;
       width: 100%;
     }
+
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1020px) {
+  #sortFilterWrapper.open{
+    width: 30%;
+  }
 }
 
 @media screen and (max-width:650px) {
@@ -109,4 +113,22 @@ $buttonHighlight: #76323f;
       }
     }
   }
+  #sortFilterWrapper.open{
+    width: 35%;
+  }
 }
+
+@media screen and (max-width: 569px) {
+  #sortFilterWrapper.open{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #sortFilterWrapper.open{
+    width: 100%;
+    z-index: 999;
+    top: 10px;
+  }
+}
+

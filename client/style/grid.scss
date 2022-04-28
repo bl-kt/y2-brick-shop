@@ -12,10 +12,18 @@ $item: #e0e0e0;
 $button: #9a5c5b;
 $buttonHighlight: #76323f;
 
+@mixin sortAndGrid($gridColumns, $menuOpen: false) {
+  grid-template-columns: repeat($gridColumns, 1fr);
+
+  @if $menuOpen {
+    grid-template-columns: repeat($gridColumns - 1, 1fr);
+  }
+}
+
 #gridWrapper {
-  #grid {
+  #grid{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     margin: auto;
     max-width: 55%;
     grid-gap: 20px;
@@ -103,11 +111,20 @@ $buttonHighlight: #76323f;
   }
 }
 
+@media screen and (max-width: 1020px) {
+  #sortFilterWrapper.open + #grid{
+    @include sortAndGrid(4, true);
+  }
+}
+
 @media screen and (max-width: 800px) {
   #gridWrapper {
     #grid {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+  #sortFilterWrapper.open + #grid{
+    @include sortAndGrid(3, true);
   }
 }
 
@@ -117,6 +134,9 @@ $buttonHighlight: #76323f;
     #grid {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+  #sortFilterWrapper.open + #grid{
+    @include sortAndGrid(2, true);
   }
 }
 
