@@ -25,100 +25,87 @@ $buttonHighlight: #76323f;
     font-family: Roboto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:'search sort filter';
+    grid-template-areas:'search . filter';
 
     #searchBar{
+      grid-area: search;
       height: 40px;
       border-radius: 4px;
       border: none;
       box-shadow: none;
+      min-width: 170px;
     }
 
-    #sort {
-      grid-area: sort;
-      padding-top: 2px;
-      select {
-        width: 170px;
-        height: 40px;
-        border: none;
-        border-radius: 4px;
-      }
-    }
-
-    #filter {
+    #openSortFilter {
       grid-area: filter;
-      padding-top: 2px;
-      #filterBtn{
-        font-family: Roboto;
-        font-size: 14px;
-        width: 170px;
-        height: 40px;
-        margin: auto;
-        border: none;
-        background: $banner;
-        color: $menuText;
-        border-radius: 4px;
-      }
+      min-width: 170px;
+    }
+
+  }
+}
+
+#sortFilterWrapper {
+  display: none;
+}
+
+#sortFilterWrapper.open{
+  position: relative;
+  display: block;
+  height: auto;
+  width: 25%;
+  top: 42px;
+  background: #dbdbdb;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  float: right;
+  font-family: Roboto;
+
+  #sortFilterContent {
+    padding: 0px 20px 30px 20px;
+
+    .categoryWrapper {
+      padding: 0px 0px 20px 0px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: semibold;
+    }
+
+    .radioDiv{
+      padding: 2px 0px;
+      font-size: 16px;
+    }
+
+    #sortFilterBtn{
+      position: sticky;
+      width: 100%;
     }
   }
 }
 
 @media screen and (max-width: 800px) {
-  #queryWrapper {
-    .queryContent {
-      max-width: 90%;
-      grid-template-columns: 1fr .5fr 1fr 1fr;
-      grid-template-areas:'search . sort filter' !important;
-    }
-  }
 }
 
 @media screen and (max-width:650px) {
   #queryWrapper {
     .queryContent {
       max-width: 90%;
-      grid-template-columns: 1fr .5fr 1fr;
+      grid-template-columns: 1fr .25fr 1fr;
       grid-template-areas:'search . filter' !important;
 
-      #filter {
-        #filterBtn {
-          content: 'Sort & Filter';
-        }
+      #searchBar{
+        grid-area: search;
+        height: 40px;
+        border-radius: 4px;
+        border: none;
+        box-shadow: none;
+        min-width: 140px;
       }
-
-      #sort {
-        display: none;
-      }
-    }
-    p {
-      display: none;
-    }
-    #sort {
-      width: 100%;
-      margin: auto;
-      align-self: center;
-      justify-self: center;
-
-      select {
-        max-width: 170px;
-        max-height: 40px;
-        width:100% !important;
-        height: 100% !important;
-        margin: auto;
-      }
-    }
-    #filter {
-      width: 100%;
-      margin: auto;
-      align-self: center;
-      justify-self: center;
-
-      #filterBtn{
-        max-width: 170px;
-        max-height: 40px;
-        width:100% !important;
-        height: 100% !important;
-        margin: auto;
+  
+      #openSortFilter {
+        grid-area: filter;
+        min-width: 140px;
       }
     }
   }

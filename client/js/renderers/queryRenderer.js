@@ -8,7 +8,7 @@ let filterCategory;
 
 // FUNCTION: Render Sort/Filter Bar
 async function renderQueryBar(category) {
-  const res = await fetch('./components/sortFilter.html');
+  const res = await fetch('./components/query.html');
   const querybar = await res.text();
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
@@ -61,19 +61,20 @@ async function renderSortFilterMenu(category) {
 
   // Render points to anchor other content to
   const wrapper = document.querySelector('#sortFilterWrapper');
-  const content = createAndAppend('div', wrapper, undefined, 'content');
+  const content = createAndAppend('div', wrapper, 'sortFilterContent');
 
   // Sorts
-  const sortWrapper = createAndAppend('div', content, 'sortWrapper');
-  const sortContent = createAndAppend('div', sortWrapper, 'sortContent');
-  createAndAppend('h1', sortContent, undefined, undefined, 'Sort');
+  const sortWrapper = createAndAppend('div', content, undefined, 'sortWrapper');
+  const sortContent = createAndAppend('div', sortWrapper, undefined, 'sortContent');
+  createAndAppend('h2', sortContent, undefined, undefined, 'Sort');
   for (const sort of sorts) {
-    const radio = createAndAppend('input', sortContent, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
+    const div = createAndAppend('div', sortContent, undefined, 'radioDiv');
+    const radio = createAndAppend('input', div, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
     radio.addEventListener('click', () => {
       // renderCatalogue(radio.value, category);
       sortRadio = radio.value;
     });
-    createAndAppend('label', sortContent, undefined, 'label', `${sort.name}`);
+    createAndAppend('label', div, undefined, 'label', `${sort.name}`);
   }
 
   // Filters
@@ -88,13 +89,14 @@ async function renderSortFilterMenu(category) {
 
 // FUNCTION: Render a category for the dynamic filter population
 function renderCategory(parent, group) {
-  const wrapper = createAndAppend('div', parent, `${group.name}Wrapper`);
-  const content = createAndAppend('div', wrapper, `${group.name}Content`);
-  createAndAppend('h1', content, undefined, undefined, `${group.name}`);
+  const wrapper = createAndAppend('div', parent, undefined, 'categoryWrapper');
+  const content = createAndAppend('div', wrapper, undefined, 'categoryContent');
+  createAndAppend('h2', content, undefined, undefined, `${group.name}`);
   for (const item of group.options) {
     // To enable choice of multiple filters, change name attribute to group.name
-    const radio = createAndAppend('input', content, `${group.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', 'filterRadio');
-    createAndAppend('label', content, undefined, 'label', `${item.value}`);
+    const div = createAndAppend('div', content, undefined, 'radioDiv');
+    const radio = createAndAppend('input', div, `${group.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', 'filterRadio');
+    createAndAppend('label', div, undefined, 'label', `${item.value}`);
     radio.addEventListener('click', () => {
       switch (group.name) {
         case 'brickCategories':
