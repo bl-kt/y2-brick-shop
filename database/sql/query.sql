@@ -60,19 +60,23 @@ SELECT * FROM (
        s.shape_name as "name",
        s.id as "img_id",
        s.shape_cat as "cat",
+       c.colour_name as "colour",
        stock as "stock",
        price as "price"
        FROM brick as b
        JOIN shape as s on b.fk_shape_id = s.id
+       JOIN colour AS c on b.fk_colour_id = c.id
       ) UNION (
        SELECT
        id as "id",
        kit_name as "name",
        id as "img_id",
        kit_cat as "cat",
+       kit_name as "colour",
        kit_stock as "stock",
        kit_price as "price"
-       from kit)) as "table"
+       from kit)
+      ) as "table"
 
 -- SEARCH ALL
 SELECT * FROM (

@@ -10,6 +10,10 @@ const pageContent = document.querySelector('#grid');
 const USP = new URLSearchParams(window.location.search);
 const category = USP.get('cat');
 
+let sortRadio;
+let filterRadio;
+let filterCategory;
+
 // On-load, render defaults
 document.addEventListener('DOMContentLoaded', renderPage(category));
 
@@ -81,6 +85,8 @@ async function renderQueryBar() {
 // FUNCTION: Render the sort/filter menu/sidebar
 async function renderSortFilterMenu() {
   const filters = [];
+
+  // Data to render sort/filter with
   const brickColours = await filter.getBrickColours();
   const brickCategories = await filter.getBrickCategories();
   const getKitCategories = await filter.getKitCategories();
@@ -108,25 +114,31 @@ async function renderSortFilterMenu() {
       break;
   }
 
+  // Render points to anchor other content to
   const wrapper = document.querySelector('#sortFilterWrapper');
   const content = createAndAppend('div', wrapper, undefined, 'content');
 
-  // Sort
+  // Sorts
   const sortWrapper = createAndAppend('div', content, 'sortWrapper');
   const sortContent = createAndAppend('div', sortWrapper, 'sortContent');
   createAndAppend('h1', sortContent, undefined, undefined, 'Sort');
   for (const sort of sorts) {
     const radio = createAndAppend('input', sortContent, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
     radio.addEventListener('click', () => {
-      renderCatalogue(radio.value, category);
+      // renderCatalogue(radio.value, category);
+      sortRadio = radio.value;
     });
     createAndAppend('label', sortContent, undefined, 'label', `${sort.name}`);
   }
 
-  // Filter
+  // Filters
   for (const option of filters) {
     renderCategory(content, option);
   }
+  const sortFilterBtn = createAndAppend('button', content, 'sortFilterBtn', 'btn', 'Apply');
+  sortFilterBtn.addEventListener('click', () => {
+    renderCatalogue(sortRadio, category, filterRadio, filterCategory);
+  });
 }
 
 // FUNCTION: Render a category for the dynamic filter population
@@ -135,23 +147,22 @@ function renderCategory(parent, group) {
   const content = createAndAppend('div', wrapper, `${group.name}Content`);
   createAndAppend('h1', content, undefined, undefined, `${group.name}`);
   for (const item of group.options) {
-    const radio = createAndAppend('input', content, `${group.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', `${group.name}`);
+    // To enable choice of multiple filters, change name attribute to group.name
+    const radio = createAndAppend('input', content, `${group.name}${item.value}`, 'radio', `${item.value}`, undefined, `${item.value}`, undefined, 'radio', 'filterRadio');
     createAndAppend('label', content, undefined, 'label', `${item.value}`);
     radio.addEventListener('click', () => {
-      let searchCat = '';
       switch (group.name) {
         case 'brickCategories':
-          searchCat = 'cat';
+          filterCategory = 'cat';
           break;
         case 'kitCategories':
-          searchCat = 'cat';
+          filterCategory = 'cat';
           break;
         case 'brickColours':
-          searchCat = 'colour';
+          filterCategory = 'colour';
           break;
       }
-      console.log(searchCat);
-      renderCatalogue('ABC', category, item.value, searchCat);
+      filterRadio = radio.value;
     });
   }
 }

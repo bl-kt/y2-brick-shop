@@ -81,7 +81,6 @@ router.get('/:category/all/', async (req, res, next) => {
   }
 
   if (!req.query.search) {
-    console.log('ran w/o query');
     try {
       const result = await db.query(
       `${query}` + `${sort}`);
@@ -92,7 +91,6 @@ router.get('/:category/all/', async (req, res, next) => {
     }
     next();
   } else {
-    console.log('ran w/ query');
     try {
       const result = await db.query(
       `${query}` + `${filter}` + `${sort}`);
