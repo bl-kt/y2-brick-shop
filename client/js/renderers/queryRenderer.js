@@ -13,6 +13,12 @@ async function renderQueryBar(category) {
   const wrapper = document.querySelector('#queryWrapper');
   wrapper.innerHTML = querybar;
 
+  const searchBar = document.querySelector('#searchBar');
+  searchBar.addEventListener('change', () => {
+    console.log(searchBar.value);
+    cat.renderCatalogue(sortRadio = 'ABC', category, searchBar.value, 'name');
+  });
+
   const toggle = document.querySelector('#openSortFilter');
   const menu = document.querySelector('#sortFilterWrapper');
   toggle.addEventListener('click', () => {
@@ -32,7 +38,6 @@ async function renderSortFilterMenu(category) {
   const filters = [];
 
   // Data to render sort/filter with
-  const brickColours = await filter.getBrickColours();
   const brickCategories = await filter.getBrickCategories();
   const getKitCategories = await filter.getKitCategories();
   const sorts = [
@@ -46,12 +51,10 @@ async function renderSortFilterMenu(category) {
 
   switch (category) {
     case 'product':
-      // filters.push({ name: 'brickColours', options: brickColours });
-      // filters.push({ name: 'brickCategories', options: brickCategories });
-      // filters.push({ name: 'kitCategories', options: getKitCategories });
+      filters.push({ name: 'brickCategories', options: brickCategories });
+      filters.push({ name: 'kitCategories', options: getKitCategories });
       break;
     case 'brick':
-      filters.push({ name: 'brickColours', options: brickColours });
       filters.push({ name: 'brickCategories', options: brickCategories });
       break;
     case 'kit':
@@ -71,7 +74,6 @@ async function renderSortFilterMenu(category) {
     const div = createAndAppend('div', sortContent, undefined, 'radioDiv');
     const radio = createAndAppend('input', div, `${sort.name}`, 'radio', undefined, undefined, `${sort.value}`, undefined, 'radio', 'sort');
     radio.addEventListener('click', () => {
-      // renderCatalogue(radio.value, category);
       sortRadio = radio.value;
     });
     createAndAppend('label', div, undefined, 'label', `${sort.name}`);
@@ -84,6 +86,10 @@ async function renderSortFilterMenu(category) {
   const sortFilterBtn = createAndAppend('button', content, 'sortFilterBtn', 'btn', 'Apply');
   sortFilterBtn.addEventListener('click', () => {
     cat.renderCatalogue(sortRadio, category, filterRadio, filterCategory);
+  });
+  const resetSortFilterBtn = createAndAppend('button', content, 'resetSortFilterBtn', 'btn', 'Reset Parameters');
+  resetSortFilterBtn.addEventListener('click', () => {
+    window.location.reload();
   });
 }
 
@@ -104,9 +110,6 @@ function renderCategory(parent, group) {
           break;
         case 'kitCategories':
           filterCategory = 'cat';
-          break;
-        case 'brickColours':
-          filterCategory = 'colour';
           break;
       }
       filterRadio = radio.value;

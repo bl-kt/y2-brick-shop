@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/:category/all/', async (req, res, next) => {
   let sort = '';
   let query = '';
-  const filter = ` WHERE lower(${req.query.searchCat}) = lower('${req.query.search}')`;
+  let filter;
 
   if (req.params.category === 'kit') {
     query = `SELECT * FROM (SELECT
@@ -57,6 +57,12 @@ router.get('/:category/all/', async (req, res, next) => {
        kit_price as "price"
        from kit)
       ) as "table"`;
+  }
+
+  if (req.query.searchCat === 'name') {
+    filter = `WHERE ${req.query.searchCat} ILIKE '%${req.query.search}%' `;
+  } else {
+    filter = ` WHERE lower(${req.query.searchCat}) = lower('${req.query.search}') `;
   }
 
   switch (req.query.sort) {
