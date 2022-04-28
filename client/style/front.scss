@@ -13,81 +13,55 @@ $button: #9a5c5b;
 $buttonHighlight: #76323f;
 
 #frontWrapper {
+  z-index: 2;
+  display: block;
   position: relative;
-  background: $item;
-  top: 100px;
 
   #promoWrapper {
-    max-width: 60%;
+    padding-top: 150px;
+    max-width: 70%;
     margin: auto;
-    padding: 50px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: "image text";
-  }
-  img {
-    grid-area: "image";
-  }
-  #promoText {
-    padding-top: 50px;
-    grid-area: "text";
 
-    a{
-      padding: 5px;
-      color: #e0e0e0;
-      text-decoration: none;
+    img{
+      width: auto;
+      height: 300px;
+    }
+
+    #promoText{
+      width: 30vw;
       font-family: Roboto;
-      color: transparent;
-      font-size: 0;
+      color: $text;
+      height: auto;
     }
 
-    h2 {
-      font-family: 'Roboto';
-      font-weight: 600;
-      font-size: 26px;
-      line-height: 26px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      color: #000;
-    }
+  }
+}
 
-    p {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 100;
-      font-size: 14px;
-      line-height: 15px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      color: #000;
+@media screen and (max-width: 800px) {
+  #frontWrapper{
+    #promoWrapper{
+      padding: 50px 0px 100px 0px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr 1fr;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+
+      #promoText {
+        width: 100%;
+      }
     }
   }
 }
 
 @media screen and (max-width: 800px) {
-  #frontWrapper {
-    max-width: 70%;
-  }
-}
-
-@media screen and (max-width:650px) {
-
-  #frontWrapper {
-    max-width: 80%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  #frontWrapper {
-    max-width: 90%;
+  #frontWrapper{
+    #promoWrapper{
+      grid-template-rows: auto 1fr;
+    }
   }
 }

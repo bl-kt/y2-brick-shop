@@ -35,22 +35,4 @@ body {
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
 }
-
-@media screen and (max-width: 450px) {
-  #products {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (auto)[1];
-        grid-template-columns: repeat(1, auto);
-    list-style: none;
-    width: 100px;
-    -ms-grid-column-align: start;
-        justify-self: start;
-    -webkit-padding-start: 0px;
-            padding-inline-start: 0px;
-  }
-  #frontWrapper {
-    max-width: 90%;
-  }
-}
 /*# sourceMappingURL=style.css.map */
