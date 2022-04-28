@@ -1,0 +1,43 @@
+$background: #fff;
+$text: #000;
+
+$banner: #080808;
+$bannerText: #e0e0e0;
+
+$menu: #27272b;
+$menuText: #e0e0e0;
+
+$item: #e0e0e0;
+
+$button: #9a5c5b;
+$buttonHighlight: #76323f;
+
+#footerWrapper {
+  background: $text;
+  width: 100%;
+  position: sticky;
+  top: 101vh;
+  height: 90px;
+
+  #footerContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
+    margin: auto;
+    max-width: 300px;
+    color: $bannerText;
+    font-family: Roboto;
+    font-weight: light;
+    font-size: 12px;
+    padding-top: 40px;
+    text-align: center;
+
+    .l {
+      grid-area: 'left';
+    }
+
+    .r {
+      grid-area: 'right';
+    }
+  }
+}

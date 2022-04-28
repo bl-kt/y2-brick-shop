@@ -23,6 +23,7 @@ router.get('/:category/all/', async (req, res, next) => {
     k.kit_price as "price"
     FROM kit as k) AS "table"`;
   }
+
   if (req.params.category === 'brick') {
     query = `SELECT * FROM ( SELECT
       b.id AS "id",
@@ -37,6 +38,7 @@ router.get('/:category/all/', async (req, res, next) => {
       JOIN colour AS c on b.fk_colour_id = c.id ) as "table"
       where colour = 'White'`;
   }
+
   if (req.params.category === 'product') {
     query = `SELECT * FROM (
       (SELECT DISTINCT ON (s.shape_name)
