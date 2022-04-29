@@ -55,22 +55,22 @@ function renderItem(data) {
   createAndAppend('label', colourDiv, undefined, 'label', 'Available Colours');
   const colourPicker = createAndAppend('select', colourDiv, 'colourPicker');
   // Aware this is terrible, work on this another time
-  createAndAppend('option', colourPicker, undefined, undefined, 'Pink', undefined, 1);
+  createAndAppend('option', colourPicker, undefined, undefined, 'Colours...', undefined);
+  createAndAppend('option', colourPicker, undefined, undefined, 'Pink', undefined, 'Pink');
   createAndAppend('option', colourPicker, undefined, undefined, 'Red', undefined, 'Red');
-  createAndAppend('option', colourPicker, undefined, undefined, 'Orange', undefined, 3);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Yellow', undefined, 4);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Blue', undefined, 5);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Purple', undefined, 6);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Green', undefined, 7);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Brown', undefined, 8);
-  createAndAppend('option', colourPicker, undefined, undefined, 'White', undefined, 9);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Black', undefined, 10);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Grey', undefined, 11);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Transparent', undefined, 12);
+  createAndAppend('option', colourPicker, undefined, undefined, 'Orange', undefined, 'Orange');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Yellow', undefined, 'Yellow');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Blue', undefined, 'Blue');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Purple', undefined, 'Purple');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Green', undefined, 'Green');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Brown', undefined, 'Brown');
+  createAndAppend('option', colourPicker, undefined, undefined, 'White', undefined, 'White');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Black', undefined, 'Black');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Grey', undefined, 'Grey');
+  createAndAppend('option', colourPicker, undefined, undefined, 'Transparent', undefined, 'Transparent');
 
   colourPicker.addEventListener('change', () => {
     colour = colourPicker.value;
-    console.log('dataname' + data[0].name);
     renderProductByColour(data[0].name, colour);
   });
 
@@ -80,7 +80,6 @@ function renderItem(data) {
   const addAmount = createAndAppend('input', quantityDiv, 'addAmount', undefined, undefined, undefined, undefined, undefined, 'number');
   addAmount.addEventListener('input', () => {
     quantity = addAmount.value;
-    console.log(quantity);
   });
 
   // Wishlist
@@ -91,9 +90,10 @@ function renderItem(data) {
   });
 
   // Basket
+  // DOES NOT WORK
   const basketBtn = createAndAppend('button', itemContent, 'basketBtn', 'btn', '+ Basket');
   basketBtn.addEventListener('click', () => {
-    basket.add(data[0], 1);
+    basket.add(data[0], quantity);
     basketBtn.textContent = 'Added 1!';
     basketBtn.classList.add('active');
     setTimeout(() => {
