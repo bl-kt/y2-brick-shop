@@ -12,19 +12,23 @@ router.get('/:id', async (req, res, next) => {
          s.shape_name as "name",
          s.id as "img_id",
          s.shape_cat as "cat",
+         c.colour_name as "colour",
          stock as "stock",
          price as "price"
          FROM brick as b
          JOIN shape as s on b.fk_shape_id = s.id
+         JOIN colour AS c on b.fk_colour_id = c.id
         ) UNION (
          SELECT
-         k.id as "id",
-         k.kit_name as "name",
-         k.id as "img_id",
-         k.kit_cat as "cat",
-         k.kit_stock as "stock",
-         k.kit_price as "price"
-         from kit as k)) as "table"
+         id as "id",
+         kit_name as "name",
+         id as "img_id",
+         kit_cat as "cat",
+         kit_name as "colour",
+         kit_stock as "stock",
+         kit_price as "price"
+         from kit)
+        ) as "table"
         WHERE id = ${req.params.id};`);
     res.send(result.rows);
   } catch (error) {

@@ -51,6 +51,7 @@ function renderItem(data) {
 
   // Colour
   const colourDiv = createAndAppend('div', itemContent, 'colourWrapper');
+  createAndAppend('p', colourDiv, undefined, 'label', `Current Colour: ${data[0].colour}`);
   createAndAppend('label', colourDiv, undefined, 'label', 'Available Colours');
   const colourPicker = createAndAppend('select', colourDiv, 'colourPicker');
   // Aware this is terrible, work on this another time
