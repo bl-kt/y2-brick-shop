@@ -1,5 +1,5 @@
 import { updateBasketCounter } from '../controllers/basketController.mjs';
-import { init } from '../controllers/authController.mjs';
+import { controllerInit } from '../controllers/authController.mjs';
 
 document.addEventListener('DOMContentLoaded', renderNav);
 
@@ -20,5 +20,5 @@ async function renderNav() {
     navMenu.classList.toggle('active');
   });
   updateBasketCounter();
-  init();
+  // controllerInit();
 }

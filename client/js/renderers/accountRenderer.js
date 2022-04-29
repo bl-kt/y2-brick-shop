@@ -3,17 +3,30 @@ import * as auth from '../controllers/authController.mjs';
 document.querySelector('#login').addEventListener('click', login);
 document.querySelector('#logout').addEventListener('click', logout);
 
+let isAuthenticated;
+
+
 async function updateAuthUI() {
-  const isAuthenticated = await auth.auth0.isAuthenticated();
+  isAuthenticated = await auth.auth0.isAuthenticated();
 
   document.getElementById('login').disabled = isAuthenticated;
   document.getElementById('logout').disabled = !isAuthenticated;
 }
 
+if (isAuthenticated) {
+  const user = await auth0.getUser();
+  console.log('user' + user);
+}
+
 async function login() {
-  await auth.auth0.loginWithRedirect({
-    redirect_uri: window.location.origin,
-  });
+  try {
+    await auth.auth0.loginWithPopup();
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+
+  isAuthenticated = true;
 }
 
 function logout() {
@@ -23,7 +36,7 @@ function logout() {
 }
 
 async function handleAuth0Redirect() {
-  const isAuthenticated = await auth.auth0.isAuthenticated();
+  isAuthenticated = await auth.auth0.isAuthenticated();
 
   if (isAuthenticated) return;
 
@@ -44,9 +57,11 @@ async function handleAuth0Redirect() {
   }
 }
 
-async function init() {
+async function renderInit() {
+  console.debug('test');
+  await auth.controllerInit();
   await updateAuthUI();
-  await handleAuth0Redirect();
+  // await handleAuth0Redirect();
 }
 
-window.addEventListener('load', init);
+window.addEventListener('load', renderInit);

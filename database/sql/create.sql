@@ -47,10 +47,18 @@ CREATE TABLE customers (
 
 )
 
-CREATE TABLE filters (
-
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  customer_id TEXT,
+  basket JSON NOT NULL,
+  date_placed TIMESTAMP,
+  fulfilled BOOLEAN
 )
 
-CREATE TABLE orders (
-
+CREATE TABLE guestOrders (
+  id SERIAL PRIMARY KEY,
+  customer_email TEXT;
+  basket JSON NOT NULL,
+  date_placed TIMESTAMP,
+  fulfilled BOOLEAN
 )
