@@ -6,23 +6,6 @@ const localStorage = window.localStorage;
 
 // FUNCTION: Add [item] to local storage Wishlist object
 function add(item, amount) {
-  // const isMatch = isInArr(WISHLIST, item);
-
-  // if (isMatch) {
-  //   for (const entry of WISHLIST) {
-  //     if (item === entry.product) {
-  //       entry.quantity++;
-  //       console.log(entry.quantity);
-  //     }
-  //   }
-  // } else {
-  //   WISHLIST.push({
-  //     product: item,
-  //     quantity: amount,
-  //   });
-  //   localStorage.setItem('Wishlist', (JSON.stringify(WISHLIST)));
-  //   console.log(`Added x${amount} ${JSON.stringify(item)} to Wishlist!`);
-  // }
   const currentWishlist = getLS('Wishlist');
   if (isInArr(currentWishlist, item)) {
     const index = currentWishlist.findIndex(element => JSON.stringify(element.product) === JSON.stringify(item));
@@ -50,7 +33,6 @@ function remove(item) {
 function moveToBasket(item) {
   add(item.product, 1);
   remove(item);
-  // window.location.href = './Wishlist.html';
 }
 
 export { add, remove, moveToBasket };

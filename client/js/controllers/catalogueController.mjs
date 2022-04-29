@@ -8,7 +8,6 @@ async function getCatalogue(sort, category, search, searchCat) {
     url.searchParams.set('search', search ?? '');
     url.searchParams.set('searchCat', searchCat ?? '');
     response = await fetch(url.href);
-    console.log(url.href);
   } catch (error) {
     console.error(error);
     return;

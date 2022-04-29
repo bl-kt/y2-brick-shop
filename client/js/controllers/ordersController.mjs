@@ -1,9 +1,9 @@
 function createOrder() {
-    console.log('Order created');
+  console.log('Order created');
 }
 
 function removeOrder() {
-    console.log('Order removed');
+  console.log('Order removed');
 }
 
 export { createOrder, removeOrder };

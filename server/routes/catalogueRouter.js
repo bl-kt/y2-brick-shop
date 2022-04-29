@@ -8,14 +8,12 @@ router.get('/:category/all/', async (req, res, next) => {
   let filter;
 
   if (req.query.searchCat === 'name') {
-    console.log('name');
     filter = ` AND ${req.query.searchCat} ILIKE '%${req.query.search}%' `;
   } else {
     filter = ` AND lower(${req.query.searchCat}) = lower('${req.query.search}') `;
   }
 
   if (req.params.category === 'kit' && req.query.searchCat === 'name') {
-    console.log('beep');
     filter = ` WHERE ${req.query.searchCat} ILIKE '%${req.query.search}%'`;
   }
 
