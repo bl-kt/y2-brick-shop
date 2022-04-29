@@ -23,10 +23,11 @@ async function getColours() {
   return data;
 }
 
-async function getProductByIDAndColour(id, colour) {
+async function getProductByShapeAndColour(shape, colour) {
   let response;
+  console.log('shape' + shape);
   try {
-    response = await fetch(`/api/product/${id}/${colour}`);
+    response = await fetch(`/api/product/${shape}/${colour}`);
   } catch (error) {
     console.error(error);
     return;
@@ -35,4 +36,4 @@ async function getProductByIDAndColour(id, colour) {
   return data;
 }
 
-export { getProductByID, getColours };
+export { getProductByID, getProductByShapeAndColour, getColours };

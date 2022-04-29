@@ -1,4 +1,4 @@
-import { getProductByID, getColours } from '../controllers/productController.mjs';
+import { getProductByID, getProductByShapeAndColour } from '../controllers/productController.mjs';
 import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
 import { createAndAppend } from '../helpers.js';
@@ -11,12 +11,19 @@ const pageContent = document.querySelector('#productContainer');
 
 document.addEventListener('DOMContentLoaded', renderProductPage);
 
+let shape;
 let colour;
 let quantity;
 
 // FUNCTION: Render product pageContent
 async function renderProductPage() {
   const data = await getProductByID(productID);
+  renderItem(data);
+}
+
+async function renderProductByColour(shape, colour) {
+  const data = await getProductByShapeAndColour(shape, colour);
+  clearItem();
   renderItem(data);
 }
 
@@ -48,7 +55,7 @@ function renderItem(data) {
   const colourPicker = createAndAppend('select', colourDiv, 'colourPicker');
   // Aware this is terrible, work on this another time
   createAndAppend('option', colourPicker, undefined, undefined, 'Pink', undefined, 1);
-  createAndAppend('option', colourPicker, undefined, undefined, 'Red', undefined, 2);
+  createAndAppend('option', colourPicker, undefined, undefined, 'Red', undefined, 'Red');
   createAndAppend('option', colourPicker, undefined, undefined, 'Orange', undefined, 3);
   createAndAppend('option', colourPicker, undefined, undefined, 'Yellow', undefined, 4);
   createAndAppend('option', colourPicker, undefined, undefined, 'Blue', undefined, 5);
@@ -62,7 +69,8 @@ function renderItem(data) {
 
   colourPicker.addEventListener('change', () => {
     colour = colourPicker.value;
-    console.log(colour);
+    console.log('dataname' + data[0].name);
+    renderProductByColour(data[0].name, colour);
   });
 
   // Quantity
@@ -92,5 +100,12 @@ function renderItem(data) {
       basketBtn.classList.remove('active');
     }, 1000);
   });
+}
 
+// FUNCTION: Clear page
+function clearItem() {
+  const wrapper = document.querySelector('#productContainer');
+  while (wrapper.lastElementChild) {
+    wrapper.removeChild(wrapper.lastElementChild);
+  }
 }

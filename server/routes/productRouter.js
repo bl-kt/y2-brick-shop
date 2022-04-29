@@ -34,11 +34,11 @@ router.get('/:id', async (req, res, next) => {
   next();
 });
 
-router.get('/:id/:colour', async (req, res, next) => {
+router.get('/:shape/:colour', async (req, res, next) => {
   try {
     const result = await db.query(
       `SELECT * FROM (
-        (SELECT DISTINCT ON (s.shape_name)
+        (SELECT
          b.id as "id",
          s.shape_name as "name",
          s.id as "img_id",
@@ -49,7 +49,6 @@ router.get('/:id/:colour', async (req, res, next) => {
          FROM brick as b
          JOIN shape as s on b.fk_shape_id = s.id
          JOIN colour AS c on b.fk_colour_id = c.id
-  WHERE c.colour_name = 'White'
         ) UNION (
          SELECT
          id as "id",
@@ -61,7 +60,7 @@ router.get('/:id/:colour', async (req, res, next) => {
          kit_price as "price"
          from kit)
         ) as "table"
-        WHERE id = ${req.params.id} AND colour = ${req.params.colour};`);
+        WHERE name ILIKE '%${req.params.shape}%' AND colour = '${req.params.colour}';`);
     res.send(result.rows);
   } catch (error) {
     console.error(error);
