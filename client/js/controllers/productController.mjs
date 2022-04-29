@@ -38,7 +38,19 @@ async function getProductByShapeAndColour(shape, colour) {
 async function removeStockByID(id, table, amount) {
   let response;
   try {
-    response = await fetch(`/api/product/${id}/${table}/${amount}`, { method: 'PUT' });
+    response = await fetch(`/api/product/remove/${id}/${table}/${amount}`, { method: 'PUT' });
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+  const data = await response.json();
+  return data;
+}
+
+async function addStockById(id, table, amount) {
+  let response;
+  try {
+    response = await fetch(`/api/product/add/${id}/${table}/${amount}`, { method: 'PUT' });
   } catch (error) {
     console.error(error);
     return;

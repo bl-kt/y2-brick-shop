@@ -2,10 +2,12 @@ import * as wishlist from '../controllers/wishlistController.mjs';
 import * as basket from '../controllers/basketController.mjs';
 import * as cat from '../controllers/catalogueController.mjs';
 import * as query from './queryRenderer.js';
+import * as product from '../controllers/productController.mjs';
 
 import { createAndAppend } from '../helpers.js';
 
 const pageContent = document.querySelector('#grid');
+const isStaffMode = document.querySelector('#isStaffMode');
 
 // Used to determine items to render
 const USP = new URLSearchParams(window.location.search);
@@ -15,7 +17,6 @@ const category = USP.get('cat');
 document.addEventListener('DOMContentLoaded', renderPage(category));
 
 function renderPage(category) {
-  // renderCatalogue('ABC', category);
   query.renderQueryBar(category);
   query.renderSortFilterMenu(category);
 }
@@ -56,6 +57,19 @@ function renderItem(data) {
       basketBtn.classList.remove('active');
     }, 1000);
   });
+
+  const staffModeStock = createAndAppend('input', itemContent, undefined, 'staffModeStock', '+/- Stock', undefined, 1, undefined, 'number');
+  staffModeStock.addEventListener('change', () => {
+    // Aware this is not maintainable, but do not have time to fix.
+    let table;
+    if (data.id > 1600) {
+      table = 'kit';
+    } else {
+      table = 'brick';
+    }
+    console.log('staffModeStock.value' + staffModeStock.value);
+    product.removeStockByID(data.id, table, staffModeStock.value);
+  });
 }
 
 // FUNCTION: Clear catalogue
@@ -69,6 +83,19 @@ function clearCatalogue() {
 // Allows use of async function in non-async context
 (async () => {
   await renderCatalogue('ABC', category);
+  const staffModeStockBoxes = document.querySelectorAll('.staffModeStock');
+  console.log(staffModeStockBoxes);
+  isStaffMode.addEventListener('change', () => {
+    for (const box of staffModeStockBoxes) {
+      if (isStaffMode.checked) {
+        console.log('on');
+        box.classList.add('active');
+      } else {
+        box.classList.remove('active');
+      }
+    }
+  });
 })();
+
 
 export { renderCatalogue };

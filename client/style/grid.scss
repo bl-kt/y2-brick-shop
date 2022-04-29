@@ -39,6 +39,17 @@ $buttonHighlight: #76323f;
       padding: 10px;
       margin: auto;
 
+      .staffModeStock{
+        display: none;
+      }
+
+      .staffModeStock.active{
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+      }
+
       .itemImg {
         width: 150px;
         height: 150px;

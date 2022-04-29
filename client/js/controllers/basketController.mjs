@@ -25,7 +25,6 @@ function add(item, amount) {
 }
 
 // FUNCTION: Remove [item] from basket
-// currently removes all items with id,  not just selected
 function remove(item) {
   const currentBasket = getLS('Basket');
   const newBasket = currentBasket.filter(comparison => comparison.product.id !== item.product.id);

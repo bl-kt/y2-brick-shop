@@ -13,14 +13,14 @@ async function renderNav() {
   const menuToggle = document.querySelector('#menuToggle');
   const navMenu = document.querySelector('#navMenu');
 
-  const isStaffMode = document.querySelector('#staffMode');
-  isStaffMode.addEventListener('change', () => {
-    if (isStaffMode.checked) {
-      console.log('Staff Mode On');
-    } else {
-      console.log('Staff Mode Off');
-    }
-  });
+  // const isStaffMode = document.querySelector('#staffMode');
+  // isStaffMode.addEventListener('change', () => {
+  //   if (isStaffMode.checked) {
+  //     console.log('Staff Mode On');
+  //   } else {
+  //     console.log('Staff Mode Off');
+  //   }
+  // });
 
   // Toggles Hamburger Menu
   menuToggle.addEventListener('click', () => {
