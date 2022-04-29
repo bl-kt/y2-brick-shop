@@ -11,7 +11,6 @@ const pageContent = document.querySelector('#productContainer');
 
 document.addEventListener('DOMContentLoaded', renderProductPage);
 
-let shape;
 let colour;
 let quantity;
 

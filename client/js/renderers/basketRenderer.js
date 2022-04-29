@@ -23,6 +23,7 @@ function renderBasket() {
 function renderItem(data) {
   const tr = createAndAppend('tr', wrapper, `${data.product.id}`, 'item');
   createAndAppend('td', tr, undefined, 'itemName', `${data.product.name}`);
+  createAndAppend('td', tr, undefined, 'itemColour', `${data.product.colour}`);
   createAndAppend('td', tr, undefined, 'itemQuantity', `${data.quantity}`);
   createAndAppend('td', tr, undefined, 'itemStock', `${data.product.stock}`);
   createAndAppend('td', tr, undefined, 'itemPrice', `${parseFloat(data.product.price) * data.quantity}`);
