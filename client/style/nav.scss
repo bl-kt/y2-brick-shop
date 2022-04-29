@@ -40,7 +40,6 @@ $buttonHighlight: #76323f;
     width: 100%;
     background: $banner;
     display: grid;
-    // grid-template-columns: 0.2fr auto 1fr 1fr;
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
     width: 90%;
@@ -86,12 +85,18 @@ $buttonHighlight: #76323f;
     #navMenu {
       display: grid;
       // grid-template-columns: repeat(6, auto);
-      grid-template-columns: repeat(5, auto);
+      grid-template-columns: repeat(6, auto);
       list-style: none;
       text-align: center;
-      width: 260px;
+      width: 280px;
       justify-self: end;
       padding-inline-start: 0px;
+
+      label {
+        color: $bannerText;
+        font-family: Roboto;
+        font-size: 10px;
+      }
 
       #Basket::after {
         content: "0";

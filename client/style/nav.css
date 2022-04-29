@@ -87,15 +87,21 @@
 #navWrapper nav #navMenu {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[6];
+      grid-template-columns: repeat(6, auto);
   list-style: none;
   text-align: center;
-  width: 260px;
+  width: 280px;
   -ms-grid-column-align: end;
       justify-self: end;
   -webkit-padding-start: 0px;
           padding-inline-start: 0px;
+}
+
+#navWrapper nav #navMenu label {
+  color: #e0e0e0;
+  font-family: Roboto;
+  font-size: 10px;
 }
 
 #navWrapper nav #navMenu #Basket::after {

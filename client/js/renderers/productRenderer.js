@@ -10,6 +10,9 @@ const productID = USP.get('id');
 
 const pageContent = document.querySelector('#productContainer');
 
+const isStaffMode = document.querySelector('#staffMode');
+console.log(isStaffMode);
+
 document.addEventListener('DOMContentLoaded', renderProductPage);
 
 let colour;

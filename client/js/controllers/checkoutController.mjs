@@ -22,6 +22,7 @@ function checkout() {
       const newStock = item.product.stock - item.quantity;
       removeStockByID(item.product.id, table, newStock);
     }
+    window.location.href = '/confirmed.html';
   }
 }
 

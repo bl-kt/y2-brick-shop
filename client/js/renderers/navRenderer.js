@@ -1,5 +1,4 @@
 import { updateBasketCounter } from '../controllers/basketController.mjs';
-import { controllerInit } from '../controllers/authController.mjs';
 
 document.addEventListener('DOMContentLoaded', renderNav);
 
@@ -14,11 +13,19 @@ async function renderNav() {
   const menuToggle = document.querySelector('#menuToggle');
   const navMenu = document.querySelector('#navMenu');
 
+  const isStaffMode = document.querySelector('#staffMode');
+  isStaffMode.addEventListener('change', () => {
+    if (isStaffMode.checked) {
+      console.log('Staff Mode On');
+    } else {
+      console.log('Staff Mode Off');
+    }
+  });
+
   // Toggles Hamburger Menu
   menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
   });
   updateBasketCounter();
-  // controllerInit();
 }
