@@ -1,7 +1,6 @@
 import * as auth from '../controllers/authController.mjs';
 
 async function createOrder(basketContent) {
-  console.log(basketContent);
   let response;
   try {
     const currentUser = await auth.getAuth0User();
@@ -14,7 +13,6 @@ async function createOrder(basketContent) {
       fulfilled: false,
     };
 
-    console.log(url);
     response = await fetch(url.href, {
       method: 'POST',
       body: JSON.stringify(body),

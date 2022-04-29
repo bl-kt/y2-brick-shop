@@ -73,4 +73,17 @@ router.get('/:shape/:colour', async (req, res, next) => {
   next();
 });
 
+router.put('/:id/:table/:amount', async (req, res, next) => {
+  try {
+    const result = await db.query(`UPDATE ${req.params.table}
+    SET stock = ${req.params.amount}
+    WHERE id = ${req.params.id}`);
+    res.send(result.rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+  next();
+});
+
 module.exports = router;

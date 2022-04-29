@@ -35,4 +35,16 @@ async function getProductByShapeAndColour(shape, colour) {
   return data;
 }
 
-export { getProductByID, getProductByShapeAndColour, getColours };
+async function removeStockByID(id, table, amount) {
+  let response;
+  try {
+    response = await fetch(`/api/product/${id}/${table}/${amount}`, { method: 'PUT' });
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+  const data = await response.json();
+  return data;
+}
+
+export { getProductByID, getProductByShapeAndColour, getColours, removeStockByID };
