@@ -59,7 +59,7 @@ async function handleAuth0Redirect() {
 async function renderInit() {
   await auth.controllerInit();
   await updateAuthUI();
-  // await handleAuth0Redirect();
+  await handleAuth0Redirect();
 }
 
 window.addEventListener('load', renderInit);

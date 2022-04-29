@@ -1,6 +1,5 @@
 async function postCustomer(id) {
   const currentCustomers = await getAllCustomers();
-  console.log(currentCustomers);
   for (const customer of currentCustomers) {
     if (id === customer.id) {
       console.log('Already a customer');

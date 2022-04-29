@@ -1,22 +1,40 @@
+const db = require('../../database/db.js');
 const express = require('express');
 const router = express.Router();
 
-router.get('/all', getOrders);
+router.get('/all', async (req, res, next) => {
+  try {
+    const result = await db.query('SELECT * FROM orders;');
+    res.send(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+  next();
+});
 
-router.get('/id', getOrder);
-router.get('/id/kits', getOrderInfo);
-router.get('/id/bricks', getOrderInfo);
+router.post('/post', async (req, res, next) => {
+  try {
+    const result = await db.query(`INSERT INTO orders (customer_id, basket, date_placed, fulfilled) VALUES
+    ('${req.body.customerID}', '{ "Basket": ${JSON.stringify(req.body.basket)} }', ${req.body.datePlaced}, ${req.body.fulfilled});`);
+    res.send(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+  next();
+});
 
-function getOrders() {
-  console.log("I'm just here for now.");
-}
+router.get('/:id', async (req, res, next) => {
+  try {
+    const result = await db.query(`SELECT * from orders WHERE id ILIKE '%${req.params.id}%';`);
+    res.send(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send();
+  }
+  next();
+});
 
-function getOrder() {
-  console.log("I'm just here for now.");
-}
-
-function getOrderInfo() {
-  console.log("I'm just here for now.");
-}
 
 module.exports = router;

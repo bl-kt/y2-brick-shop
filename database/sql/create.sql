@@ -51,14 +51,7 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   customer_id TEXT,
   basket JSON NOT NULL,
-  date_placed TIMESTAMP,
-  fulfilled BOOLEAN
-)
-
-CREATE TABLE guestOrders (
-  id SERIAL PRIMARY KEY,
-  customer_email TEXT;
-  basket JSON NOT NULL,
-  date_placed TIMESTAMP,
-  fulfilled BOOLEAN
+  date_placed BIGINT NOT NULL,
+  fulfilled BOOLEAN,
+  FOREIGN KEY (customer_id) REFERENCES CUSTOMER (id)
 )

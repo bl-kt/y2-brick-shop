@@ -16,6 +16,7 @@ const auth = require('./routes/authRouter.js');
 // Methods
 
 app.use(express.static('../client'));
+app.use(express.json());
 
 app.use('/api/order', order);
 app.use('/api/customer', customer);

@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/all', async (req, res, next) => {
   try {
-    const result = await db.query('SELECT * from customer;');
+    const result = await db.query('SELECT * FROM customer;');
     res.send(result.rows);
   } catch (error) {
     console.error(error);
