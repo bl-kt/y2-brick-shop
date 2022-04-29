@@ -92,7 +92,7 @@ function renderItem(data) {
   // DOES NOT WORK
   const basketBtn = createAndAppend('button', itemContent, 'basketBtn', 'btn', '+ Basket');
   basketBtn.addEventListener('click', () => {
-    basket.add(data[0], quantity);
+    basket.add(data[0], Number.parseInt(quantity));
     basketBtn.textContent = 'Added 1!';
     basketBtn.classList.add('active');
     setTimeout(() => {

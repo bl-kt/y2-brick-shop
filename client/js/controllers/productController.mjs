@@ -25,7 +25,6 @@ async function getColours() {
 
 async function getProductByShapeAndColour(shape, colour) {
   let response;
-  console.log('shape' + shape);
   try {
     response = await fetch(`/api/product/${shape}/${colour}`);
   } catch (error) {

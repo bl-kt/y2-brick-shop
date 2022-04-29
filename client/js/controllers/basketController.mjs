@@ -7,6 +7,10 @@ const localStorage = window.localStorage;
 // FUNCTION: Add [quantity] of [item] to the basket
 function add(item, amount) {
   const currentBasket = getLS('Basket');
+  if (amount <= 0 || amount === undefined || Number.isNaN(amount)) {
+    console.log('failed');
+    return;
+  }
   if (isInArr(currentBasket, item)) {
     const index = currentBasket.findIndex(element => JSON.stringify(element.product) === JSON.stringify(item));
     currentBasket[index].quantity += amount;
