@@ -25,4 +25,16 @@ async function getAllCustomers() {
     return data;
 }
 
+async function getCustomerByID(id) {
+  let response;
+    try {
+      response = await fetch(`/api/customer/${id}`);
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+    const data = await response.json();
+    return data;
+}
+
 export { postCustomer, getAllCustomers }
