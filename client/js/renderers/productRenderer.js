@@ -30,6 +30,8 @@ async function renderProductByColour(shape, colour) {
 // FUNCTION: Renders item for product page
 async function renderItem(data) {
   const brickCategories = await filter.getBrickCategories();
+  const brickColours = await filter.getBrickColours();
+  console.log(brickColours);
 
   const wrapper = createAndAppend('div', pageContent, 'productWrapper', 'item');
   const itemContent = createAndAppend('div', wrapper, undefined, 'productContent');
@@ -59,20 +61,11 @@ async function renderItem(data) {
       createAndAppend('p', colourDiv, undefined, 'label', `Current Colour: ${data[0].colour}`);
       createAndAppend('label', colourDiv, undefined, 'label', 'Available Colours');
       const colourPicker = createAndAppend('select', colourDiv, 'colourPicker');
-      // Aware this is terrible, work on this another time
       createAndAppend('option', colourPicker, undefined, undefined, 'Colours...', undefined);
-      createAndAppend('option', colourPicker, undefined, undefined, 'Pink', undefined, 'Pink');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Red', undefined, 'Red');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Orange', undefined, 'Orange');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Yellow', undefined, 'Yellow');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Blue', undefined, 'Blue');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Purple', undefined, 'Purple');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Green', undefined, 'Green');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Brown', undefined, 'Brown');
-      createAndAppend('option', colourPicker, undefined, undefined, 'White', undefined, 'White');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Black', undefined, 'Black');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Grey', undefined, 'Grey');
-      createAndAppend('option', colourPicker, undefined, undefined, 'Transparent', undefined, 'Transparent');
+      // Aware this is terrible, work on this another time
+      for (const colour of brickColours) {
+        createAndAppend('option', colourPicker, undefined, undefined, `${colour.value}`, undefined, `${colour.value}`);
+      }
 
       colourPicker.addEventListener('change', () => {
         colour = colourPicker.value;

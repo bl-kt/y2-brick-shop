@@ -11,6 +11,7 @@ const customer = require('./routes/customerRouter.js');
 const product = require('./routes/productRouter.js');
 const catalogue = require('./routes/catalogueRouter.js');
 const filter = require('./routes/filterRouter.js');
+const auth = require('./routes/authRouter.js');
 
 // Methods
 
@@ -21,6 +22,7 @@ app.use('/api/customer', customer);
 app.use('/api/product', product);
 app.use('/api/catalogue', catalogue);
 app.use('/api/filter', filter);
+app.use('/api/auth', auth);
 
 // Listeners
 app.listen(port, () => {

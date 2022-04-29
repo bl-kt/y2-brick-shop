@@ -8,7 +8,7 @@ const localStorage = window.localStorage;
 function add(item, amount) {
   const currentBasket = getLS('Basket');
   if (amount <= 0 || amount === undefined || Number.isNaN(amount)) {
-    console.log('failed');
+    window.alert('Please select an amount');
     return;
   }
   if (isInArr(currentBasket, item)) {
