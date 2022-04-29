@@ -18,7 +18,7 @@ async function initializeAuth0Client() {
   auth0 = await createAuth0Client({
     domain: config.domain,
     client_id: config.clientId,
-    cacheLocation: 'localstorage'
+    cacheLocation: 'localstorage',
   });
 }
 
@@ -36,5 +36,3 @@ export async function getAuth0User() {
 export async function controllerInit() {
   await initializeAuth0Client();
 }
-
-

@@ -14,7 +14,7 @@ router.get('/all', async (req, res, next) => {
 });
 
 router.post('/:sub', async (req, res, next) => {
-  let sub = req.params.sub;
+  const sub = req.params.sub;
   try {
     const result = await db.query(`
     INSERT INTO customer (id) VALUES
