@@ -45,9 +45,4 @@ function updateBasketCounter() {
   basketCounter.textContent = counter;
 }
 
-// FUNCTION: Get local storage basket object
-function get() {
-  return JSON.parse(localStorage.getItem('Basket'));
-}
-
 export { add, remove, updateBasketCounter };
