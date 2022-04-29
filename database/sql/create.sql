@@ -43,8 +43,8 @@ CREATE TABLE kit (
   kit_price DECIMAL
 );
 
-CREATE TABLE customers (
-
+CREATE TABLE customer (
+  id text PRIMARY KEY
 )
 
 CREATE TABLE orders (

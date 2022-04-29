@@ -1,4 +1,5 @@
 import * as auth from '../controllers/authController.mjs';
+import * as customer from '../controllers/customerController.mjs';
 
 document.querySelector('#login').addEventListener('click', login);
 document.querySelector('#logout').addEventListener('click', logout);
@@ -25,6 +26,9 @@ async function login() {
     console.error(error);
     return;
   }
+  let userData = await auth.getAuth0User();
+
+  customer.postCustomer(userData.sub);
 
   isAuthenticated = true;
 }
