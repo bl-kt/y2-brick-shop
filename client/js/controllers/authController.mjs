@@ -15,8 +15,6 @@ export let auth0 = null;
 async function initializeAuth0Client() {
   const config = await fetchAuthConfig();
 
-  console.debug(config);
-
   auth0 = await createAuth0Client({
     domain: config.domain,
     client_id: config.clientId,
@@ -32,15 +30,11 @@ export async function getAuth0User() {
   }
 
   return userInfo;
-  //userinfo.sub
-  //userinfo.email
 }
 
 // this will run when the page loads
 export async function controllerInit() {
   await initializeAuth0Client();
-  console.log('auth0 initialized');
-  console.log({ auth0 });
 }
 
 
